@@ -1,464 +1,181 @@
 --========================================================
 -- NEKO V5
--- Original Roblox LocalScript
--- Place in StarterPlayer > StarterPlayerScripts
+-- Avatar rebuild for your own Roblox experience
 --========================================================
 
 local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local Debris = game:GetService("Debris")
-
-local Player = Players.LocalPlayer
+local AssetService = game:GetService("AssetService")
 
 --========================================================
--- SETTINGS
+-- ASSETS
 --========================================================
 
-local CONFIG = {
-    NormalSpeed = 16,
-    SprintSpeed = 28,
+local ASSETS = {
+    Tail = 104494501265878,
+    Hair = 86220548304036,
+    Cone = 1609390589,
 
-    TailColor = Color3.fromRGB(255, 255, 255),
-    EarColor = Color3.fromRGB(255, 255, 255),
-    ClawColor = Color3.fromRGB(235, 235, 235),
-
-    ChestCircleColor = Color3.fromRGB(255, 255, 255),
-
-    EnableSounds = true,
-    EnableCombat = true,
-
-    AttackCooldown = 0.45
+    -- Proud Happy Goober Face bundle
+    FaceBundle = 167878794367281
 }
 
 --========================================================
--- STATE
+-- COLORS
 --========================================================
 
-local Character
-local Humanoid
-local RootPart
-
-local NekoFolder
-local Tail
-local LeftEar
-local RightEar
-local LeftClaw
-local RightClaw
-local ChestCircleLeft
-local ChestCircleRight
-
-local Sprinting = false
-local Attacking = false
-local LastAttack = 0
-
-local Connections = {}
+local TAN = Color3.fromRGB(198, 142, 93)
 
 --========================================================
--- CLEANUP
+-- RESOLVE FACE/DYNAMIC HEAD FROM BUNDLE
 --========================================================
 
-local function DisconnectAll()
-    for _, Connection in ipairs(Connections) do
-        if Connection then
-            Connection:Disconnect()
+local function GetFaceAssetFromBundle()
+    local Success, Details = pcall(function()
+        return AssetService:GetBundleDetailsAsync(
+            ASSETS.FaceBundle
+        )
+    end)
+
+    if not Success or not Details then
+        warn("Neko V5: Could not read face bundle:", Details)
+        return nil
+    end
+
+    -- Prefer DynamicHead
+    for _, Item in ipairs(Details.Items or {}) do
+        if Item.Type == "Asset" and Item.AssetType == "DynamicHead" then
+            return Item.Id
         end
     end
 
-    table.clear(Connections)
-end
+    -- Fallback: look for a Head component
+    for _, Item in ipairs(Details.Items or {}) do
+        if Item.Type == "Asset"
+            and Item.AssetType == "Head" then
 
-local function CleanupNeko()
-    DisconnectAll()
-
-    if NekoFolder then
-        NekoFolder:Destroy()
-        NekoFolder = nil
-    end
-
-    Tail = nil
-    LeftEar = nil
-    RightEar = nil
-    LeftClaw = nil
-    RightClaw = nil
-    ChestCircleLeft = nil
-    ChestCircleRight = nil
-end
-
---========================================================
--- PART CREATION
---========================================================
-
-local function CreatePart(Name, Size, Color, Parent)
-    local Part = Instance.new("Part")
-
-    Part.Name = Name
-    Part.Size = Size
-    Part.Color = Color
-    Part.Material = Enum.Material.SmoothPlastic
-
-    Part.Anchored = false
-    Part.CanCollide = false
-    Part.CanTouch = false
-    Part.CanQuery = false
-    Part.Massless = true
-
-    Part.TopSurface = Enum.SurfaceType.Smooth
-    Part.BottomSurface = Enum.SurfaceType.Smooth
-
-    Part.Parent = Parent
-
-    return Part
-end
-
-local function WeldPart(Part, BodyPart, Offset)
-    local Weld = Instance.new("Weld")
-
-    Weld.Part0 = BodyPart
-    Weld.Part1 = Part
-    Weld.C0 = Offset
-
-    Weld.Parent = Part
-
-    return Weld
-end
-
---========================================================
--- MESH
---========================================================
-
-local function AddMesh(Part, MeshType, Scale)
-    local Mesh = Instance.new("SpecialMesh")
-
-    Mesh.MeshType = MeshType
-    Mesh.Scale = Scale
-
-    Mesh.Parent = Part
-
-    return Mesh
-end
-
---========================================================
--- SOUND
---========================================================
-
-local function PlaySound(SoundId, Parent, Volume, PlaybackSpeed)
-    if not CONFIG.EnableSounds then
-        return
-    end
-
-    local Sound = Instance.new("Sound")
-
-    Sound.SoundId = "rbxassetid://" .. tostring(SoundId)
-    Sound.Volume = Volume or 1
-    Sound.PlaybackSpeed = PlaybackSpeed or 1
-    Sound.RollOffMaxDistance = 80
-
-    Sound.Parent = Parent
-    Sound:Play()
-
-    Debris:AddItem(Sound, 5)
-
-    return Sound
-end
-
---========================================================
--- EFFECT
---========================================================
-
-local function CreateSpark(Position)
-    local Holder = Instance.new("Part")
-
-    Holder.Name = "NekoEffect"
-    Holder.Size = Vector3.new(0.1, 0.1, 0.1)
-    Holder.Transparency = 1
-    Holder.Anchored = true
-    Holder.CanCollide = false
-    Holder.CanTouch = false
-    Holder.CanQuery = false
-
-    Holder.Position = Position
-    Holder.Parent = workspace
-
-    local Attachment = Instance.new("Attachment")
-    Attachment.Parent = Holder
-
-    local Particle = Instance.new("ParticleEmitter")
-
-    Particle.Texture = "rbxasset://textures/particles/sparkles_main.dds"
-    Particle.Color = ColorSequence.new(CONFIG.ClawColor)
-    Particle.LightEmission = 1
-
-    Particle.Lifetime = NumberRange.new(0.25, 0.45)
-    Particle.Speed = NumberRange.new(3, 7)
-    Particle.Rate = 0
-    Particle.SpreadAngle = Vector2.new(180, 180)
-
-    Particle.Size = NumberSequence.new({
-        NumberSequenceKeypoint.new(0, 0.35),
-        NumberSequenceKeypoint.new(1, 0)
-    })
-
-    Particle.Transparency = NumberSequence.new({
-        NumberSequenceKeypoint.new(0, 0),
-        NumberSequenceKeypoint.new(1, 1)
-    })
-
-    Particle.Parent = Attachment
-
-    Particle:Emit(12)
-
-    Debris:AddItem(Holder, 1)
-end
-
---========================================================
--- EARS
---========================================================
-
-local function CreateEar(Name, Head, X)
-    local Ear = CreatePart(
-        Name,
-        Vector3.new(0.8, 1.1, 0.8),
-        CONFIG.EarColor,
-        NekoFolder
-    )
-
-    Ear.Shape = Enum.PartType.Wedge
-
-    WeldPart(
-        Ear,
-        Head,
-        CFrame.new(X, 0.8, 0)
-            * CFrame.Angles(
-                0,
-                0,
-                math.rad(X < 0 and -20 or 20)
-            )
-    )
-
-    return Ear
-end
-
---========================================================
--- TAIL
---========================================================
-
-local function CreateTail(Torso)
-    local TailModel = Instance.new("Model")
-    TailModel.Name = "NekoTail"
-    TailModel.Parent = NekoFolder
-
-    local Segments = {}
-
-    for Index = 1, 8 do
-        local Segment = CreatePart(
-            "TailSegment" .. Index,
-            Vector3.new(
-                0.55 - Index * 0.04,
-                0.55 - Index * 0.04,
-                0.7
-            ),
-            CONFIG.TailColor,
-            TailModel
-        )
-
-        AddMesh(
-            Segment,
-            Enum.MeshType.Cylinder,
-            Vector3.new(1, 1, 1)
-        )
-
-        Segments[Index] = Segment
-
-        local ParentPart =
-            Index == 1 and Torso or Segments[Index - 1]
-
-        local Offset
-
-        if Index == 1 then
-            Offset = CFrame.new(0, -0.25, 0.6)
-        else
-            Offset = CFrame.new(0, 0.02, 0.55)
+            return Item.Id
         end
-
-        WeldPart(Segment, ParentPart, Offset)
     end
 
-    return Segments
+    return nil
 end
 
 --========================================================
--- CLAWS
+-- RESET ACCESSORIES / CLOTHING
 --========================================================
 
-local function CreateClaw(Name, Arm, Offset)
-    local Claw = CreatePart(
-        Name,
-        Vector3.new(0.3, 0.8, 0.3),
-        CONFIG.ClawColor,
-        NekoFolder
-    )
+local function ClearDescription(Description)
+    -- Accessories
+    Description.BackAccessory = ""
+    Description.FaceAccessory = ""
+    Description.FrontAccessory = ""
+    Description.HairAccessory = ""
+    Description.HatAccessory = ""
+    Description.NeckAccessory = ""
+    Description.ShouldersAccessory = ""
+    Description.WaistAccessory = ""
 
-    Claw.Shape = Enum.PartType.Cylinder
+    -- Clothing
+    Description.Shirt = 0
+    Description.Pants = 0
+    Description.GraphicTShirt = 0
 
-    WeldPart(
-        Claw,
-        Arm,
-        Offset
-    )
+    -- Body colors
+    Description.HeadColor = TAN
+    Description.LeftArmColor = TAN
+    Description.RightArmColor = TAN
+    Description.LeftLegColor = TAN
+    Description.RightLegColor = TAN
+    Description.TorsoColor = TAN
 
-    return Claw
+    return Description
 end
 
 --========================================================
--- BIG CHEST CIRCLES
+-- APPLY NEKO V5
 --========================================================
 
-local function CreateChestCircles(Torso)
-    -- Left circle
-    local Left = CreatePart(
-        "ChestCircleLeft",
-        Vector3.new(0.1, 1.6, 1.6),
-        CONFIG.ChestCircleColor,
-        NekoFolder
-    )
+local function ApplyNeko(Player)
+    local Character = Player.Character
 
-    Left.Shape = Enum.PartType.Cylinder
-
-    local LeftWeld = Instance.new("Weld")
-    LeftWeld.Part0 = Torso
-    LeftWeld.Part1 = Left
-    LeftWeld.C0 =
-        CFrame.new(-0.48, 0.15, -0.58)
-        * CFrame.Angles(0, math.rad(90), 0)
-    LeftWeld.Parent = Left
-
-    -- Right circle
-    local Right = CreatePart(
-        "ChestCircleRight",
-        Vector3.new(0.1, 1.6, 1.6),
-        CONFIG.ChestCircleColor,
-        NekoFolder
-    )
-
-    Right.Shape = Enum.PartType.Cylinder
-
-    local RightWeld = Instance.new("Weld")
-    RightWeld.Part0 = Torso
-    RightWeld.Part1 = Right
-    RightWeld.C0 =
-        CFrame.new(0.48, 0.15, -0.58)
-        * CFrame.Angles(0, math.rad(90), 0)
-    RightWeld.Parent = Right
-
-    ChestCircleLeft = Left
-    ChestCircleRight = Right
-end
-
---========================================================
--- ATTACK
---========================================================
-
-local function PerformAttack()
-    if Attacking then
+    if not Character then
         return
     end
 
-    if not Character or not Humanoid or not RootPart then
+    local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+    if not Humanoid then
         return
     end
 
-    if os.clock() - LastAttack < CONFIG.AttackCooldown then
-        return
-    end
+    local Description
 
-    LastAttack = os.clock()
-    Attacking = true
+    local DescriptionSuccess, DescriptionResult = pcall(function()
+        return Humanoid:GetAppliedDescription()
+    end)
 
-    Humanoid.WalkSpeed = 5
-
-    local OriginalAutoRotate = Humanoid.AutoRotate
-    Humanoid.AutoRotate = false
-
-    local OriginalCFrame = RootPart.CFrame
-
-    local Back =
-        TweenService:Create(
-            RootPart,
-            TweenInfo.new(
-                0.12,
-                Enum.EasingStyle.Quad,
-                Enum.EasingDirection.Out
-            ),
-            {
-                CFrame =
-                    OriginalCFrame
-                    * CFrame.Angles(
-                        0,
-                        0,
-                        math.rad(-12)
-                    )
-            }
+    if not DescriptionSuccess then
+        warn(
+            "Neko V5: Failed to get HumanoidDescription for",
+            Player.Name,
+            DescriptionResult
         )
+        return
+    end
 
-    Back:Play()
-    Back.Completed:Wait()
+    Description = DescriptionResult
 
-    CreateSpark(
-        RootPart.Position
-        + RootPart.CFrame.LookVector * 3
-    )
+    -- Completely strip existing avatar accessories/clothes
+    ClearDescription(Description)
 
-    PlaySound(
-        12222134,
-        RootPart,
-        0.8,
-        math.random(90, 110) / 100
-    )
+    --====================================================
+    -- REQUESTED ASSETS
+    --====================================================
 
-    local Forward =
-        TweenService:Create(
-            RootPart,
-            TweenInfo.new(
-                0.16,
-                Enum.EasingStyle.Back,
-                Enum.EasingDirection.Out
-            ),
-            {
-                CFrame =
-                    OriginalCFrame
-                    * CFrame.new(0, 0, -1.25)
-            }
+    -- Long black hair
+    Description.HairAccessory =
+        tostring(ASSETS.Hair)
+
+    -- Blue traffic cone
+    Description.HatAccessory =
+        tostring(ASSETS.Cone)
+
+    -- White fluffy tail
+    Description.WaistAccessory =
+        tostring(ASSETS.Tail)
+
+    --====================================================
+    -- FACE / HEAD
+    --====================================================
+
+    local FaceAsset = GetFaceAssetFromBundle()
+
+    if FaceAsset then
+        -- The supplied link is a dynamic-head bundle.
+        Description.Head = FaceAsset
+    else
+        warn(
+            "Neko V5: Could not resolve Proud Happy Goober Face bundle."
         )
+    end
 
-    Forward:Play()
-    Forward.Completed:Wait()
+    --====================================================
+    -- APPLY
+    --====================================================
 
-    CreateSpark(
-        RootPart.Position
-        + RootPart.CFrame.LookVector * 2
-    )
+    local ApplySuccess, ApplyResult = pcall(function()
+        Humanoid:ApplyDescription(Description)
+    end)
 
-    task.wait(0.08)
+    if not ApplySuccess then
+        warn(
+            "Neko V5: Failed to apply avatar:",
+            ApplyResult
+        )
+        return
+    end
 
-    RootPart.CFrame = OriginalCFrame
-
-    Humanoid.AutoRotate = OriginalAutoRotate
-
-    Humanoid.WalkSpeed =
-        Sprinting and CONFIG.SprintSpeed
-        or CONFIG.NormalSpeed
-
-    Attacking = false
-end
-
---========================================================
--- SETUP
---========================================================
-
-local function SetupNeko()
-    CleanupNeko()
+    task.wait(0.75)
 
     Character = Player.Character
 
@@ -466,449 +183,320 @@ local function SetupNeko()
         return
     end
 
-    Humanoid =
-        Character:FindFirstChildOfClass("Humanoid")
+    Humanoid = Character:FindFirstChildOfClass("Humanoid")
 
-    RootPart =
-        Character:FindFirstChild("HumanoidRootPart")
+    if not Humanoid then
+        return
+    end
 
-    local Head =
-        Character:FindFirstChild("Head")
+    --====================================================
+    -- NEKO VISUALS
+    --====================================================
 
+    local Existing = Character:FindFirstChild("NekoV5Visuals")
+
+    if Existing then
+        Existing:Destroy()
+    end
+
+    local NekoFolder = Instance.new("Folder")
+    NekoFolder.Name = "NekoV5Visuals"
+    NekoFolder.Parent = Character
+
+    local Head = Character:FindFirstChild("Head")
     local Torso =
         Character:FindFirstChild("UpperTorso")
         or Character:FindFirstChild("Torso")
 
-    local LeftArmPart =
-        Character:FindFirstChild("LeftHand")
-        or Character:FindFirstChild("Left Arm")
-
-    local RightArmPart =
-        Character:FindFirstChild("RightHand")
-        or Character:FindFirstChild("Right Arm")
-
-    if not Humanoid
-        or not RootPart
-        or not Head
-        or not Torso then
+    if not Head or not Torso then
         return
     end
 
-    NekoFolder = Instance.new("Folder")
-    NekoFolder.Name = "NekoV5"
-    NekoFolder.Parent = Character
+    --====================================================
+    -- CAT EARS
+    --====================================================
 
-    -- Ears
-    LeftEar = CreateEar(
+    local function CreateEar(Name, X)
+        local Ear = Instance.new("WedgePart")
+
+        Ear.Name = Name
+        Ear.Size = Vector3.new(0.8, 1.1, 0.8)
+        Ear.Color = Color3.fromRGB(255, 255, 255)
+        Ear.Material = Enum.Material.SmoothPlastic
+
+        Ear.CanCollide = false
+        Ear.CanTouch = false
+        Ear.CanQuery = false
+        Ear.Massless = true
+
+        Ear.CFrame =
+            Head.CFrame
+            * CFrame.new(
+                X,
+                0.75,
+                0
+            )
+            * CFrame.Angles(
+                0,
+                0,
+                math.rad(
+                    X < 0 and -20 or 20
+                )
+            )
+
+        Ear.Parent = NekoFolder
+
+        local Weld = Instance.new("WeldConstraint")
+        Weld.Part0 = Head
+        Weld.Part1 = Ear
+        Weld.Parent = Ear
+
+        return Ear
+    end
+
+    local LeftEar = CreateEar(
         "LeftEar",
-        Head,
         -0.55
     )
 
-    RightEar = CreateEar(
+    local RightEar = CreateEar(
         "RightEar",
-        Head,
         0.55
     )
 
-    -- Tail
-    Tail = CreateTail(Torso)
-
-    -- Claws
-    if LeftArmPart then
-        LeftClaw = CreateClaw(
-            "LeftClaw",
-            LeftArmPart,
-            CFrame.new(0, -0.35, 0)
-        )
-    end
-
-    if RightArmPart then
-        RightClaw = CreateClaw(
-            "RightClaw",
-            RightArmPart,
-            CFrame.new(0, -0.35, 0)
-        )
-    end
-
-    -- Big chest circles
-    CreateChestCircles(Torso)
-
-    -- Starting speed
-    Humanoid.WalkSpeed = CONFIG.NormalSpeed
-
     --====================================================
-    -- ANIMATION LOOP
+    -- SEMI-CIRCLE CHEST MARKINGS
     --====================================================
 
-    local Sine = 0
+    -- These are flattened wedge/cylinder-style markings
+    -- positioned on the front of the torso.
 
-    table.insert(
-        Connections,
-        RunService.RenderStepped:Connect(function(DeltaTime)
+    local function CreateChestMark(Name, X)
+        local Mark = Instance.new("Part")
 
-            if not Character
-                or not Character.Parent then
-                return
+        Mark.Name = Name
+        Mark.Shape = Enum.PartType.Cylinder
+
+        Mark.Size =
+            Vector3.new(
+                0.08,
+                1.45,
+                0.9
+            )
+
+        Mark.Color =
+            Color3.fromRGB(255, 255, 255)
+
+        Mark.Material =
+            Enum.Material.SmoothPlastic
+
+        Mark.CanCollide = false
+        Mark.CanTouch = false
+        Mark.CanQuery = false
+        Mark.Massless = true
+
+        Mark.CFrame =
+            Torso.CFrame
+            * CFrame.new(
+                X,
+                0.15,
+                -0.56
+            )
+            * CFrame.Angles(
+                0,
+                math.rad(90),
+                0
+            )
+
+        Mark.Parent = NekoFolder
+
+        local Weld = Instance.new("WeldConstraint")
+
+        Weld.Part0 = Torso
+        Weld.Part1 = Mark
+
+        Weld.Parent = Mark
+
+        return Mark
+    end
+
+    local LeftChest =
+        CreateChestMark(
+            "LeftChestSemiCircle",
+            -0.48
+        )
+
+    local RightChest =
+        CreateChestMark(
+            "RightChestSemiCircle",
+            0.48
+        )
+
+    --====================================================
+    -- TAIL ANIMATION
+    --====================================================
+
+    local TailAccessory
+
+    for _, Object in ipairs(Character:GetChildren()) do
+        if Object:IsA("Accessory") then
+            local Handle = Object:FindFirstChild("Handle")
+
+            if Handle and Object.AccessoryType
+                == Enum.AccessoryType.Waist then
+
+                TailAccessory = Object
             end
+        end
+    end
 
-            if not Humanoid.Parent then
-                return
-            end
+    if TailAccessory then
+        local Handle =
+            TailAccessory:FindFirstChild("Handle")
 
-            Sine += DeltaTime * 6
+        if Handle then
+            task.spawn(function()
+                local Start = os.clock()
 
-            local Moving =
-                Humanoid.MoveDirection.Magnitude > 0.05
+                while Character.Parent
+                    and TailAccessory.Parent do
 
-            local Speed =
-                Humanoid.MoveDirection.Magnitude
+                    local Time =
+                        os.clock() - Start
 
-            --================================================
-            -- TAIL ANIMATION
-            --================================================
-
-            if Tail then
-                for Index, Segment in ipairs(Tail) do
-
-                    local Wave =
-                        math.sin(
-                            Sine * 1.5
-                            + Index * 0.65
-                        )
-
-                    local Angle =
-                        math.rad(Wave * (10 + Index))
-
-                    local BaseCFrame =
-                        Index == 1
-                        and CFrame.new(0, -0.25, 0.6)
-                        or CFrame.new(0, 0.02, 0.55)
-
-                    local Target =
-                        BaseCFrame
-                        * CFrame.Angles(
-                            0,
-                            Angle,
-                            math.rad(
-                                math.sin(
-                                    Sine * 1.2
-                                    + Index
-                                ) * 4
-                            )
-                        )
+                    local Sway =
+                        math.sin(Time * 2.2) * 7
 
                     local Weld =
-                        Segment:FindFirstChildOfClass("Weld")
+                        Handle:FindFirstChildWhichIsA(
+                            "Weld"
+                        )
 
                     if Weld then
                         Weld.C0 =
                             Weld.C0:Lerp(
-                                Target,
-                                math.clamp(
-                                    DeltaTime * 8,
+                                Weld.C0
+                                * CFrame.Angles(
                                     0,
-                                    1
-                                )
+                                    math.rad(Sway),
+                                    math.rad(
+                                        math.cos(
+                                            Time * 1.7
+                                        ) * 4
+                                    )
+                                ),
+                                0.12
                             )
                     end
+
+                    task.wait()
                 end
-            end
-
-            --================================================
-            -- EAR ANIMATION
-            --================================================
-
-            if LeftEar and RightEar then
-
-                local EarWave =
-                    math.sin(Sine * 2) * 3
-
-                local LWeld =
-                    LeftEar:FindFirstChildOfClass("Weld")
-
-                local RWeld =
-                    RightEar:FindFirstChildOfClass("Weld")
-
-                if LWeld then
-                    LWeld.C0 =
-                        CFrame.new(-0.55, 0.8, 0)
-                        * CFrame.Angles(
-                            0,
-                            0,
-                            math.rad(-20 + EarWave)
-                        )
-                end
-
-                if RWeld then
-                    RWeld.C0 =
-                        CFrame.new(0.55, 0.8, 0)
-                        * CFrame.Angles(
-                            0,
-                            0,
-                            math.rad(20 - EarWave)
-                        )
-                end
-            end
-
-            --================================================
-            -- CLAW ANIMATION
-            --================================================
-
-            if LeftClaw and RightClaw then
-
-                local ClawWave =
-                    math.sin(Sine * 3) * 0.08
-
-                local LWeld =
-                    LeftClaw:FindFirstChildOfClass("Weld")
-
-                local RWeld =
-                    RightClaw:FindFirstChildOfClass("Weld")
-
-                if LWeld then
-                    LWeld.C0 =
-                        CFrame.new(
-                            0,
-                            -0.35,
-                            -0.05 + ClawWave
-                        )
-                end
-
-                if RWeld then
-                    RWeld.C0 =
-                        CFrame.new(
-                            0,
-                            -0.35,
-                            -0.05 - ClawWave
-                        )
-                end
-            end
-
-            --================================================
-            -- CHEST CIRCLE BOUNCE
-            --================================================
-
-            if ChestCircleLeft and ChestCircleRight then
-
-                local Bounce =
-                    math.sin(Sine * 2) * 0.025
-
-                local LeftWeld =
-                    ChestCircleLeft:FindFirstChildOfClass("Weld")
-
-                local RightWeld =
-                    ChestCircleRight:FindFirstChildOfClass("Weld")
-
-                if LeftWeld then
-                    LeftWeld.C0 =
-                        CFrame.new(
-                            -0.48,
-                            0.15 + Bounce,
-                            -0.58
-                        )
-                        * CFrame.Angles(
-                            0,
-                            math.rad(90),
-                            0
-                        )
-                end
-
-                if RightWeld then
-                    RightWeld.C0 =
-                        CFrame.new(
-                            0.48,
-                            0.15 + Bounce,
-                            -0.58
-                        )
-                        * CFrame.Angles(
-                            0,
-                            math.rad(90),
-                            0
-                        )
-                end
-            end
-
-            --================================================
-            -- SPEED
-            --================================================
-
-            if Sprinting then
-                Humanoid.WalkSpeed =
-                    CONFIG.SprintSpeed
-            else
-                Humanoid.WalkSpeed =
-                    CONFIG.NormalSpeed
-            end
-
-            --================================================
-            -- CAMERA BOB
-            --================================================
-
-            if Moving and not Attacking then
-
-                local Bob =
-                    math.sin(Sine * 2.2)
-                    * math.clamp(Speed, 0, 1)
-                    * 0.03
-
-                local Camera =
-                    workspace.CurrentCamera
-
-                if Camera then
-                    Camera.CFrame =
-                        Camera.CFrame
-                        * CFrame.new(0, Bob, 0)
-                end
-            end
-        end)
-    )
+            end)
+        end
+    end
 
     --====================================================
-    -- INPUT
+    -- SIMPLE IDLE EAR MOTION
     --====================================================
 
-    table.insert(
-        Connections,
-        UserInputService.InputBegan:Connect(
-            function(Input, Processed)
+    task.spawn(function()
+        local Start = os.clock()
 
-                if Processed then
-                    return
-                end
+        while Character.Parent do
 
-                -- Shift = sprint
-                if Input.KeyCode == Enum.KeyCode.LeftShift
-                    or Input.KeyCode == Enum.KeyCode.RightShift then
+            local Time =
+                os.clock() - Start
 
-                    Sprinting = true
-                end
+            local Wave =
+                math.sin(Time * 2) * 3
 
-                -- M = meow
-                if Input.KeyCode == Enum.KeyCode.M then
+            if LeftEar
+                and LeftEar.Parent then
 
-                    PlaySound(
-                        912038643,
-                        Head,
-                        1,
-                        math.random(90, 110) / 100
+                LeftEar.CFrame =
+                    Head.CFrame
+                    * CFrame.new(
+                        -0.55,
+                        0.75,
+                        0
                     )
-                end
-
-                -- F = claw toggle
-                if Input.KeyCode == Enum.KeyCode.F then
-
-                    if LeftClaw and RightClaw then
-
-                        local Active =
-                            LeftClaw:GetAttribute(
-                                "Active"
-                            ) == true
-
-                        Active = not Active
-
-                        LeftClaw:SetAttribute(
-                            "Active",
-                            Active
+                    * CFrame.Angles(
+                        0,
+                        0,
+                        math.rad(
+                            -20 + Wave
                         )
+                    )
+            end
 
-                        RightClaw:SetAttribute(
-                            "Active",
-                            Active
+            if RightEar
+                and RightEar.Parent then
+
+                RightEar.CFrame =
+                    Head.CFrame
+                    * CFrame.new(
+                        0.55,
+                        0.75,
+                        0
+                    )
+                    * CFrame.Angles(
+                        0,
+                        0,
+                        math.rad(
+                            20 - Wave
                         )
-
-                        local ClawColor =
-                            Active
-                            and Color3.fromRGB(255, 80, 80)
-                            or CONFIG.ClawColor
-
-                        LeftClaw.Color = ClawColor
-                        RightClaw.Color = ClawColor
-
-                        if Active then
-                            PlaySound(
-                                911882856,
-                                Head,
-                                0.7,
-                                1
-                            )
-                        end
-                    end
-                end
-
-                -- Z = attack
-                if Input.KeyCode == Enum.KeyCode.Z then
-                    if CONFIG.EnableCombat then
-                        PerformAttack()
-                    end
-                end
+                    )
             end
-        )
-    )
 
-    table.insert(
-        Connections,
-        UserInputService.InputEnded:Connect(
-            function(Input)
+            task.wait()
+        end
+    end)
 
-                if Input.KeyCode == Enum.KeyCode.LeftShift
-                    or Input.KeyCode == Enum.KeyCode.RightShift then
-
-                    Sprinting = false
-                end
-            end
-        )
-    )
-
-    --====================================================
-    -- MOUSE ATTACK
-    --====================================================
-
-    table.insert(
-        Connections,
-        UserInputService.InputBegan:Connect(
-            function(Input, Processed)
-
-                if Processed then
-                    return
-                end
-
-                if Input.UserInputType ==
-                    Enum.UserInputType.MouseButton1 then
-
-                    if CONFIG.EnableCombat then
-                        PerformAttack()
-                    end
-                end
-            end
-        )
+    print(
+        "Neko V5 applied to",
+        Player.Name
     )
 end
 
 --========================================================
--- CHARACTER LIFECYCLE
+-- CHARACTER HANDLING
 --========================================================
 
-Player.CharacterAdded:Connect(function(NewCharacter)
-    Character = NewCharacter
+local function SetupPlayer(Player)
+    Player.CharacterAdded:Connect(function()
+        task.wait(1)
 
-    task.wait(0.5)
+        local Success, ErrorMessage =
+            pcall(function()
+                ApplyNeko(Player)
+            end)
 
-    SetupNeko()
-end)
+        if not Success then
+            warn(
+                "Neko V5 error for "
+                    .. Player.Name
+                    .. ": "
+                    .. tostring(ErrorMessage)
+            )
+        end
+    end)
 
-Player.CharacterRemoving:Connect(function()
-    CleanupNeko()
-end)
+    if Player.Character then
+        task.spawn(function()
+            task.wait(1)
+            ApplyNeko(Player)
+        end)
+    end
+end
 
 --========================================================
--- INITIALIZE
+-- PLAYERS
 --========================================================
 
-if Player.Character then
+Players.PlayerAdded:Connect(SetupPlayer)
+
+for _, Player in ipairs(Players:GetPlayers()) do
     task.spawn(function()
-        SetupNeko()
+        SetupPlayer(Player)
     end)
 end
-
-print("Neko V5 loaded.")
