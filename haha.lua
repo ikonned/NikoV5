@@ -7,64 +7,43 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
 --========================================================
--- SETTINGS
+-- REQUESTED ASSETS
 --========================================================
 
 local HAIR_ID = 86220548304036
 local TAIL_ID = 104494501265878
 local CONE_ID = 1609390589
 
--- Pale white-ish tan
-local NEKO_COLOR = Color3.fromRGB(232, 205, 178)
+--========================================================
+-- COLORS
+--========================================================
 
--- Same color for chest pieces
-local CHEST_COLOR = NEKO_COLOR
+local NEKO_COLOR = Color3.fromRGB(232, 205, 178)
 
 --========================================================
 -- CHARACTER
 --========================================================
 
-local function GetCharacter()
-    return LocalPlayer.Character
-end
+local Character = LocalPlayer.Character
+    or LocalPlayer.CharacterAdded:Wait()
 
-local function GetHumanoid(Character)
-    return Character
-        and Character:FindFirstChildOfClass("Humanoid")
-end
+local Humanoid = Character:WaitForChild("Humanoid")
+local RootPart = Character:WaitForChild("HumanoidRootPart")
+local Head = Character:WaitForChild("Head")
 
---========================================================
--- WAIT FOR CHARACTER
---========================================================
+local Torso =
+    Character:FindFirstChild("UpperTorso")
+    or Character:FindFirstChild("Torso")
 
-local Character = GetCharacter()
-
-if not Character then
-    Character = LocalPlayer.CharacterAdded:Wait()
-end
-
-local Humanoid = GetHumanoid(Character)
-
-if not Humanoid then
-    Humanoid = Character:WaitForChild("Humanoid")
+if not Torso then
+    error("Neko V5: No torso found.")
 end
 
 --========================================================
--- REMOVE OLD NEKO
---========================================================
-
-local OldNeko = Character:FindFirstChild("NekoV5")
-
-if OldNeko then
-    OldNeko:Destroy()
-end
-
---========================================================
--- REMOVE AVATAR CLOTHES / ACCESSORIES
+-- CLEAN EXISTING APPEARANCE
 --========================================================
 
 for _, Object in ipairs(Character:GetChildren()) do
-
     if Object:IsA("Accessory")
         or Object:IsA("Shirt")
         or Object:IsA("Pants")
@@ -76,11 +55,10 @@ for _, Object in ipairs(Character:GetChildren()) do
 end
 
 --========================================================
--- BODY COLOR
+-- COLOR ORIGINAL HEAD / BODY
 --========================================================
 
 for _, Object in ipairs(Character:GetDescendants()) do
-
     if Object:IsA("BasePart") then
 
         local Name = Object.Name
@@ -112,31 +90,21 @@ for _, Object in ipairs(Character:GetDescendants()) do
 end
 
 --========================================================
--- REMOVE CLOTHING AGAIN
---========================================================
-
-for _, Object in ipairs(Character:GetChildren()) do
-
-    if Object:IsA("Accessory")
-        or Object:IsA("Shirt")
-        or Object:IsA("Pants")
-        or Object:IsA("ShirtGraphic")
-        or Object:IsA("CharacterMesh") then
-
-        Object:Destroy()
-    end
-end
-
---========================================================
 -- NEKO FOLDER
 --========================================================
+
+local OldFolder = Character:FindFirstChild("NekoV5")
+
+if OldFolder then
+    OldFolder:Destroy()
+end
 
 local NekoFolder = Instance.new("Folder")
 NekoFolder.Name = "NekoV5"
 NekoFolder.Parent = Character
 
 --========================================================
--- ASSET LOADER
+-- ACCESSORY LOADER
 --========================================================
 
 local function LoadAccessory(AssetId)
@@ -149,89 +117,95 @@ local function LoadAccessory(AssetId)
 
     if not Success then
         warn(
-            "[Neko V5] Failed to load asset:",
+            "[Neko V5] Failed loading asset",
             AssetId,
             Objects
         )
-
         return nil
     end
 
-    if not Objects or #Objects == 0 then
+    if type(Objects) ~= "table" or #Objects == 0 then
         warn(
-            "[Neko V5] No object returned for asset:",
+            "[Neko V5] No objects returned for",
             AssetId
         )
-
         return nil
     end
 
     local Root = Objects[1]
 
-    -- The returned object can be a folder/model
-    -- containing the actual Accessory.
-    local Accessory =
-        Root:IsA("Accessory")
-        and Root
-        or Root:FindFirstChildWhichIsA(
-            "Accessory",
-            true
-        )
+    local Accessory
+
+    if Root:IsA("Accessory") then
+        Accessory = Root
+    else
+        Accessory =
+            Root:FindFirstChildWhichIsA(
+                "Accessory",
+                true
+            )
+    end
 
     if not Accessory then
         warn(
-            "[Neko V5] Asset is not an Accessory:",
-            AssetId
+            "[Neko V5] Asset",
+            AssetId,
+            "is not an Accessory."
         )
 
-        Root:Destroy()
+        if Root and Root.Parent then
+            Root:Destroy()
+        end
 
         return nil
     end
 
+    -- Move the actual accessory to the character.
     Accessory.Parent = Character
+
+    -- Remove wrapper if necessary.
+    if Root ~= Accessory and Root.Parent then
+        Root:Destroy()
+    end
 
     return Accessory
 end
 
 --========================================================
--- LOAD REQUESTED ACCESSORIES
+-- APPLY ACCESSORIES
 --========================================================
 
--- BLACK HAIR
+-- Black long hair
 local Hair = LoadAccessory(HAIR_ID)
 
--- WHITE FLUFFY TAIL
+-- White fluffy tail
 local Tail = LoadAccessory(TAIL_ID)
 
--- BLUE TRAFFIC CONE
+-- Blue traffic cone
 local Cone = LoadAccessory(CONE_ID)
 
 --========================================================
--- FIND HEAD / BODY
+-- REMOVE UNREQUESTED ACCESSORIES
 --========================================================
 
-local Head = Character:FindFirstChild("Head")
+for _, Object in ipairs(Character:GetChildren()) do
 
-local RootPart =
-    Character:FindFirstChild(
-        "HumanoidRootPart"
-    )
+    if Object:IsA("Accessory") then
 
-local Torso =
-    Character:FindFirstChild("UpperTorso")
-    or Character:FindFirstChild("Torso")
+        if Object ~= Hair
+            and Object ~= Tail
+            and Object ~= Cone then
 
-if not Head or not RootPart or not Torso then
-    warn("[Neko V5] Required character parts missing.")
-    return
+            Object:Destroy()
+        end
+    end
 end
 
 --========================================================
--- HIDE ORIGINAL BODY VISUALLY
+-- HIDE DEFAULT BODY PARTS
 --========================================================
 
-local OriginalBody = {
+local BodyNames = {
     "UpperTorso",
     "LowerTorso",
     "Torso",
@@ -257,105 +231,203 @@ local OriginalBody = {
     "Right Leg"
 }
 
-for _, Name in ipairs(OriginalBody) do
+for _, Name in ipairs(BodyNames) do
 
-    local Part =
-        Character:FindFirstChild(Name)
+    local Part = Character:FindFirstChild(Name)
 
     if Part and Part:IsA("BasePart") then
         Part.Transparency = 1
+        Part.CanCollide = false
     end
 end
 
 --========================================================
--- CUSTOM BLOCK BODY
+-- PART CREATOR
 --========================================================
 
-local function MakeBodyPart(
+local function NewPart(
     Name,
     Size,
-    Offset
+    Color
 )
 
     local Part = Instance.new("Part")
 
     Part.Name = Name
     Part.Size = Size
-    Part.Color = NEKO_COLOR
+    Part.Color = Color
 
     Part.Material =
         Enum.Material.SmoothPlastic
 
+    Part.Anchored = false
     Part.CanCollide = false
     Part.CanTouch = false
     Part.CanQuery = false
     Part.Massless = true
-    Part.Anchored = false
 
-    Part.CFrame =
-        RootPart.CFrame
-        * Offset
+    Part.TopSurface =
+        Enum.SurfaceType.Smooth
+
+    Part.BottomSurface =
+        Enum.SurfaceType.Smooth
 
     Part.Parent = NekoFolder
-
-    local Weld =
-        Instance.new("Weld")
-
-    Weld.Part0 = RootPart
-    Weld.Part1 = Part
-    Weld.C0 = Offset
-
-    Weld.Parent = Part
 
     return Part
 end
 
-local Body = MakeBodyPart(
-    "Body",
-    Vector3.new(2.5, 2.9, 1.35),
-    CFrame.new(0, -0.15, 0)
+--========================================================
+-- WELD
+--========================================================
+
+local function Weld(
+    Part0,
+    Part1,
+    Offset
 )
 
-local LeftArm = MakeBodyPart(
-    "LeftArm",
-    Vector3.new(0.7, 2.65, 0.7),
-    CFrame.new(-1.6, -0.15, 0)
+    local Joint = Instance.new("Weld")
+
+    Joint.Part0 = Part0
+    Joint.Part1 = Part1
+    Joint.C0 = Offset
+
+    Joint.Parent = Part1
+
+    return Joint
+end
+
+--========================================================
+-- BODY
+--========================================================
+
+local Body = NewPart(
+    "NekoBody",
+    Vector3.new(
+        2.6,
+        2.9,
+        1.35
+    ),
+    NEKO_COLOR
 )
 
-local RightArm = MakeBodyPart(
-    "RightArm",
-    Vector3.new(0.7, 2.65, 0.7),
-    CFrame.new(1.6, -0.15, 0)
+Weld(
+    RootPart,
+    Body,
+    CFrame.new(
+        0,
+        -0.15,
+        0
+    )
 )
 
-local LeftLeg = MakeBodyPart(
-    "LeftLeg",
-    Vector3.new(0.82, 2.7, 0.82),
-    CFrame.new(-0.62, -2.9, 0)
+--========================================================
+-- ARMS
+--========================================================
+
+local LeftArm = NewPart(
+    "NekoLeftArm",
+    Vector3.new(
+        0.72,
+        2.7,
+        0.72
+    ),
+    NEKO_COLOR
 )
 
-local RightLeg = MakeBodyPart(
-    "RightLeg",
-    Vector3.new(0.82, 2.7, 0.82),
-    CFrame.new(0.62, -2.9, 0)
+Weld(
+    Body,
+    LeftArm,
+    CFrame.new(
+        -1.66,
+        0,
+        0
+    )
+)
+
+local RightArm = NewPart(
+    "NekoRightArm",
+    Vector3.new(
+        0.72,
+        2.7,
+        0.72
+    ),
+    NEKO_COLOR
+)
+
+Weld(
+    Body,
+    RightArm,
+    CFrame.new(
+        1.66,
+        0,
+        0
+    )
+)
+
+--========================================================
+-- LEGS
+--========================================================
+
+local LeftLeg = NewPart(
+    "NekoLeftLeg",
+    Vector3.new(
+        0.82,
+        2.7,
+        0.82
+    ),
+    NEKO_COLOR
+)
+
+Weld(
+    RootPart,
+    LeftLeg,
+    CFrame.new(
+        -0.62,
+        -2.8,
+        0
+    )
+)
+
+local RightLeg = NewPart(
+    "NekoRightLeg",
+    Vector3.new(
+        0.82,
+        2.7,
+        0.82
+    ),
+    NEKO_COLOR
+)
+
+Weld(
+    RootPart,
+    RightLeg,
+    CFrame.new(
+        0.62,
+        -2.8,
+        0
+    )
 )
 
 --========================================================
 -- CAT EARS
 --========================================================
 
-local function MakeEar(Name, OffsetX)
+local function CreateEar(
+    Name,
+    X
+)
 
-    local Ear =
-        Instance.new("WedgePart")
+    local Ear = Instance.new("WedgePart")
 
     Ear.Name = Name
 
     Ear.Size =
         Vector3.new(
-            0.85,
-            1.15,
-            0.85
+            0.9,
+            1.2,
+            0.9
         )
 
     Ear.Color = NEKO_COLOR
@@ -370,7 +442,7 @@ local function MakeEar(Name, OffsetX)
 
     local Offset =
         CFrame.new(
-            OffsetX,
+            X,
             0.72,
             0
         )
@@ -378,9 +450,9 @@ local function MakeEar(Name, OffsetX)
             0,
             0,
             math.rad(
-                OffsetX < 0
-                and -20
-                or 20
+                X < 0
+                    and -18
+                    or 18
             )
         )
 
@@ -390,40 +462,34 @@ local function MakeEar(Name, OffsetX)
 
     Ear.Parent = NekoFolder
 
-    local Weld =
-        Instance.new("Weld")
-
-    Weld.Part0 = Head
-    Weld.Part1 = Ear
-    Weld.C0 = Offset
-
-    Weld.Parent = Ear
-
-    return Ear
+    Weld(
+        Head,
+        Ear,
+        Offset
+    )
 end
 
-MakeEar(
+CreateEar(
     "LeftEar",
     -0.55
 )
 
-MakeEar(
+CreateEar(
     "RightEar",
     0.55
 )
 
 --========================================================
--- 3D HALF-CIRCLE CHEST PIECES
+-- LARGE 3D HALF-CIRCLE CHEST MARKINGS
 --========================================================
 
-local function MakeChestHalf(
+local function CreateChestHalf(
     Name,
     X
 )
 
-    -- Main rounded dome
-    local Dome =
-        Instance.new("Part")
+    -- Rounded 3D dome.
+    local Dome = Instance.new("Part")
 
     Dome.Name = Name
 
@@ -432,13 +498,13 @@ local function MakeChestHalf(
 
     Dome.Size =
         Vector3.new(
-            1.15,
-            1.15,
-            0.38
+            1.25,
+            1.25,
+            0.48
         )
 
-    -- SAME COLOR AS BODY
-    Dome.Color = CHEST_COLOR
+    -- SAME COLOR AS NEKO BODY
+    Dome.Color = NEKO_COLOR
 
     Dome.Material =
         Enum.Material.SmoothPlastic
@@ -451,8 +517,8 @@ local function MakeChestHalf(
     local DomeOffset =
         CFrame.new(
             X,
-            0.3,
-            -0.72
+            0.35,
+            -0.73
         )
 
     Dome.CFrame =
@@ -461,79 +527,51 @@ local function MakeChestHalf(
 
     Dome.Parent = NekoFolder
 
-    local DomeWeld =
-        Instance.new("Weld")
+    Weld(
+        Body,
+        Dome,
+        DomeOffset
+    )
 
-    DomeWeld.Part0 = Body
-    DomeWeld.Part1 = Dome
-    DomeWeld.C0 = DomeOffset
-
-    DomeWeld.Parent = Dome
-
-    -- Lower cover creates the visual
-    -- half-circle shape.
-    local Cover =
-        Instance.new("Part")
-
-    Cover.Name =
-        Name .. "_Cover"
-
-    Cover.Size =
+    -- Lower skin-colored cover.
+    -- This hides the lower section of the sphere,
+    -- leaving a raised half-circle appearance.
+    local Cover = NewPart(
+        Name .. "_Cover",
         Vector3.new(
-            0.45,
-            0.62,
-            1.2
-        )
+            0.52,
+            0.66,
+            1.28
+        ),
+        NEKO_COLOR
+    )
 
-    -- SAME COLOR AS BODY
-    Cover.Color = NEKO_COLOR
-
-    Cover.Material =
-        Enum.Material.SmoothPlastic
-
-    Cover.CanCollide = false
-    Cover.CanTouch = false
-    Cover.CanQuery = false
-    Cover.Massless = true
-
-    local CoverOffset =
+    Weld(
+        Body,
+        Cover,
         CFrame.new(
             X,
             -0.02,
-            -0.72
+            -0.73
         )
-
-    Cover.CFrame =
-        Body.CFrame
-        * CoverOffset
-
-    Cover.Parent = NekoFolder
-
-    local CoverWeld =
-        Instance.new("Weld")
-
-    CoverWeld.Part0 = Body
-    CoverWeld.Part1 = Cover
-    CoverWeld.C0 = CoverOffset
-
-    CoverWeld.Parent = Cover
+    )
 end
 
-MakeChestHalf(
+CreateChestHalf(
     "LeftChestHalf",
     -0.5
 )
 
-MakeChestHalf(
+CreateChestHalf(
     "RightChestHalf",
     0.5
 )
 
 --========================================================
--- MAKE SURE ACCESSORIES STAY VISIBLE
+-- FORCE ACCESSORY VISIBILITY
 --========================================================
 
-local function RestoreAccessory(Accessory)
+local function FixAccessory(Accessory)
 
     if not Accessory then
         return
@@ -546,32 +584,24 @@ local function RestoreAccessory(Accessory)
         if Object:IsA("BasePart") then
             Object.Transparency = 0
             Object.CanCollide = false
+            Object.CanTouch = false
             Object.Massless = true
         end
     end
 end
 
-RestoreAccessory(Hair)
-RestoreAccessory(Tail)
-RestoreAccessory(Cone)
+FixAccessory(Hair)
+FixAccessory(Tail)
+FixAccessory(Cone)
 
 --========================================================
--- OPTIONAL: HANDLE EXISTING FACE
+-- DONE
 --========================================================
 
--- Do not destroy the original Head/face.
--- The supplied Proud Happy Goober link is a bundle,
--- not a direct Face asset ID, so it should not be put
--- directly into HumanoidDescription.Face.
-
---========================================================
--- FINISHED
---========================================================
-
-print("======================================")
+print("========================================")
 print("IKONNED NEKO V5")
-print("Local avatar rebuild complete.")
-print("Hair:", HAIR_ID)
-print("Tail:", TAIL_ID)
-print("Cone:", CONE_ID)
-print("======================================")
+print("Local player appearance applied.")
+print("Hair ID: " .. HAIR_ID)
+print("Tail ID: " .. TAIL_ID)
+print("Cone ID: " .. CONE_ID)
+print("========================================")
