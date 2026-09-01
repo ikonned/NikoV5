@@ -1,176 +1,311 @@
+--========================================================
+-- LOCAL R6 APPEARANCE + 4 SMALL SKIN ORBS
+--========================================================
+
 local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
 
-local player = Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
+local Player = Players.LocalPlayer
+local Character = Player.Character or Player.CharacterAdded:Wait()
 
--- Exact assets
-local HAIR_ID = "123633915099119"
-local FACE_ID = "72680112744477"
-local TAIL_ID = "99456016159610"
+--========================================================
+-- CONFIG
+--========================================================
 
---------------------------------------------------
--- REMOVE EXISTING ACCESSORIES / CLOTHING / TOOLS
---------------------------------------------------
+local HAIR_ID = 123633915099119
+local FACE_ID = 72680112744477
+local TAIL_ID = 99456016159610
 
-for _, obj in ipairs(character:GetChildren()) do
-	if obj:IsA("Accessory")
-		or obj:IsA("Shirt")
-		or obj:IsA("Pants")
-		or obj:IsA("ShirtGraphic")
-		or obj:IsA("CharacterMesh")
-		or obj:IsA("Tool") then
+-- Slightly smaller than your example
+local ORB_SIZE = 0.72
+
+-- Skin color
+local SKIN_COLOR = Color3.fromRGB(145, 145, 145)
+
+--========================================================
+-- CHARACTER
+--========================================================
+
+local Humanoid = Character:WaitForChild("Humanoid")
+
+if Humanoid.RigType ~= Enum.HumanoidRigType.R6 then
+	warn("This script is intended for R6.")
+	return
+end
+
+local Head = Character:WaitForChild("Head")
+local Torso = Character:WaitForChild("Torso")
+local LeftLeg = Character:WaitForChild("Left Leg")
+local RightLeg = Character:WaitForChild("Right Leg")
+
+--========================================================
+-- DO NOT TOUCH BACKPACK / TOOLS
+--========================================================
+-- We intentionally do NOT remove anything from the Backpack.
+
+-- Remove only accessories currently attached to the character
+-- so the requested appearance can be applied.
+for _, obj in ipairs(Character:GetChildren()) do
+	if obj:IsA("Accessory") then
 		obj:Destroy()
 	end
 end
 
-local backpack = player:FindFirstChildOfClass("Backpack")
-if backpack then
-	for _, obj in ipairs(backpack:GetChildren()) do
-		if obj:IsA("Tool") then
-			obj:Destroy()
-		end
+-- Remove clothing currently worn by the character.
+for _, obj in ipairs(Character:GetChildren()) do
+	if obj:IsA("Shirt")
+		or obj:IsA("Pants")
+		or obj:IsA("ShirtGraphic") then
+		obj:Destroy()
 	end
 end
 
---------------------------------------------------
--- REMOVE OLD FACE
---------------------------------------------------
+--========================================================
+-- BODY COLOR
+--========================================================
 
-local head = character:FindFirstChild("Head")
-
-if head then
-	for _, obj in ipairs(head:GetChildren()) do
-		if obj:IsA("Decal") then
-			obj:Destroy()
-		end
-	end
-end
-
---------------------------------------------------
--- APPLY HAIR / FACE / TAIL
---------------------------------------------------
-
-local description = humanoid:GetAppliedDescription()
-
-description.HairAccessory = HAIR_ID
-description.Face = FACE_ID
-description.BackAccessory = TAIL_ID
-
-description.Shirt = 0
-description.Pants = 0
-description.GraphicTShirt = 0
-
-humanoid:ApplyDescription(description)
-
-task.wait(0.5)
-
-character = player.Character or character
-
---------------------------------------------------
--- GET SKIN COLOR
---------------------------------------------------
-
-local torso =
-	character:FindFirstChild("UpperTorso")
-	or character:FindFirstChild("Torso")
-
-local skinColor = Color3.fromRGB(120, 120, 120)
-
-if torso and torso:IsA("BasePart") then
-	skinColor = torso.Color
-end
-
---------------------------------------------------
--- RECOLOR ONLY LOCAL CHARACTER
---------------------------------------------------
-
-for _, obj in ipairs(character:GetChildren()) do
+for _, obj in ipairs(Character:GetChildren()) do
 	if obj:IsA("BasePart") and obj.Name ~= "HumanoidRootPart" then
-		obj.Color = skinColor
+		obj.Color = SKIN_COLOR
 	end
 end
 
---------------------------------------------------
--- SPHERE FUNCTION
---------------------------------------------------
+--========================================================
+-- FACE
+--========================================================
 
-local function createSphere(name, bodyPart, offset)
-	if not bodyPart then
+for _, obj in ipairs(Head:GetChildren()) do
+	if obj:IsA("Decal") then
+		obj:Destroy()
+	end
+end
+
+local Face = Instance.new("Decal")
+Face.Name = "face"
+Face.Face = Enum.NormalId.Front
+Face.Texture = "rbxassetid://" .. FACE_ID
+Face.Parent = Head
+
+--========================================================
+-- LOAD ACCESSORY
+--========================================================
+
+local function LoadAccessory(assetId)
+	local ok, objects = pcall(function()
+		return game:GetObjects("rbxassetid://" .. assetId)
+	end)
+
+	if not ok or not objects then
+		warn("Could not load accessory:", assetId)
+		return nil
+	end
+
+	for _, object in ipairs(objects) do
+		if object:IsA("Accessory") then
+			object.Parent = Character
+
+			local handle = object:FindFirstChild("Handle")
+
+			if handle then
+				local attachment = handle:FindFirstChildWhichIsA("Attachment")
+
+				if attachment then
+					local matchingAttachment =
+						Character:FindFirstChild(attachment.Name, true)
+
+					if matchingAttachment and matchingAttachment:IsA("Attachment") then
+						handle.CFrame =
+							matchingAttachment.WorldCFrame
+							* attachment.CFrame:Inverse()
+
+						local weld = Instance.new("Weld")
+						weld.Part0 = matchingAttachment.Parent
+						weld.Part1 = handle
+						weld.C0 =
+							matchingAttachment.CFrame
+							* attachment.CFrame:Inverse()
+						weld.Parent = handle
+					end
+				end
+			end
+
+			return object
+		end
+	end
+
+	warn("No Accessory found in asset:", assetId)
+	return nil
+end
+
+-- Hair
+LoadAccessory(HAIR_ID)
+
+-- Fox tail
+LoadAccessory(TAIL_ID)
+
+--========================================================
+-- REMOVE OLD ORBS
+--========================================================
+
+local OldOrbs = Character:FindFirstChild("VisualOrbs")
+
+if OldOrbs then
+	OldOrbs:Destroy()
+end
+
+local OrbFolder = Instance.new("Folder")
+OrbFolder.Name = "VisualOrbs"
+OrbFolder.Parent = Character
+
+--========================================================
+-- ORB CREATION
+--========================================================
+
+local function CreateOrb(name, part, offset)
+	local orb = Instance.new("Part")
+
+	orb.Name = name
+	orb.Shape = Enum.PartType.Ball
+
+	orb.Size = Vector3.new(
+		ORB_SIZE,
+		ORB_SIZE,
+		ORB_SIZE
+	)
+
+	orb.Color = SKIN_COLOR
+	orb.Material = Enum.Material.SmoothPlastic
+
+	orb.CanCollide = false
+	orb.CanTouch = false
+	orb.CanQuery = false
+	orb.Massless = true
+	orb.CastShadow = false
+
+	orb.Parent = OrbFolder
+
+	local weld = Instance.new("Weld")
+
+	weld.Name = "OrbWeld"
+	weld.Part0 = part
+	weld.Part1 = orb
+	weld.C0 = CFrame.new(offset)
+	weld.Parent = orb
+
+	return {
+		Part = orb,
+		Weld = weld,
+		Base = CFrame.new(offset),
+	}
+end
+
+--========================================================
+-- FOUR ORBS
+--========================================================
+
+-- Chest
+local LeftChest = CreateOrb(
+	"LeftChestOrb",
+	Torso,
+	Vector3.new(-0.45, 0.28, -0.48)
+)
+
+local RightChest = CreateOrb(
+	"RightChestOrb",
+	Torso,
+	Vector3.new(0.45, 0.28, -0.48)
+)
+
+-- Back of upper legs
+local LeftUpperLeg = CreateOrb(
+	"LeftUpperLegOrb",
+	LeftLeg,
+	Vector3.new(-0.05, 0.55, 0.38)
+)
+
+local RightUpperLeg = CreateOrb(
+	"RightUpperLegOrb",
+	RightLeg,
+	Vector3.new(0.05, 0.55, 0.38)
+)
+
+local Orbs = {
+	LeftChest,
+	RightChest,
+	LeftUpperLeg,
+	RightUpperLeg
+}
+
+--========================================================
+-- ORB ANIMATION
+--========================================================
+
+local connection
+
+connection = RunService.RenderStepped:Connect(function()
+	if not Character.Parent then
+		if connection then
+			connection:Disconnect()
+		end
 		return
 	end
 
-	local sphere = Instance.new("Part")
-	sphere.Name = name
-	sphere.Shape = Enum.PartType.Ball
-	sphere.Size = Vector3.new(0.65, 0.65, 0.65)
+	local t = os.clock()
 
-	-- Same color as the player's skin
-	sphere.Color = skinColor
+	-- Chest movement
+	do
+		local side = -1
 
-	sphere.Material = Enum.Material.SmoothPlastic
-	sphere.CanCollide = false
-	sphere.CanTouch = false
-	sphere.CanQuery = false
-	sphere.Massless = true
-	sphere.Anchored = false
+		local x =
+			math.sin(t * 4) * 0.045 * side
 
-	sphere.CFrame = bodyPart.CFrame * CFrame.new(offset)
-	sphere.Parent = character
+		local y =
+			math.sin(t * 5) * 0.035
 
-	local weld = Instance.new("WeldConstraint")
-	weld.Part0 = bodyPart
-	weld.Part1 = sphere
-	weld.Parent = sphere
-end
+		local z =
+			math.abs(math.sin(t * 4)) * 0.04
 
---------------------------------------------------
--- CHEST SPHERES
---------------------------------------------------
+		LeftChest.Weld.C0 =
+			LeftChest.Base
+			* CFrame.new(x, y, z)
 
-local chest =
-	character:FindFirstChild("UpperTorso")
-	or character:FindFirstChild("Torso")
+		side = 1
 
-if chest then
-	createSphere(
-		"ChestSphereLeft",
-		chest,
-		Vector3.new(-0.55, 0, -0.55)
-	)
+		x =
+			math.sin(t * 4) * 0.045 * side
 
-	createSphere(
-		"ChestSphereRight",
-		chest,
-		Vector3.new(0.55, 0, -0.55)
-	)
-end
+		y =
+			math.sin(t * 5) * 0.035
 
---------------------------------------------------
--- BACK OF UPPER LEG SPHERES
---------------------------------------------------
+		z =
+			math.abs(math.sin(t * 4)) * 0.04
 
-local leftLeg =
-	character:FindFirstChild("LeftUpperLeg")
-	or character:FindFirstChild("Left Leg")
+		RightChest.Weld.C0 =
+			RightChest.Base
+			* CFrame.new(x, y, z)
+	end
 
-local rightLeg =
-	character:FindFirstChild("RightUpperLeg")
-	or character:FindFirstChild("Right Leg")
+	-- Upper leg movement
+	do
+		local movement =
+			math.sin(t * 3) * 0.035
 
--- Place them toward the back of the upper legs
-if leftLeg then
-	createSphere(
-		"BackUpperLegSphereLeft",
-		leftLeg,
-		Vector3.new(0, 0, 0.45)
-	)
-end
+		LeftUpperLeg.Weld.C0 =
+			LeftUpperLeg.Base
+			* CFrame.new(
+				-movement,
+				math.sin(t * 4) * 0.025,
+				0
+			)
 
-if rightLeg then
-	createSphere(
-		"BackUpperLegSphereRight",
-		rightLeg,
-		Vector3.new(0, 0, 0.45)
-	)
-end
+		RightUpperLeg.Weld.C0 =
+			RightUpperLeg.Base
+			* CFrame.new(
+				movement,
+				math.sin(t * 4 + 1) * 0.025,
+				0
+			)
+	end
+end)
+
+print("Local R6 appearance loaded.")
