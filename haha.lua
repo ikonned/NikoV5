@@ -1,1 +1,4511 @@
-([[This file was protected with MoonSec V3]]):gsub('.+', (function(a) _DS_hRJaXtMfR = a; end)); return(function(d,...)local r;local f;local o;local l;local s;local a;local e=24915;local n=0;local t={};while n<444 do n=n+1;while n<0x2a7 and e%0x2ebc<0x175e do n=n+1 e=(e+857)%40657 local h=n+e if(e%0x2046)>=0x1023 then e=(e*0x2bb)%0x8835 while n<0x349 and e%0x2302<0x1181 do n=n+1 e=(e+177)%44182 local f=n+e if(e%0x8d6)<=0x46b then e=(e+0x2ee)%0x6c85 local e=17034 if not t[e]then t[e]=0x1 l=(not l)and _ENV or l;end elseif e%2~=0 then e=(e*0x179)%0x2d12 local e=75595 if not t[e]then t[e]=0x1 l=getfenv and getfenv();end else e=(e-0x140)%0x9a14 n=n+1 local e=23864 if not t[e]then t[e]=0x1 r="\4\8\116\111\110\117\109\98\101\114\65\65\122\115\82\81\108\95\0\6\115\116\114\105\110\103\4\99\104\97\114\84\68\69\74\90\82\87\77\0\6\115\116\114\105\110\103\3\115\117\98\115\111\86\90\88\80\111\104\0\6\115\116\114\105\110\103\4\98\121\116\101\95\85\89\116\72\113\105\74\0\5\116\97\98\108\101\6\99\111\110\99\97\116\114\97\112\114\87\114\98\99\0\5\116\97\98\108\101\6\105\110\115\101\114\116\95\122\110\68\122\72\69\81\5";end end end elseif e%2~=0 then e=(e+0x314)%0x23d4 while n<0x1b7 and e%0x4584<0x22c2 do n=n+1 e=(e*494)%26138 local r=n+e if(e%0x390c)>0x1c86 then e=(e+0x2a4)%0x6cfc local e=28347 if not t[e]then t[e]=0x1 f=function(t)local e=0x01 local function n(n)e=e+n return t:sub(e-n,e-0x01)end while true do local t=n(0x01)if(t=="\5")then break end local e=o.byte(n(0x01))local e=n(e)if t=="\2"then e=a.AAzsRQl_(e)elseif t=="\3"then e=e~="\0"elseif t=="\6"then l[e]=function(n,e)return d(8,nil,d,e,n)end elseif t=="\4"then e=l[e]elseif t=="\0"then e=l[e][n(o.byte(n(0x01)))];end local n=n(0x08)a[n]=e end end end elseif e%2~=0 then e=(e+0x3ac)%0x796b local e=35511 if not t[e]then t[e]=0x1 end else e=(e*0x326)%0x48b7 n=n+1 local e=86885 if not t[e]then t[e]=0x1 s=tonumber;end end end else e=(e*0x350)%0xb16f n=n+1 while n<0x236 and e%0x3b90<0x1dc8 do n=n+1 e=(e-591)%45877 local l=n+e if(e%0xecc)<=0x766 then e=(e-0x82)%0x7909 local e=33469 if not t[e]then t[e]=0x1 a={};end elseif e%2~=0 then e=(e-0x39)%0x4271 local e=37621 if not t[e]then t[e]=0x1 o=string;end else e=(e-0x2ff)%0x9cb9 n=n+1 local e=40543 if not t[e]then t[e]=0x1 end end end end end e=(e*20)%11070 end f(r);local n={};for e=0x0,0xff do local t=a.TDEJZRWM(e);n[e]=t;n[t]=e;end local function h(e)return n[e];end local o=(function(r,f)local o,t=0x01,0x10 local n={{},{},{}}local l=-0x01 local e=0x01 local d=r while true do n[0x03][a.soVZXPoh(f,e,(function()e=o+e return e-0x01 end)())]=(function()l=l+0x01 return l end)()if l==(0x0f)then l=""t=0x000 break end end local l=#f while e<l+0x01 do n[0x02][t]=a.soVZXPoh(f,e,(function()e=o+e return e-0x01 end)())t=t+0x01 if t%0x02==0x00 then t=0x00 a._znDzHEQ(n[0x01],(h((((n[0x03][n[0x02][0x00]]or 0x00)*0x10)+(n[0x03][n[0x02][0x01]]or 0x00)+d)%0x100)));d=r+d;end end return a.raprWrbc(n[0x01])end);f(o(6,"zF?%B{aN^MITm&_555"));f(o(211,"(>ok:fTJAM?rU.1Bo.T7B?oAfkJJ?MUBMMoTT:AMrM.Y%M:TTrMoUrBUB?1o>/?AUABkorfAfBUj.BBTk.:TJLrUAork:rJ?M1._qk>o:kfr?Jro>foXkUo:fJB>>B:?T1?FUTM>oT:JAJ?k.f11jAk1Jkr1r11Uo?CokkUM1?o?:r>f?MU1BUkUT>AkA.rMW:>BTUM?U1A?rBfkJo?1.:BMkf:BAB?M.Jq1k::1J:??U1>M>BJ1A:TAMMkof?ArrM1:0Ak?TiJ)UU1M>1keAqAA.AA1UGfUJT?:.r=>UBTrM>UD.1C.:ofMAA?T.JoxoUfkrfJCMBkrT>M6?1..>o:oJo?0rk1?>Jf>f>:3T1QTkffMArr1r1>Mkf:?TB??U.>M1f>:?..flTk:fBAkrf.r1k>rk1JMr1Bfa_kzxBkr.kvooTfAAr?A1m<UkTf.M1M1U1rV.BJMMAUUBo>.frTkrT.?B.:okMA.reJU?.:kT:?:UfAB>.fHAd?....roTf?MMMr11>k::Ef"));ArLKIsfZzCbMrXs=function(e)e((-11253+(function()local t,n=0,1;(function(e)e(e(e)and e(e))end)(function(e)if t>239 then return e end t=t+1 n=(n*541)%38443 if(n%712)<=356 then n=(n+778)%32866 return e else return e(e(e and e))end return e(e(e)and e(e))end)return n;end)()))end;sXrMbCzZfsIKLrA={a.JyiqVyTw,a.GudLDRHg};local e=(-21470+(function()local l,n=0,1;(function(e,n)n(n(e,e and e),n(e,e and e))end)(function(t,e)if l>480 then return e end l=l+1 n=(n+212)%26130 if(n%1986)<993 then n=(n+984)%28324 return e else return t(e(e,e),e(e,e))end return e(e(t,e and e),t(t,e))end,function(t,e)if l>365 then return e end l=l+1 n=(n+219)%17187 if(n%480)<240 then n=(n-847)%21942 return e else return e(t(t and t,e),e(e,t and e)and e(e,e and t))end return e(t(t,t),e(e,t))end)return n;end)())local le=(getfenv)or(function()return _ENV end);local c=a.nqrXbboB or a.UWHLhGAv;local l=2;local f=3;local m=1;local r=4;local function te(u,...)local b=o(e,"a9}febR?t/!ZGpPYpZt!eY9ep!ZtRf}tPpZzY?pP!fR?99Pt!ZRG}bhZGPt!be9}Pf?pRf}fPt!P?G9egGp9/eZbt}fPDfGttZY/Z/t}etnZG?/9eY?ZR?MeG/tPb9/Y?tfPyp?Yt!b}9!ptbt?e}fY!RGt9etS!pet!ep}fp//p9Pf!Y9G9?!Y?P/pv/bb/ofp!/p9Y9!ZG9GPb!bR!}YRt9!Pv!YRpGP//b?9GP9{Gp!!}b!9ZP}!G#/GP/fbt9pP}!?RGf9Y?GZtCebX!Gpf!PeGfRffpPfpYtebb}?G}t/eYf!GP}qP/!/RPffYRb?9RP?!ep}/!bZ}_Pbvpp?/bRZZPtfetcpp}/?bG}9}R!G?YfbY!ZYGbZZb!9PP9pBtte9}RZe/tetf}ppZp9rpY//bP}fPReG9eGZ/fR?}pYJ!G?RfebY}eP/!P?fftYpZ}GReG99pR/ZRl}bG!9PZef!s9GftteptbeGYPR}}PPZZN?bft?!RZf3Y9tp?qeeRf?!PGZ9?Rf//ZRGf9Y}Z!eRy6GbGpt9bGptpR/pRp}RYt!!t}ebYGGPtebb9/Pe/!RtffZ}!G?pe^G?pq/9be99Pb/ZRPfePG?/bPfRGtGZteb99Z!9t?RPfgY!Z_?fe/YYGftf}1pY!eRGf}Y?ZZ?Pe}EYp9/ebP}fPR!RR??}fZYG9ZPf!eR/}Pbbf9Y9!?>tps/9bR9Zbe9Pp!/eYbZY?PefNtGZfbYGZtt}epRGfRYbZ!?YZ??peJYGGRtePfZbRGf9YRZ/9}ZG/;R9}YpP/Z??ff9eZ}/^e9tfeR1Zp)/Gb!9YPe!!?fffYtZpYR!tRPfpYZbG}9Pb!!RYf}Y/ZPtfetFpp}/?eGR#P?Z9?.fbY!f}YtZZ??e9YYbp}}P?!G?9fRYZf Gbe!FYpe//bP}fPt!pZ}ftYGG9tReZ99pb/!bY}eP/!P?fftYpG}t?eP9?pR/ZR;}bvt!Y?Rf/YPGfttep9}pt/GRe}RPGZ<?bf!YYp}t/b}9fp//pR}}?PGZ??RfP:%G?t!b99ep/ZyRf}!PpZ}??fY49GRtYb&9bp!!3Re}/PPZe!pfp;}G?tG?P9RpG!>Rb}!PYZe?//exfG!tpb}9?pG!9RRf}YHZR?!e9 eGZtP?/}Rpp!fR?f}Y9Z??Ze9LbGPp}be9/pP!/Rt}PY}ZZZYe9XRGZ/pbb9ZpY!e/R}PYeZt?Pe}6?GG/9!G9ZP}!bR!}YYeZ/tet!5tpw/}b?9GP}!RRpf*YbYi?Yee_/GP/fbt9pP}ZPRGf9YRZpt=eb1!GYZbb/9YPf!ZRpffY?G_GeeRvZp,Gtb!}qPe!//ZffY/Zpt}e?+Gp9/RZ9}CP?!!RYfeY/ZPtfeYQppf/?bP}9Pt!Z/RefY!G%tebG4Ppe/tR9}}PZPY?9fRYZpftbeZHYptpGbP}fPtPi?}ftYGG9!MeZ99pb/!bY}eP/ZGZ/ft=rG}/PeG9}pR/GRK}/}p!Y?ef/9bGft/ep9R9!/GR9}R9PZK?Rf!YYY9t/eY9fpZ/pR}}?PGP,?RfpV*Gbt!eY9ePZ!fRf}ZPpZb??fGz9pt!fb(9/p!!}Re}/PPZf/9fpifG?/Qb99tpZGR?9}!Y+Ze!GfPOeGttYb}9Z9Y!9RR}Z}fZb?ZfY9R9RtPbe9tPe!}R?}GrfIf?Ze})bp&tYbe9/pPZpRtf8Y}Z??Ge9vRppppbb9PpY!?R/}PYfZGt9e}k/GGGfbR9GPH!bG#}YY!Z/?YefqtGp/}b/9GPt!RRYfvYbZ!?YbGl/pR/fbG9pP}!?RGePYRGet.et1!GY/eb/}bPfZ}Rpf}Y?ZGt9eR9tpn!Hb!}ePe!/RPffYZZptPe?99p9/RbZ}wP/!!?tfegbZPtbet0ppZ/?Re}9PP!Z?/fbY!Ytteb}&Ppt/tbp}}P?Zb?9fPYZGttbbf)YYe!tbP}ZPtZb?}fGYGG9/ZeZ9?pb!9bY}GP/!PttftYPG}tpeG9tpR/Y!G}bPG!Y/?f/YYGfttt=9}pt/GRf}RPZZ<?bRpYYGet/bJ9fpt/pR}R?PGZ9?RfGA<Gbt!eY9ep//PRf}tPpZ}?tfPK9GRtZb*f!p!/YRe}/PPZf?tfpe}G?tGb99?pZ!URb}!feZe?/fP9bPetpb}9?P?!9RR}ZYRG}?!fYleGptPbe9tpP!}RZRYY9ZR?ZeeXbGZtYbtbGpP!fRtbpY}Zt?Ge99!GZ/,bb9!pY!eR/}Pe9Zt?Pe}i?GG/9bR9ZY9!bR!}YYeZ/?Yef}tpY/}b?9GP9!R?tfAF?rG?YebS/pe/fbt9pYeZRRGffYRGRt;eb.!pbpZb/}9Pf!/RpffY?Zpt9eRe9py/bb!},Pe!/RPffY/Zptee?wPp9/?bZf}<}!!?9fe2GZPtfet9YPf/?bY}9YZ!Z?wfb9!G9teeGgPpR/tRG}}Y/G}?9f!YZGetbe!0YYe!tbP}?PtZ9?}fGYGpf/XeZ9bpb!YbY}eP/GPtbftU}G}tGeG9!pR!p/Y}bY&!Yt/f/YPGf!tbY9}pp/GR?}RYpZX?bepYYGZt/eP9fpt/p?e}GPGZ/?Re9>QGbt!R9}ep/!?RffRPpZ}??eP:!GR/bbN}}p!/YRe}pxZZftHfp}fG?tpb99Rf9!j?9}!YeZe?/fPwf9ttpbY9?P?!9RR}ZYiZG?!eZ-eGZtPbb9tpp!YR?ffY9G9?ZeGvbG!!9be}5pP!YRtftY}ZZGte9VPGZ!Zbb9ZpY!e?9}PYZZttbe}I?GG/?/p9ZPt!bR!}YYbZ/teefQt2f/}b?9GPf!RRZfdYbYE?Yeeo/p}/fbt9pP}ppRGf9YRGft,ebr!GYG!b/9PPf!ZRpf}Y?ZGZ?eRxZp=/Gb!9YPe!/!effYtZptfe?=Gp9/RRV}#PP!!??feY/ZPtfb/#ppG/?bG}9PR!Z?neGY!GtteeZsPpb/tbp}RP?!G?9fYYZG>tbe!}Gpe//bP}bPt!p?}f?YYG9tReZ9#pb/!bY}tn}!P?ffte9G}tteG}fY9/ZRM}bY9!Y?ef/9PpDttep9}p?/GRP}RYpZG?bf!YYGRt/eP9fP!ZRR}}?PGZt?RfZ_KPb/?eY9ep//PRff}PpGe?GfGk9GR/Yb.9bp!/YRp}/PPZf?/fpl}G?/PbG9RpZ!SRR}!PYZetZb/zfGttpRt9?pG!9tGbYY_Zb?!?Z^eG!tPbR9tP9PbR?}GY9Y}?Ze9zbGPp}be9/pPPHRt}PY}Z?ZGe94RGZ/9bb9!pYZRte}PYfZtt/e}j?GG!fRb9ZP9!b?}}YYeZ//PebKtGP/}bt9GY9!R?pf9YbZp?Ybb^/GP/fbt}ZP}!tRGfeYRZZtjeb9pGY/eb/9PPf!!Rpf}9MZGt9eRuGpj/Rb!9Y}e!/RPffY/Zpt}e?");local n=0;a.FzlVpLIh(function()n=n+1 end)local function e(e,t)if t then return n end;n=e+n;end local t,n,h=d(0,d,e,b,a._UYtHqiJ);local function o()local n,t=a._UYtHqiJ(b,e(1,3),e(5,6)+2);e(2);return(t*256)+n;end;local p=true;local p=0 local function z()local l=n();local e=n();local f=1;local l=(t(e,1,20)*(2^32))+l;local n=t(e,21,31);local e=((-1)^t(e,32));if(n==0)then if(l==p)then return e*0;else n=1;f=0;end;elseif(n==2047)then return(l==0)and(e*(1/0))or(e*(0/0));end;return a.eBA_Mmnu(e,n-1023)*(f+(l/(2^52)));end;local _=n;local function k(n)local t;if(not n)then n=_();if(n==0)then return'';end;end;t=a.soVZXPoh(b,e(1,3),e(5,6)+n-1);e(n)local e=""for n=(1+p),#t do e=e..a.soVZXPoh(t,n,n)end return e;end;local p=#a.JyiqVyTw(s('\49.\48'))~=1 local e=n;local function fe(...)return{...},a.OulbzDka('#',...)end local function ne()local e={};local d={};local c={};local s={c,d,nil,e};local e=n()local b={}for l=1,e do local t=h();local e;if(t==2)then e=(h()~=#{});elseif(t==0)then local n=z();if p and a.TAJRpCDU(a.JyiqVyTw(n),'.(\48+)$')then n=a.CahzOumq(n);end e=n;elseif(t==1)then e=k();end;b[l]=e;end;for e=1,n()do d[e-(#{1})]=ne();end;s[3]=h();for s=1,n()do local e=h();if(t(e,1,1)==0)then local d=t(e,2,3);local a=t(e,4,6);local e={o(),o(),nil,nil};if(d==0)then e[f]=o();e[r]=o();elseif(d==#{1})then e[f]=n();elseif(d==u[2])then e[f]=n()-(2^16)elseif(d==u[3])then e[f]=n()-(2^16)e[r]=o();end;if(t(a,1,1)==1)then e[l]=b[e[l]]end if(t(a,2,2)==1)then e[f]=b[e[f]]end if(t(a,3,3)==1)then e[r]=b[e[r]]end c[s]=e;end end;return s;end;local function te(t,n,e)local l=n;local l=e;return s(a.TAJRpCDU(a.TAJRpCDU(({a.FzlVpLIh(t)})[2],n),e))end local function k(ee,p,h)local function ne(...)local o,_,z,ne,g,t,b,u,j,y,s,n;local e=0;while-1<e do if 3>e then if e>=1 then if 2~=e then z=d(6,63,3,84,ee);g=fe ne=0;else t=-41;b=-1;end else o=d(6,1,1,77,ee);_=d(6,97,2,35,ee);end else if 4<e then if 1<=e then repeat if e~=6 then n=d(7);break;end;e=-2;until true;else e=-2;end else if e>2 then repeat if e<4 then u={};j={...};break;end;y=a.OulbzDka('#',...)-1;s={};until true;else y=a.OulbzDka('#',...)-1;s={};end end end e=e+1;end;for e=0,y do if(e>=z)then u[e-z]=j[e+1];else n[e]=j[e+1];end;end;local z=y-z+1 local e;local d;local function y(...)while true do end end while true do if t<-40 then t=t+42 end e=o[t];d=e[m];if 42>=d then if d<=20 then if 9>=d then if d<5 then if 1<d then if d<=2 then local r;for d=0,6 do if d>=3 then if 4<d then if 4~=d then for a=11,68 do if 5~=d then r=e[l]n[r]=n[r](c(n,r+1,e[f]))break;end;n[e[l]]=n[e[f]];t=t+1;e=o[t];break;end;else n[e[l]]=n[e[f]];t=t+1;e=o[t];end else if d~=3 then n[e[l]]=n[e[f]];t=t+1;e=o[t];else n[e[l]]=n[e[f]];t=t+1;e=o[t];end end else if d<=0 then n[e[l]]=p[e[f]];t=t+1;e=o[t];else if 1<d then n[e[l]]=p[e[f]];t=t+1;e=o[t];else n[e[l]]=p[e[f]];t=t+1;e=o[t];end end end end else if-1<d then for o=28,97 do if 4>d then if(e[l]<n[e[r]])then t=e[f];else t=t+1;end;break;end;local l=e[l];local d=n[l]local o=n[l+2];if(o>0)then if(d>n[l+1])then t=e[f];else n[l+3]=d;end elseif(d<n[l+1])then t=e[f];else n[l+3]=d;end break;end;else if(e[l]<n[e[r]])then t=e[f];else t=t+1;end;end end else if d~=-2 then for a=30,87 do if d>0 then local a;for d=0,6 do if 2>=d then if d<=0 then a=e[l]n[a](n[a+1])t=t+1;e=o[t];else if d>0 then repeat if d>1 then n[e[l]]=h[e[f]];t=t+1;e=o[t];break;end;n[e[l]]=h[e[f]];t=t+1;e=o[t];until true;else n[e[l]]=h[e[f]];t=t+1;e=o[t];end end else if 5<=d then if 2~=d then repeat if 6>d then n[e[l]]=n[e[f]][e[r]];t=t+1;e=o[t];break;end;n[e[l]]=h[e[f]];until true;else n[e[l]]=h[e[f]];end else if 3<d then n[e[l]]=h[e[f]];t=t+1;e=o[t];else n[e[l]]=n[e[f]][e[r]];t=t+1;e=o[t];end end end end break;end;n[e[l]][n[e[f]]]=n[e[r]];break;end;else n[e[l]][n[e[f]]]=n[e[r]];end end else if d>=7 then if d>=8 then if 6~=d then for t=37,52 do if d<9 then for e=e[l],e[f]do n[e]=nil;end;break;end;n[e[l]]=n[e[f]][n[e[r]]];break;end;else for e=e[l],e[f]do n[e]=nil;end;end else local e=e[l]n[e]=n[e](n[e+1])end else if d~=1 then repeat if 5<d then h[e[f]]=n[e[l]];break;end;local a,p,k,g,_,c,d,r,u,z,h,y,b;d=0;while d>-1 do if d<4 then if d<2 then if d==1 then p=l;else a=e;end else if d~=0 then repeat if d~=3 then k=f;break;end;g=n;until true;else k=f;end end else if 5>=d then if d>1 then for e=45,69 do if d~=5 then _=g[a[k]];break;end;c=a[p];break;end;else c=a[p];end else if d~=4 then repeat if 7~=d then n[c]=_;break;end;d=-2;until true;else n[c]=_;end end end d=d+1 end t=t+1;e=o[t];n[e[l]]=n[e[f]];t=t+1;e=o[t];r=e[l]n[r]=n[r](n[r+1])t=t+1;e=o[t];n[e[l]]=n[e[f]];t=t+1;e=o[t];do return n[e[l]]end t=t+1;e=o[t];r=e[l];u={};for e=1,#s do z=s[e];for e=0,#z do h=z[e];y=h[1];b=h[2];if y==n and b>=r then u[b]=y[b];h[1]=u;end;end;end;t=t+1;e=o[t];t=e[f];until true;else local b,y,z,g,_,c,d,r,p,u,h,k,a;d=0;while d>-1 do if d<4 then if d<2 then if d==1 then y=l;else b=e;end else if d~=0 then repeat if d~=3 then z=f;break;end;g=n;until true;else z=f;end end else if 5>=d then if d>1 then for e=45,69 do if d~=5 then _=g[b[z]];break;end;c=b[y];break;end;else c=b[y];end else if d~=4 then repeat if 7~=d then n[c]=_;break;end;d=-2;until true;else n[c]=_;end end end d=d+1 end t=t+1;e=o[t];n[e[l]]=n[e[f]];t=t+1;e=o[t];r=e[l]n[r]=n[r](n[r+1])t=t+1;e=o[t];n[e[l]]=n[e[f]];t=t+1;e=o[t];do return n[e[l]]end t=t+1;e=o[t];r=e[l];p={};for e=1,#s do u=s[e];for e=0,#u do h=u[e];k=h[1];a=h[2];if k==n and a>=r then p[a]=k[a];h[1]=p;end;end;end;t=t+1;e=o[t];t=e[f];end end end else if d<15 then if 11<d then if d<=12 then n[e[l]]=n[e[f]]%e[r];else if 9<=d then repeat if d~=13 then if(n[e[l]]~=e[r])then t=t+1;else t=e[f];end;break;end;for d=0,6 do if 2<d then if 5>d then if 1<=d then repeat if 3<d then h[e[f]]=n[e[l]];t=t+1;e=o[t];break;end;n[e[l]]=n[e[f]][e[r]];t=t+1;e=o[t];until true;else n[e[l]]=n[e[f]][e[r]];t=t+1;e=o[t];end else if 6>d then n[e[l]]=(e[f]~=0);t=t+1;e=o[t];else h[e[f]]=n[e[l]];end end else if 1<=d then if d~=1 then n[e[l]]=h[e[f]];t=t+1;e=o[t];else h[e[f]]=n[e[l]];t=t+1;e=o[t];end else n[e[l]]=n[e[f]][e[r]];t=t+1;e=o[t];end end end until true;else if(n[e[l]]~=e[r])then t=t+1;else t=e[f];end;end end else if 6<d then repeat if d~=10 then do return end;break;end;t=e[f];until true;else t=e[f];end end else if d<18 then if 16<=d then if d>14 then repeat if d~=16 then p[e[f]]=n[e[l]];break;end;if not n[e[l]]then t=t+1;else t=e[f];end;until true;else p[e[f]]=n[e[l]];end else local d,p,k,u,s;for a=0,5 do if a>2 then if a>3 then if a>=2 then for f=41,85 do if 4~=a then n[e[l]]();break;end;d=e[l]n[d]=n[d](c(n,d+1,b))t=t+1;e=o[t];break;end;else d=e[l]n[d]=n[d](c(n,d+1,b))t=t+1;e=o[t];end else d=e[l]k,u=g(n[d](c(n,d+1,e[f])))b=u+d-1 s=0;for e=d,b do s=s+1;n[e]=k[s];end;t=t+1;e=o[t];end else if 1>a then n[e[l]]=h[e[f]];t=t+1;e=o[t];else if a<2 then d=e[l];p=n[e[f]];n[d+1]=p;n[d]=p[e[r]];t=t+1;e=o[t];else n(e[l],e[f]);t=t+1;e=o[t];end end end end end else if d<19 then n[e[l]]=n[e[f]][e[r]];else if d~=18 then repeat if 20~=d then local e=e[l]n[e](n[e+1])break;end;n[e[l]]={};until true;else n[e[l]]={};end end end end end else if 32<=d then if d<37 then if 34<=d then if d>34 then if d>34 then repeat if d>35 then n[e[l]]=n[e[f]]%e[r];break;end;local t=e[l]local l,e=g(n[t](c(n,t+1,e[f])))b=e+t-1 local e=0;for t=t,b do e=e+1;n[t]=l[e];end;until true;else n[e[l]]=n[e[f]]%e[r];end else if(n[e[l]]~=e[r])then t=t+1;else t=e[f];end;end else if d>28 then repeat if 32<d then local t=e[l]n[t](c(n,t+1,e[f]))break;end;n[e[l]][n[e[f]]]=n[e[r]];until true;else local t=e[l]n[t](c(n,t+1,e[f]))end end else if 40>d then if d>37 then if 34<=d then repeat if d>38 then n[e[l]]();break;end;local c=_[e[f]];local b;local d={};b=a.RKTKiBtM({},{__index=function(n,e)local e=d[e];return e[1][e[2]];end,__newindex=function(t,e,n)local e=d[e]e[1][e[2]]=n;end;});for l=1,e[r]do t=t+1;local e=o[t];if e[m]==54 then d[l-1]={n,e[f]};else d[l-1]={p,e[f]};end;s[#s+1]=d;end;n[e[l]]=k(c,b,h);until true;else local c=_[e[f]];local b;local d={};b=a.RKTKiBtM({},{__index=function(n,e)local e=d[e];return e[1][e[2]];end,__newindex=function(t,e,n)local e=d[e]e[1][e[2]]=n;end;});for l=1,e[r]do t=t+1;local e=o[t];if e[m]==54 then d[l-1]={n,e[f]};else d[l-1]={p,e[f]};end;s[#s+1]=d;end;n[e[l]]=k(c,b,h);end else p[e[f]]=n[e[l]];end else if d>40 then if 42==d then for e=e[l],e[f]do n[e]=nil;end;else local e=e[l];b=e+z-1;for t=e,b do local e=u[t-e];n[t]=e;end;end else local t=e[l]n[t](c(n,t+1,e[f]))end end end else if 26<=d then if d<=28 then if 26<d then if d~=28 then n[e[l]]=h[e[f]];else for d=0,1 do if-2<=d then repeat if d~=1 then n[e[l]]=h[e[f]];t=t+1;e=o[t];break;end;if not n[e[l]]then t=t+1;else t=e[f];end;until true;else n[e[l]]=h[e[f]];t=t+1;e=o[t];end end end else n[e[l]]=#n[e[f]];end else if 29>=d then local t=e[l]n[t]=n[t](c(n,t+1,e[f]))else if 31~=d then local d;n[e[l]]=p[e[f]];t=t+1;e=o[t];n[e[l]]=p[e[f]];t=t+1;e=o[t];n[e[l]]=n[e[f]];t=t+1;e=o[t];d=e[l]n[d]=n[d](n[d+1])t=t+1;e=o[t];n[e[l]][n[e[f]]]=n[e[r]];t=t+1;e=o[t];do return end;else do return n[e[l]]end end end end else if 22<d then if 23<d then if d>=20 then for o=22,84 do if d<25 then local e=e[l];b=e+z-1;for t=e,b do local e=u[t-e];n[t]=e;end;break;end;if(n[e[l]]==e[r])then t=t+1;else t=e[f];end;break;end;else local e=e[l];b=e+z-1;for t=e,b do local e=u[t-e];n[t]=e;end;end else n[e[l]]=p[e[f]];end else if 22~=d then local e=e[l];local t=n[e];for e=e+1,b do a._znDzHEQ(t,n[e])end;else n[e[l]]={};end end end end end else if 64<d then if d>75 then if d>=81 then if 83>=d then if d<82 then local t=e[l]n[t]=n[t](c(n,t+1,e[f]))else if d~=79 then for a=27,85 do if 83~=d then for d=0,1 do if 0==d then n(e[l],e[f]);t=t+1;e=o[t];else n[e[l]]=h[e[f]];end end break;end;n[e[l]]=n[e[f]][n[e[r]]];break;end;else for d=0,1 do if 0==d then n(e[l],e[f]);t=t+1;e=o[t];else n[e[l]]=h[e[f]];end end end end else if d<85 then local d,h,r,o,a;local t=0;while t>-1 do if 3>t then if 0<t then if 1==t then h=l;else r=f;end else d=e;end else if t<5 then if t>=2 then for e=13,68 do if t~=3 then a=d[h];break;end;o=d[r];break;end;else o=d[r];end else if 1~=t then for e=30,69 do if 5<t then t=-2;break;end;n(a,o);break;end;else t=-2;end end end t=t+1 end else if 81<=d then for t=36,65 do if 85<d then n[e[l]]=n[e[f]];break;end;n[e[l]]=#n[e[f]];break;end;else n[e[l]]=#n[e[f]];end end end else if d<78 then if 72~=d then repeat if d>76 then local d,h,r,o,a;local t=0;while t>-1 do if t<=2 then if t<1 then d=e;else if 2~=t then h=l;else r=f;end end else if 4>=t then if t>0 then repeat if 3<t then a=d[h];break;end;o=d[r];until true;else o=d[r];end else if 6>t then n(a,o);else t=-2;end end end t=t+1 end break;end;local l=e[l];local o=n[l+2];local d=n[l]+o;n[l]=d;if(o>0)then if(d<=n[l+1])then t=e[f];n[l+3]=d;end elseif(d>=n[l+1])then t=e[f];n[l+3]=d;end until true;else local l=e[l];local o=n[l+2];local d=n[l]+o;n[l]=d;if(o>0)then if(d<=n[l+1])then t=e[f];n[l+3]=d;end elseif(d>=n[l+1])then t=e[f];n[l+3]=d;end end else if d<=78 then local f,r,d;for h=0,1 do if-3<h then repeat if 1>h then f=e[l];b=f+z-1;for e=f,b do r=u[e-f];n[e]=r;end;t=t+1;e=o[t];break;end;f=e[l];d=n[f];for e=f+1,b do a._znDzHEQ(d,n[e])end;until true;else f=e[l];d=n[f];for e=f+1,b do a._znDzHEQ(d,n[e])end;end end else if d==79 then local e=e[l]n[e](n[e+1])else local d;for a=0,3 do if a>=2 then if 2~=a then n[e[l]][n[e[f]]]=n[e[r]];else n[e[l]][n[e[f]]]=n[e[r]];t=t+1;e=o[t];end else if 0<a then d=e[l]n[d]=n[d](n[d+1])t=t+1;e=o[t];else n[e[l]]=n[e[f]];t=t+1;e=o[t];end end end end end end end else if d>=70 then if 73<=d then if d<74 then local e=e[l]n[e]=n[e](c(n,e+1,b))else if d~=72 then repeat if 75>d then n[e[l]]=(e[f]~=0);break;end;local t=e[l];local l=n[e[f]];n[t+1]=l;n[t]=l[e[r]];until true;else n[e[l]]=(e[f]~=0);end end else if 71<=d then if 67<=d then for b=37,82 do if d~=72 then local c=_[e[f]];local b;local d={};b=a.RKTKiBtM({},{__index=function(n,e)local e=d[e];return e[1][e[2]];end,__newindex=function(t,e,n)local e=d[e]e[1][e[2]]=n;end;});for l=1,e[r]do t=t+1;local e=o[t];if e[m]==54 then d[l-1]={n,e[f]};else d[l-1]={p,e[f]};end;s[#s+1]=d;end;n[e[l]]=k(c,b,h);break;end;n[e[l]]=(e[f]~=0);break;end;else n[e[l]]=(e[f]~=0);end else if(e[l]<n[e[r]])then t=e[f];else t=t+1;end;end end else if 67>d then if d>61 then repeat if d>65 then if not n[e[l]]then t=t+1;else t=e[f];end;break;end;local d=e[l];local l={};for e=1,#s do local e=s[e];for t=0,#e do local e=e[t];local f=e[1];local t=e[2];if f==n and t>=d then l[t]=f[t];e[1]=l;end;end;end;until true;else if not n[e[l]]then t=t+1;else t=e[f];end;end else if 67>=d then t=e[f];else if 69~=d then local f=e[f];local t=n[f]for e=f+1,e[r]do t=t..n[e];end;n[e[l]]=t;else local e=e[l]n[e]=n[e](c(n,e+1,b))end end end end end else if 53>=d then if 47<d then if 50>=d then if 49>d then local e=e[l];local t=n[e];for e=e+1,b do a._znDzHEQ(t,n[e])end;else if d>=47 then repeat if 50>d then local l=e[l];local t=n[e[f]];n[l+1]=t;n[l]=t[e[r]];break;end;local h,s,c,d,b,a,o;local t=0;while t>-1 do if 2>=t then if 0>=t then h=l;s=f;c=r;else if 1==t then d=e;else b=d[s];end end else if t<5 then if-1<t then repeat if t<4 then a=d[h];break;end;o=n[b];for e=1+b,d[c]do o=o..n[e];end;until true;else a=d[h];end else if t>2 then repeat if t>5 then t=-2;break;end;n[a]=o;until true;else n[a]=o;end end end t=t+1 end until true;else local h,c,s,o,b,a,d;local t=0;while t>-1 do if 2>=t then if 0>=t then h=l;c=f;s=r;else if 1==t then o=e;else b=o[c];end end else if t<5 then if-1<t then repeat if t<4 then a=o[h];break;end;d=n[b];for e=1+b,o[s]do d=d..n[e];end;until true;else a=o[h];end else if t>2 then repeat if t>5 then t=-2;break;end;n[a]=d;until true;else n[a]=d;end end end t=t+1 end end end else if d<52 then do return n[e[l]]end else if 48~=d then repeat if 52~=d then local e=e[l]n[e]=n[e](n[e+1])break;end;if(n[e[l]]==e[r])then t=t+1;else t=e[f];end;until true;else if(n[e[l]]==e[r])then t=t+1;else t=e[f];end;end end end else if 45<=d then if 46<=d then if 47==d then local d;for a=0,4 do if 1>=a then if 1>a then n[e[l]]=n[e[f]];t=t+1;e=o[t];else n(e[l],e[f]);t=t+1;e=o[t];end else if a<=2 then n(e[l],e[f]);t=t+1;e=o[t];else if 3==a then d=e[l]n[d]=n[d](c(n,d+1,e[f]))t=t+1;e=o[t];else if(n[e[l]]==e[r])then t=t+1;else t=e[f];end;end end end end else local d=e[l];local l={};for e=1,#s do local e=s[e];for t=0,#e do local t=e[t];local f=t[1];local e=t[2];if f==n and e>=d then l[e]=f[e];t[1]=l;end;end;end;end else n[e[l]]=p[e[f]];end else if 44~=d then h[e[f]]=n[e[l]];else n[e[l]]=h[e[f]];end end end else if 59>d then if 56>d then if d>=50 then repeat if 54<d then n[e[l]]=n[e[f]][e[r]];break;end;n[e[l]]=n[e[f]];until true;else n[e[l]]=n[e[f]][e[r]];end else if 57>d then local l=e[l];local d=n[l]local o=n[l+2];if(o>0)then if(d>n[l+1])then t=e[f];else n[l+3]=d;end elseif(d<n[l+1])then t=e[f];else n[l+3]=d;end else if d==58 then n[e[l]]();else local h,d;for a=0,4 do if a<=1 then if a>0 then n[e[l]]=n[e[f]]+n[e[r]];t=t+1;e=o[t];else n[e[l]]=p[e[f]];t=t+1;e=o[t];end else if a<=2 then n[e[l]]=n[e[f]]%e[r];t=t+1;e=o[t];else if 4==a then h=e[f];d=n[h]for e=h+1,e[r]do d=d..n[e];end;n[e[l]]=d;else n[e[l]]=n[e[f]][n[e[r]]];t=t+1;e=o[t];end end end end end end end else if 61<d then if d>62 then if 60<=d then repeat if d>63 then do return end;break;end;local d,a,b;n[e[l]]=h[e[f]];t=t+1;e=o[t];n[e[l]]=n[e[f]][e[r]];t=t+1;e=o[t];n[e[l]]={};t=t+1;e=o[t];n(e[l],e[f]);t=t+1;e=o[t];n(e[l],e[f]);t=t+1;e=o[t];n(e[l],e[f]);t=t+1;e=o[t];d=e[l];a=n[d]b=n[d+2];if(b>0)then if(a>n[d+1])then t=e[f];else n[d+3]=a;end elseif(a<n[d+1])then t=e[f];else n[d+3]=a;end until true;else local d,a,b;n[e[l]]=h[e[f]];t=t+1;e=o[t];n[e[l]]=n[e[f]][e[r]];t=t+1;e=o[t];n[e[l]]={};t=t+1;e=o[t];n(e[l],e[f]);t=t+1;e=o[t];n(e[l],e[f]);t=t+1;e=o[t];n(e[l],e[f]);t=t+1;e=o[t];d=e[l];a=n[d]b=n[d+2];if(b>0)then if(a>n[d+1])then t=e[f];else n[d+3]=a;end elseif(a<n[d+1])then t=e[f];else n[d+3]=a;end end else local t=e[l]local l,e=g(n[t](c(n,t+1,e[f])))b=e+t-1 local e=0;for t=t,b do e=e+1;n[t]=l[e];end;end else if 59>=d then n[e[l]]=n[e[f]]+n[e[r]];else if 56<d then for o=42,97 do if 61~=d then n[e[l]]=n[e[f]]+n[e[r]];break;end;local l=e[l];local o=n[l+2];local d=n[l]+o;n[l]=d;if(o>0)then if(d<=n[l+1])then t=e[f];n[l+3]=d;end elseif(d>=n[l+1])then t=e[f];n[l+3]=d;end break;end;else n[e[l]]=n[e[f]]+n[e[r]];end end end end end end end t=1+t;end;end;return ne end;local l=0xff;local r={};local d=(1);local f='';(function(n)local t=n local o=0x00 local e=0x00 t={(function(a)if o>0x2f then return a end o=o+1 e=(e+0xa0c-a)%0x1f return(e%0x03==0x2 and(function(t)if not n[t]then e=e+0x01 n[t]=(0x82);end return true end)'SmqXc'and t[0x3](0x1a0+a))or(e%0x03==0x0 and(function(t)if not n[t]then e=e+0x01 n[t]=(0x9f);f={f..'\58 a',f};r[d]=ne();d=d+(1);f[1]='\58'..f[1];l[2]=0xff;end return true end)'QsAll'and t[0x2](a+0x37b))or(e%0x03==0x1 and(function(t)if not n[t]then e=e+0x01 n[t]=(0xf7);end return true end)'SXEEM'and t[0x1](a+0x2f8))or a end),(function(a)if o>0x2f then return a end o=o+1 e=(e+0x1314-a)%0x47 return(e%0x03==0x2 and(function(t)if not n[t]then e=e+0x01 n[t]=(0xbe);end return true end)'XtvfD'and t[0x2](0x142+a))or(e%0x03==0x0 and(function(t)if not n[t]then e=e+0x01 n[t]=(0xca);l[2]=(l[2]*(te(function()r()end,c(f))-te(l[1],c(f))))+1;r[d]={};l=l[2];d=d+l;end return true end)'RrnMM'and t[0x3](a+0x3a9))or(e%0x03==0x1 and(function(t)if not n[t]then e=e+0x01 n[t]=(0x24);end return true end)'IDIxe'and t[0x1](a+0x141))or a end),(function(a)if o>0x21 then return a end o=o+1 e=(e+0xb10-a)%0x30 return(e%0x03==0x2 and(function(t)if not n[t]then e=e+0x01 n[t]=(0x37);end return true end)'ReEth'and t[0x3](0x2a3+a))or(e%0x03==0x1 and(function(t)if not n[t]then e=e+0x01 n[t]=(0x3c);f='\37';l={function()l()end};f=f..'\100\43';end return true end)'gBgAT'and t[0x1](a+0x193))or(e%0x03==0x0 and(function(t)if not n[t]then e=e+0x01 n[t]=(0xb8);r[d]=le();d=d+l;end return true end)'V_jwb'and t[0x2](a+0xd4))or a end)}t[0x3](0x257f)end){};local e=k(c(r));r[2]={};r[1]=e(r[1])ArLKIsfZzCbMrXs=nil;e=k(c(r))return e(...);end return te((function()local n={}local e=0x01;local t;if a.ZfvnhtxI then t=a.ZfvnhtxI(te)else t=''end if a.TAJRpCDU(t,a.VZEdBxVE)then e=e+0;else e=e+1;end n[e]=0x02;n[n[e]+0x01]=0x03;return n;end)(),...)end)((function(n,e,t,l,f,d)local d;if n>=4 then if 5<n then if 7>n then do return f[t]end;else if n~=4 then for e=23,96 do if n<8 then do return setmetatable({},{['__\99\97\108\108']=function(e,f,l,t,n)if n then return e[n]elseif t then return e else e[f]=l end end})end break;end;do return t(n,nil,t);end break;end;else do return setmetatable({},{['__\99\97\108\108']=function(e,l,f,t,n)if n then return e[n]elseif t then return e else e[l]=f end end})end end end else if 1<n then repeat if n<5 then local n=l;local f,d,l=f(2);do return function()local e,t,o,r=e(t,n(n,n),n(n,n)+3);n(4);return(r*f)+(o*d)+(t*l)+e;end;end;break;end;local n=l;do return function()local e=e(t,n(n,n),n(n,n));n(1);return e;end;end;until true;else local n=l;do return function()local e=e(t,n(n,n),n(n,n));n(1);return e;end;end;end end else if n>=2 then if n~=2 then do return e(1),e(4,f,l,t,e),e(5,f,l,t)end;else do return 16777216,65536,256 end;end else if 0~=n then do return function(t,e,n)if n then local e=(t/2^(e-1))%2^((n-1)-(e-1)+1);return e-e%1;else local e=2^(e-1);return(t%(e+e)>=e)and 1 or 0;end;end;end;else do return e(1),e(4,f,l,t,e),e(5,f,l,t)end;end end end end),...)
+
+--========================================================
+-- CORVETTI1991 - R6 VISUAL ORBS
+-- GUI COMPACTA / HORIZONTAL
+-- SISTEMA DE CORES INDIVIDUAIS + RGB + PALETA
+--========================================================
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+
+local player = Players.LocalPlayer
+
+-- FIX: forward declaration so callbacks can safely reference it
+local criarOrbsR6
+
+--========================================================
+-- CONFIGURAÇÃO PADRÃO
+--========================================================
+
+local DEFAULT = {
+	Size = 1.00,
+	Movement = 1.00,
+
+	LeftOrb = {
+		X = -0.34,
+		Y = 0.36,
+		Z = -0.48
+	},
+
+	RightOrb = {
+		X = 0.34,
+		Y = 0.36,
+		Z = -0.48
+	},
+
+	LowerLeft = {
+		X = -0.32,
+		Y = -0.90,
+		Z = 0.48
+	},
+
+	LowerRight = {
+		X = 0.32,
+		Y = -0.90,
+		Z = 0.48
+	}
+}
+
+local Config = {
+	Size = DEFAULT.Size,
+	Movement = DEFAULT.Movement,
+
+	LeftOrb = {
+		X = DEFAULT.LeftOrb.X,
+		Y = DEFAULT.LeftOrb.Y,
+		Z = DEFAULT.LeftOrb.Z
+	},
+
+	RightOrb = {
+		X = DEFAULT.RightOrb.X,
+		Y = DEFAULT.RightOrb.Y,
+		Z = DEFAULT.RightOrb.Z
+	},
+
+	LowerLeft = {
+		X = DEFAULT.LowerLeft.X,
+		Y = DEFAULT.LowerLeft.Y,
+		Z = DEFAULT.LowerLeft.Z
+	},
+
+	LowerRight = {
+		X = DEFAULT.LowerRight.X,
+		Y = DEFAULT.LowerRight.Y,
+		Z = DEFAULT.LowerRight.Z
+	}
+}
+
+--========================================================
+-- CONFIGURAÇÃO DE CORES INDIVIDUAIS
+--========================================================
+
+local ColorConfig = {
+
+	-- AUTOMÁTICA INDIVIDUAL
+	LeftOrbAutomatic = true,
+	RightOrbAutomatic = true,
+	LowerLeftAutomatic = true,
+	LowerRightAutomatic = true,
+
+	-- CORES PERSONALIZADAS INDIVIDUAIS
+	LeftOrbColor = Color3.fromRGB(
+		255,
+		50,
+		50
+	),
+
+	RightOrbColor = Color3.fromRGB(
+		255,
+		50,
+		50
+	),
+
+	LowerLeftColor = Color3.fromRGB(
+		50,
+		100,
+		255
+	),
+
+	LowerRightColor = Color3.fromRGB(
+		50,
+		100,
+		255
+	)
+}
+
+--========================================================
+-- ESTADO
+--========================================================
+
+local ATIVO = true
+local conexaoOrb = nil
+
+--========================================================
+-- REFERÊNCIAS DOS SLIDERS
+--========================================================
+
+local SliderControls = {
+	LeftOrb = {},
+	RightOrb = {},
+	LowerLeft = {},
+	LowerRight = {}
+}
+
+--========================================================
+-- CORES DA GUI
+--========================================================
+
+local COLORS = {
+
+	Background = Color3.fromRGB(
+		8,
+		8,
+		10
+	),
+
+	Panel = Color3.fromRGB(
+		15,
+		15,
+		18
+	),
+
+	Panel2 = Color3.fromRGB(
+		23,
+		23,
+		27
+	),
+
+	Red = Color3.fromRGB(
+		200,
+		25,
+		42
+	),
+
+	RedDark = Color3.fromRGB(
+		105,
+		14,
+		25
+	),
+
+	RedHover = Color3.fromRGB(
+		225,
+		35,
+		52
+	),
+
+	White = Color3.fromRGB(
+		245,
+		245,
+		245
+	),
+
+	Gray = Color3.fromRGB(
+		150,
+		150,
+		157
+	),
+
+	DarkGray = Color3.fromRGB(
+		60,
+		60,
+		65
+	),
+
+	Green = Color3.fromRGB(
+		55,
+		200,
+		95
+	)
+}
+
+--========================================================
+-- GUI
+--========================================================
+
+local gui = Instance.new("ScreenGui")
+
+gui.Name =
+	"Corvetti1991GUI"
+
+gui.ResetOnSpawn = false
+gui.ZIndexBehavior =
+	Enum.ZIndexBehavior.Sibling
+
+gui.Parent =
+	player:WaitForChild(
+		"PlayerGui"
+	)
+
+local main = Instance.new("Frame")
+
+main.Name =
+	"Main"
+
+main.Size =
+	UDim2.new(
+		0,
+		460,
+		0,
+		390
+	)
+
+main.Position =
+	UDim2.new(
+		0.5,
+		-230,
+		0.5,
+		-195
+	)
+
+main.BackgroundColor3 =
+	COLORS.Background
+
+main.BorderSizePixel = 0
+main.Parent = gui
+
+local mainCorner =
+	Instance.new("UICorner")
+
+mainCorner.CornerRadius =
+	UDim.new(
+		0,
+		14
+	)
+
+mainCorner.Parent =
+	main
+
+local mainStroke =
+	Instance.new("UIStroke")
+
+mainStroke.Color =
+	COLORS.Red
+
+mainStroke.Thickness =
+	1.5
+
+mainStroke.Transparency =
+	0.1
+
+mainStroke.Parent =
+	main
+
+--========================================================
+-- CABEÇALHO
+--========================================================
+
+local top =
+	Instance.new("Frame")
+
+top.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		48
+	)
+
+top.BackgroundColor3 =
+	COLORS.Panel
+
+top.BorderSizePixel = 0
+top.Parent = main
+
+local topCorner =
+	Instance.new("UICorner")
+
+topCorner.CornerRadius =
+	UDim.new(
+		0,
+		14
+	)
+
+topCorner.Parent =
+	top
+
+local topLine =
+	Instance.new("Frame")
+
+topLine.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		2
+	)
+
+topLine.Position =
+	UDim2.new(
+		0,
+		0,
+		1,
+		-2
+	)
+
+topLine.BackgroundColor3 =
+	COLORS.Red
+
+topLine.BorderSizePixel = 0
+topLine.Parent = top
+
+local title =
+	Instance.new("TextLabel")
+
+title.BackgroundTransparency = 1
+
+title.Position =
+	UDim2.new(
+		0,
+		16,
+		0,
+		5
+	)
+
+title.Size =
+	UDim2.new(
+		1,
+		-90,
+		0,
+		21
+	)
+
+title.Font =
+	Enum.Font.GothamBold
+
+title.Text =
+	"corvetti1991"
+
+title.TextColor3 =
+	COLORS.White
+
+title.TextSize = 17
+
+title.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+title.Parent = top
+
+local subtitle =
+	Instance.new("TextLabel")
+
+subtitle.BackgroundTransparency = 1
+
+subtitle.Position =
+	UDim2.new(
+		0,
+		16,
+		0,
+		26
+	)
+
+subtitle.Size =
+	UDim2.new(
+		1,
+		-90,
+		0,
+		14
+	)
+
+subtitle.Font =
+	Enum.Font.Gotham
+
+subtitle.Text =
+	"R6 • VISUAL ORBS"
+
+subtitle.TextColor3 =
+	COLORS.Gray
+
+subtitle.TextSize = 9
+
+subtitle.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+subtitle.Parent = top
+
+local minimize =
+	Instance.new("TextButton")
+
+minimize.Size =
+	UDim2.new(
+		0,
+		32,
+		0,
+		32
+	)
+
+minimize.Position =
+	UDim2.new(
+		1,
+		-41,
+		0,
+		8
+	)
+
+minimize.BackgroundColor3 =
+	COLORS.RedDark
+
+minimize.BorderSizePixel = 0
+
+minimize.Text =
+	"—"
+
+minimize.TextColor3 =
+	COLORS.White
+
+minimize.TextSize = 17
+
+minimize.Font =
+	Enum.Font.GothamBold
+
+minimize.Parent =
+	top
+
+local minCorner =
+	Instance.new("UICorner")
+
+minCorner.CornerRadius =
+	UDim.new(
+		0,
+		8
+	)
+
+minCorner.Parent =
+	minimize
+
+--========================================================
+-- ABAS
+--========================================================
+
+local tabs =
+	Instance.new("Frame")
+
+tabs.Position =
+	UDim2.new(
+		0,
+		12,
+		0,
+		58
+	)
+
+tabs.Size =
+	UDim2.new(
+		1,
+		-24,
+		0,
+		32
+	)
+
+tabs.BackgroundTransparency = 1
+tabs.Parent = main
+
+local orbTab =
+	Instance.new("TextButton")
+
+orbTab.Size =
+	UDim2.new(
+		0.5,
+		-3,
+		1,
+		0
+	)
+
+orbTab.BackgroundColor3 =
+	COLORS.Red
+
+orbTab.BorderSizePixel = 0
+
+orbTab.Text =
+	"ORBS"
+
+orbTab.TextColor3 =
+	COLORS.White
+
+orbTab.TextSize = 11
+
+orbTab.Font =
+	Enum.Font.GothamBold
+
+orbTab.Parent =
+	tabs
+
+local orbTabCorner =
+	Instance.new("UICorner")
+
+orbTabCorner.CornerRadius =
+	UDim.new(
+		0,
+		8
+	)
+
+orbTabCorner.Parent =
+	orbTab
+
+local configTab =
+	Instance.new("TextButton")
+
+configTab.Size =
+	UDim2.new(
+		0.5,
+		-3,
+		1,
+		0
+	)
+
+configTab.Position =
+	UDim2.new(
+		0.5,
+		3,
+		0,
+		0
+	)
+
+configTab.BackgroundColor3 =
+	COLORS.Panel2
+
+configTab.BorderSizePixel = 0
+
+configTab.Text =
+	"CONFIG"
+
+configTab.TextColor3 =
+	COLORS.Gray
+
+configTab.TextSize = 11
+
+configTab.Font =
+	Enum.Font.GothamBold
+
+configTab.Parent =
+	tabs
+
+local configTabCorner =
+	Instance.new("UICorner")
+
+configTabCorner.CornerRadius =
+	UDim.new(
+		0,
+		8
+	)
+
+configTabCorner.Parent =
+	configTab
+
+--========================================================
+-- PÁGINA ORBS
+--========================================================
+
+local orbPage =
+	Instance.new("Frame")
+
+orbPage.Position =
+	UDim2.new(
+		0,
+		12,
+		0,
+		100
+	)
+
+orbPage.Size =
+	UDim2.new(
+		1,
+		-24,
+		1,
+		-112
+	)
+
+orbPage.BackgroundTransparency = 1
+orbPage.Parent = main
+
+local status =
+	Instance.new("TextLabel")
+
+status.BackgroundTransparency = 1
+
+status.Position =
+	UDim2.new(
+		0,
+		4,
+		0,
+		5
+	)
+
+status.Size =
+	UDim2.new(
+		1,
+		-8,
+		0,
+		25
+	)
+
+status.Font =
+	Enum.Font.GothamBold
+
+status.TextSize = 13
+
+status.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+status.Parent =
+	orbPage
+
+local function atualizarStatus()
+
+	if ATIVO then
+
+		status.Text =
+			"●  ORBS ATIVADAS"
+
+		status.TextColor3 =
+			COLORS.Green
+
+	else
+
+		status.Text =
+			"●  ORBS DESATIVADAS"
+
+		status.TextColor3 =
+			COLORS.Red
+
+	end
+
+end
+
+atualizarStatus()
+
+local function criarBotao(
+	parent,
+	texto,
+	y
+)
+
+	local button =
+		Instance.new("TextButton")
+
+	button.Size =
+		UDim2.new(
+			1,
+			0,
+			0,
+			42
+		)
+
+	button.Position =
+		UDim2.new(
+			0,
+			0,
+			0,
+			y
+		)
+
+	button.BackgroundColor3 =
+		COLORS.Panel2
+
+	button.BorderSizePixel = 0
+
+	button.Text =
+		texto
+
+	button.TextColor3 =
+		COLORS.White
+
+	button.TextSize = 11
+
+	button.Font =
+		Enum.Font.GothamBold
+
+	button.Parent =
+		parent
+
+	local corner =
+		Instance.new("UICorner")
+
+	corner.CornerRadius =
+		UDim.new(
+			0,
+			8
+		)
+
+	corner.Parent =
+		button
+
+	local stroke =
+		Instance.new("UIStroke")
+
+	stroke.Color =
+		COLORS.DarkGray
+
+	stroke.Thickness = 1
+	stroke.Parent = button
+
+	return button
+
+end
+
+local toggle =
+	criarBotao(
+		orbPage,
+		"DESATIVAR ORBS",
+		38
+	)
+
+local recreate =
+	criarBotao(
+		orbPage,
+		"RECRIAR ORBS",
+		88
+	)
+
+local info =
+	Instance.new("TextLabel")
+
+info.BackgroundTransparency = 1
+
+info.Position =
+	UDim2.new(
+		0,
+		4,
+		0,
+		150
+	)
+
+info.Size =
+	UDim2.new(
+		1,
+		-8,
+		0,
+		100
+	)
+
+info.Font =
+	Enum.Font.Gotham
+
+info.Text =
+	"Controle R6 das quatro Visual Orbs.\n\nUse CONFIG para alterar tamanho,\nmovimento, posição e cores."
+
+info.TextColor3 =
+	COLORS.Gray
+
+info.TextSize = 11
+
+info.TextWrapped = true
+
+info.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+info.TextYAlignment =
+	Enum.TextYAlignment.Top
+
+info.Parent =
+	orbPage
+
+--========================================================
+-- PÁGINA CONFIG
+--========================================================
+
+local configPage =
+	Instance.new("ScrollingFrame")
+
+configPage.Position =
+	UDim2.new(
+		0,
+		12,
+		0,
+		100
+	)
+
+configPage.Size =
+	UDim2.new(
+		1,
+		-24,
+		1,
+		-112
+	)
+
+configPage.BackgroundTransparency = 1
+configPage.BorderSizePixel = 0
+
+configPage.ScrollBarThickness = 4
+
+configPage.ScrollBarImageColor3 =
+	COLORS.Red
+
+configPage.CanvasSize =
+	UDim2.new(
+		0,
+		0,
+		0,
+		1100
+	)
+
+configPage.Visible = false
+configPage.Parent = main
+
+--========================================================
+-- SLIDER
+--========================================================
+
+local function criarSlider(
+	parent,
+	titulo,
+	minValue,
+	maxValue,
+	valorInicial,
+	y,
+	passo,
+	callback,
+	casas
+)
+
+	local container =
+		Instance.new("Frame")
+
+	container.Size =
+		UDim2.new(
+			1,
+			0,
+			0,
+			48
+		)
+
+	container.Position =
+		UDim2.new(
+			0,
+			0,
+			0,
+			y
+		)
+
+	container.BackgroundTransparency = 1
+	container.Parent = parent
+
+	local label =
+		Instance.new("TextLabel")
+
+	label.BackgroundTransparency = 1
+
+	label.Position =
+		UDim2.new(
+			0,
+			2,
+			0,
+			0
+		)
+
+	label.Size =
+		UDim2.new(
+			0.40,
+			0,
+			0,
+			18
+		)
+
+	label.Font =
+		Enum.Font.GothamBold
+
+	label.Text =
+		titulo
+
+	label.TextColor3 =
+		COLORS.White
+
+	label.TextSize = 9
+
+	label.TextXAlignment =
+		Enum.TextXAlignment.Left
+
+	label.Parent =
+		container
+
+	local valueLabel =
+		Instance.new("TextLabel")
+
+	valueLabel.BackgroundTransparency = 1
+
+	valueLabel.Position =
+		UDim2.new(
+			0.40,
+			0,
+			0,
+			0
+		)
+
+	valueLabel.Size =
+		UDim2.new(
+			0.20,
+			0,
+			0,
+			18
+		)
+
+	valueLabel.Font =
+		Enum.Font.Gotham
+
+	valueLabel.TextColor3 =
+		COLORS.Red
+
+	valueLabel.TextSize = 9
+
+	valueLabel.TextXAlignment =
+		Enum.TextXAlignment.Center
+
+	valueLabel.Parent =
+		container
+
+	local minus =
+		Instance.new("TextButton")
+
+	minus.Size =
+		UDim2.new(
+			0,
+			22,
+			0,
+			22
+		)
+
+	minus.Position =
+		UDim2.new(
+		1,
+		-48,
+		0,
+		0
+	)
+
+	minus.BackgroundColor3 =
+		COLORS.Panel2
+
+	minus.BorderSizePixel = 0
+
+	minus.Text = "−"
+
+	minus.TextColor3 =
+		COLORS.White
+
+	minus.TextSize = 14
+
+	minus.Font =
+		Enum.Font.GothamBold
+
+	minus.Parent =
+		container
+
+	local minusCorner =
+		Instance.new("UICorner")
+
+	minusCorner.CornerRadius =
+		UDim.new(
+			0,
+			6
+		)
+
+	minusCorner.Parent =
+		minus
+
+	local plus =
+		Instance.new("TextButton")
+
+	plus.Size =
+		UDim2.new(
+			0,
+			22,
+			0,
+			22
+		)
+
+	plus.Position =
+		UDim2.new(
+			1,
+			-23,
+			0,
+			0
+		)
+
+	plus.BackgroundColor3 =
+		COLORS.RedDark
+
+	plus.BorderSizePixel = 0
+
+	plus.Text = "+"
+
+	plus.TextColor3 =
+		COLORS.White
+
+	plus.TextSize = 14
+
+	plus.Font =
+		Enum.Font.GothamBold
+
+	plus.Parent =
+		container
+
+	local plusCorner =
+		Instance.new("UICorner")
+
+	plusCorner.CornerRadius =
+		UDim.new(
+			0,
+			6
+		)
+
+	plusCorner.Parent =
+		plus
+
+	local sliderBack =
+		Instance.new("Frame")
+
+	sliderBack.Position =
+		UDim2.new(
+			0,
+			2,
+			0,
+			29
+		)
+
+	sliderBack.Size =
+		UDim2.new(
+			1,
+			-4,
+			0,
+			6
+		)
+
+	sliderBack.BackgroundColor3 =
+		COLORS.DarkGray
+
+	sliderBack.BorderSizePixel = 0
+
+	sliderBack.Parent =
+		container
+
+	local sliderCorner =
+		Instance.new("UICorner")
+
+	sliderCorner.CornerRadius =
+		UDim.new(
+			1,
+			0
+		)
+
+	sliderCorner.Parent =
+		sliderBack
+
+	local fill =
+		Instance.new("Frame")
+
+	fill.Size =
+		UDim2.new(
+			0,
+			0,
+			1,
+			0
+		)
+
+	fill.BackgroundColor3 =
+		COLORS.Red
+
+	fill.BorderSizePixel = 0
+	fill.Parent = sliderBack
+
+	local fillCorner =
+		Instance.new("UICorner")
+
+	fillCorner.CornerRadius =
+		UDim.new(
+			1,
+			0
+		)
+
+	fillCorner.Parent =
+		fill
+
+	local knob =
+		Instance.new("Frame")
+
+	knob.Size =
+		UDim2.new(
+			0,
+			13,
+			0,
+			13
+		)
+
+	knob.AnchorPoint =
+		Vector2.new(
+			0.5,
+			0.5
+		)
+
+	knob.BackgroundColor3 =
+		COLORS.White
+
+	knob.BorderSizePixel = 0
+	knob.Parent = sliderBack
+
+	local knobCorner =
+		Instance.new("UICorner")
+
+	knobCorner.CornerRadius =
+		UDim.new(
+			1,
+			0
+		)
+
+	knobCorner.Parent =
+		knob
+
+	local currentValue =
+		valorInicial
+
+	local dragging = false
+
+	local function arredondar(
+		valor
+	)
+
+		local resultado =
+			math.floor(
+				(valor / passo)
+				+ 0.5
+			) * passo
+
+		if casas then
+
+			local mult =
+				10 ^ casas
+
+			resultado =
+				math.floor(
+					resultado * mult
+						+ 0.5
+				) / mult
+
+		end
+
+		return math.clamp(
+			resultado,
+			minValue,
+			maxValue
+		)
+
+	end
+
+	local function atualizarVisual(
+		valor
+	)
+
+		currentValue =
+			valor
+
+		local alpha =
+			(valor - minValue)
+			/
+			(maxValue - minValue)
+
+		alpha =
+			math.clamp(
+				alpha,
+				0,
+				1
+			)
+
+		fill.Size =
+			UDim2.new(
+				alpha,
+				0,
+				1,
+				0
+			)
+
+		knob.Position =
+			UDim2.new(
+				alpha,
+				0,
+				0.5,
+				0
+			)
+
+		if casas then
+
+			valueLabel.Text =
+				string.format(
+					"%."
+						.. casas
+						.. "f",
+					valor
+				)
+
+		else
+
+			valueLabel.Text =
+				tostring(valor)
+
+		end
+
+	end
+
+	local function atualizarPorX(
+		x
+	)
+
+		local inicio =
+			sliderBack.AbsolutePosition.X
+
+		local largura =
+			sliderBack.AbsoluteSize.X
+
+		local alpha =
+			math.clamp(
+				(x - inicio)
+					/ largura,
+				0,
+				1
+			)
+
+		local valor =
+			minValue
+			+
+			(maxValue - minValue)
+				* alpha
+
+		valor =
+			arredondar(
+				valor
+			)
+
+		atualizarVisual(
+			valor
+		)
+
+		callback(
+			valor
+		)
+
+	end
+
+	sliderBack.InputBegan:Connect(
+		function(input)
+
+			if input.UserInputType ==
+				Enum.UserInputType.MouseButton1
+				or input.UserInputType ==
+				Enum.UserInputType.Touch then
+
+				dragging = true
+
+				atualizarPorX(
+					input.Position.X
+				)
+
+			end
+
+		end
+	)
+
+	UserInputService.InputChanged:Connect(
+		function(input)
+
+			if not dragging then
+				return
+			end
+
+			if input.UserInputType ==
+				Enum.UserInputType.MouseMovement
+				or input.UserInputType ==
+				Enum.UserInputType.Touch then
+
+				atualizarPorX(
+					input.Position.X
+				)
+
+			end
+
+		end
+	)
+
+	UserInputService.InputEnded:Connect(
+		function(input)
+
+			if input.UserInputType ==
+				Enum.UserInputType.MouseButton1
+				or input.UserInputType ==
+				Enum.UserInputType.Touch then
+
+				dragging = false
+
+			end
+
+		end
+	)
+
+	minus.MouseButton1Click:Connect(
+		function()
+
+			local novo =
+				arredondar(
+					currentValue - passo
+				)
+
+			atualizarVisual(
+				novo
+			)
+
+			callback(
+				novo
+			)
+
+		end
+	)
+
+	plus.MouseButton1Click:Connect(
+		function()
+
+			local novo =
+				arredondar(
+					currentValue + passo
+				)
+
+			atualizarVisual(
+				novo
+			)
+
+			callback(
+				novo
+			)
+
+		end
+	)
+
+	atualizarVisual(
+		valorInicial
+	)
+
+	local controle = {}
+
+	function controle:Set(
+		valor
+	)
+
+		valor =
+			arredondar(
+				valor
+			)
+
+		atualizarVisual(
+			valor
+		)
+
+		callback(
+			valor
+		)
+
+	end
+
+	return controle
+
+end
+
+--========================================================
+-- FUNÇÕES DAS ORBS
+--========================================================
+
+local function encontrarOrb(
+	nome
+)
+
+	local character =
+		player.Character
+
+	if not character then
+		return nil
+	end
+
+	local folder =
+		character:FindFirstChild(
+			"VisualOrbs"
+		)
+
+	if not folder then
+		return nil
+	end
+
+	if nome == "LeftOrb" then
+
+		return folder:FindFirstChild(
+			"LeftOrb"
+		)
+
+	elseif nome == "RightOrb" then
+
+		return folder:FindFirstChild(
+			"RightOrb"
+		)
+
+	elseif nome == "LowerLeft" then
+
+		return folder:FindFirstChild(
+			"LowerOrbLeft"
+		)
+
+	elseif nome == "LowerRight" then
+
+		return folder:FindFirstChild(
+			"LowerOrbRight"
+		)
+
+	end
+
+	return nil
+
+end
+
+--========================================================
+-- CORES DO PERSONAGEM
+--========================================================
+
+local function obterCoresAutomaticas()
+
+	local character =
+		player.Character
+
+	if not character then
+		return nil
+	end
+
+	local torso =
+		character:FindFirstChild(
+			"Torso"
+		)
+
+	local leftLeg =
+		character:FindFirstChild(
+			"Left Leg"
+		)
+
+	local rightLeg =
+		character:FindFirstChild(
+			"Right Leg"
+		)
+
+	if not torso
+		or not leftLeg
+		or not rightLeg then
+
+		return nil
+
+	end
+
+	return {
+		UpperLeft = torso.Color,
+		UpperRight = torso.Color,
+		LowerLeft = leftLeg.Color,
+		LowerRight = rightLeg.Color
+	}
+
+end
+
+--========================================================
+-- APLICAR COR DAS ORBS
+--========================================================
+
+local function aplicarCores()
+
+	local character =
+		player.Character
+
+	if not character then
+		return
+	end
+
+	local folder =
+		character:FindFirstChild(
+			"VisualOrbs"
+		)
+
+	if not folder then
+		return
+	end
+
+	local automaticas =
+		obterCoresAutomaticas()
+
+	if not automaticas then
+		return
+	end
+
+	local upperLeft =
+		folder:FindFirstChild(
+			"LeftOrb"
+		)
+
+	local upperRight =
+		folder:FindFirstChild(
+			"RightOrb"
+		)
+
+	local lowerLeft =
+		folder:FindFirstChild(
+			"LowerOrbLeft"
+		)
+
+	local lowerRight =
+		folder:FindFirstChild(
+			"LowerOrbRight"
+		)
+
+	--====================================================
+	-- SUPERIOR ESQUERDA
+	--====================================================
+
+	if upperLeft then
+
+		if ColorConfig.LeftOrbAutomatic then
+
+			upperLeft.Color =
+				automaticas.UpperLeft
+
+		else
+
+			upperLeft.Color =
+				ColorConfig.LeftOrbColor
+
+		end
+
+	end
+
+	--====================================================
+	-- SUPERIOR DIREITA
+	--====================================================
+
+	if upperRight then
+
+		if ColorConfig.RightOrbAutomatic then
+
+			upperRight.Color =
+				automaticas.UpperRight
+
+		else
+
+			upperRight.Color =
+				ColorConfig.RightOrbColor
+
+		end
+
+	end
+
+	--====================================================
+	-- INFERIOR ESQUERDA
+	--====================================================
+
+	if lowerLeft then
+
+		if ColorConfig.LowerLeftAutomatic then
+
+			lowerLeft.Color =
+				automaticas.LowerLeft
+
+		else
+
+			lowerLeft.Color =
+				ColorConfig.LowerLeftColor
+
+		end
+
+	end
+
+	--====================================================
+	-- INFERIOR DIREITA
+	--====================================================
+
+	if lowerRight then
+
+		if ColorConfig.LowerRightAutomatic then
+
+			lowerRight.Color =
+				automaticas.LowerRight
+
+		else
+
+			lowerRight.Color =
+				ColorConfig.LowerRightColor
+
+		end
+
+	end
+
+end
+
+--========================================================
+-- APLICAR POSIÇÃO
+--========================================================
+
+local function aplicarPosicao(
+	nome
+)
+
+	local parte =
+		encontrarOrb(
+			nome
+		)
+
+	if not parte then
+		return
+	end
+
+	local weld =
+		parte:FindFirstChild(
+			"OrbWeld"
+		)
+		or parte:FindFirstChild(
+			"LowerOrbWeld"
+		)
+
+	if not weld then
+		return
+	end
+
+	local c =
+		Config[nome]
+
+	weld.C0 =
+		CFrame.new(
+			c.X,
+			c.Y,
+			c.Z
+		)
+
+end
+
+--========================================================
+-- APLICAR TAMANHO
+--========================================================
+
+local function aplicarTamanho()
+
+	local character =
+		player.Character
+
+	if not character then
+		return
+	end
+
+	local folder =
+		character:FindFirstChild(
+			"VisualOrbs"
+		)
+
+	if not folder then
+		return
+	end
+
+	for _, parte in ipairs(
+		folder:GetChildren()
+	) do
+
+		if parte:IsA(
+			"BasePart"
+		) then
+
+			parte.Size =
+				Vector3.new(
+					1.35
+						* Config.Size,
+
+					1.30
+						* Config.Size,
+
+					1.35
+						* Config.Size
+				)
+
+		end
+
+	end
+
+end
+
+--========================================================
+-- TÍTULO CONFIG
+--========================================================
+
+local configTitle =
+	Instance.new("TextLabel")
+
+configTitle.BackgroundTransparency = 1
+
+configTitle.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		20
+	)
+
+configTitle.Font =
+	Enum.Font.GothamBold
+
+configTitle.Text =
+	"CONFIGURAÇÃO"
+
+configTitle.TextColor3 =
+	COLORS.White
+
+configTitle.TextSize = 13
+
+configTitle.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+configTitle.Parent =
+	configPage
+
+--========================================================
+-- TAMANHO
+--========================================================
+
+criarSlider(
+	configPage,
+	"TAMANHO",
+	0.50,
+	10.00,
+	Config.Size,
+	22,
+	0.05,
+
+	function(valor)
+
+		Config.Size =
+			valor
+
+		aplicarTamanho()
+
+	end,
+
+	2
+)
+
+--========================================================
+-- MOVIMENTO
+--========================================================
+
+criarSlider(
+	configPage,
+	"MOVIMENTO",
+	0.00,
+	2.00,
+	Config.Movement,
+	70,
+	0.05,
+
+	function(valor)
+
+		Config.Movement =
+			valor
+
+	end,
+
+	2
+)
+
+--========================================================
+-- POSIÇÃO
+--========================================================
+
+local orbSection =
+	Instance.new("TextLabel")
+
+orbSection.BackgroundTransparency = 1
+
+orbSection.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		118
+	)
+
+orbSection.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		20
+	)
+
+orbSection.Font =
+	Enum.Font.GothamBold
+
+orbSection.Text =
+	"POSIÇÃO DAS ORBS"
+
+orbSection.TextColor3 =
+	COLORS.White
+
+orbSection.TextSize = 13
+
+orbSection.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+orbSection.Parent =
+	configPage
+
+--========================================================
+-- COLUNAS
+--========================================================
+
+local leftColumn =
+	Instance.new("Frame")
+
+leftColumn.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		143
+	)
+
+leftColumn.Size =
+	UDim2.new(
+		0.485,
+		0,
+		0,
+		172
+	)
+
+leftColumn.BackgroundTransparency = 1
+leftColumn.Parent = configPage
+
+local rightColumn =
+	Instance.new("Frame")
+
+rightColumn.Position =
+	UDim2.new(
+		0.515,
+		0,
+		0,
+		143
+	)
+
+rightColumn.Size =
+	UDim2.new(
+		0.485,
+		0,
+		0,
+		172
+	)
+
+rightColumn.BackgroundTransparency = 1
+rightColumn.Parent = configPage
+
+--========================================================
+-- CONFIG ORB
+--========================================================
+
+local function criarOrbConfig(
+	parent,
+	nome,
+	titulo
+)
+
+	local box =
+		Instance.new("Frame")
+
+	box.Size =
+		UDim2.new(
+			1,
+			0,
+			0,
+			172
+		)
+
+	box.BackgroundColor3 =
+		COLORS.Panel
+
+	box.BorderSizePixel = 0
+	box.Parent = parent
+
+	local corner =
+		Instance.new("UICorner")
+
+	corner.CornerRadius =
+		UDim.new(
+			0,
+			9
+		)
+
+	corner.Parent =
+		box
+
+	local stroke =
+		Instance.new("UIStroke")
+
+	stroke.Color =
+		COLORS.DarkGray
+
+	stroke.Thickness = 1
+	stroke.Parent = box
+
+	local label =
+		Instance.new("TextLabel")
+
+	label.BackgroundTransparency = 1
+
+	label.Position =
+		UDim2.new(
+			0,
+			9,
+			0,
+			5
+		)
+
+	label.Size =
+		UDim2.new(
+			1,
+			-18,
+			0,
+			18
+		)
+
+	label.Font =
+		Enum.Font.GothamBold
+
+	label.Text =
+		titulo
+
+	label.TextColor3 =
+		COLORS.Red
+
+	label.TextSize = 9
+
+	label.TextXAlignment =
+		Enum.TextXAlignment.Left
+
+	label.Parent =
+		box
+
+	local function posSlider(
+		eixo,
+		y
+	)
+
+		SliderControls[nome][eixo] =
+			criarSlider(
+				box,
+				eixo,
+				-10.00,
+				10.00,
+				Config[nome][eixo],
+				y,
+				0.01,
+
+				function(valor)
+
+					Config[nome][eixo] =
+						valor
+
+					aplicarPosicao(
+						nome
+					)
+
+				end,
+
+				2
+			)
+
+	end
+
+	posSlider(
+		"X",
+		24
+	)
+
+	posSlider(
+		"Y",
+		72
+	)
+
+	posSlider(
+		"Z",
+		120
+	)
+
+end
+
+criarOrbConfig(
+	leftColumn,
+	"LeftOrb",
+	"● SUPERIOR ESQ."
+)
+
+criarOrbConfig(
+	rightColumn,
+	"RightOrb",
+	"● SUPERIOR DIR."
+)
+
+--========================================================
+-- LOWER ORBS
+--========================================================
+
+local lowerLeftColumn =
+	Instance.new("Frame")
+
+lowerLeftColumn.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		325
+	)
+
+lowerLeftColumn.Size =
+	UDim2.new(
+		0.485,
+		0,
+		0,
+		172
+	)
+
+lowerLeftColumn.BackgroundTransparency = 1
+lowerLeftColumn.Parent = configPage
+
+local lowerRightColumn =
+	Instance.new("Frame")
+
+lowerRightColumn.Position =
+	UDim2.new(
+		0.515,
+		0,
+		0,
+		325
+	)
+
+lowerRightColumn.Size =
+	UDim2.new(
+		0.485,
+		0,
+		0,
+		172
+	)
+
+lowerRightColumn.BackgroundTransparency = 1
+lowerRightColumn.Parent = configPage
+
+criarOrbConfig(
+	lowerLeftColumn,
+	"LowerLeft",
+	"● INFERIOR ESQ."
+)
+
+criarOrbConfig(
+	lowerRightColumn,
+	"LowerRight",
+	"● INFERIOR DIR."
+)
+
+--========================================================
+-- SINCRONIZAÇÃO
+--========================================================
+
+local function sincronizarOrb(
+	origem,
+	destino
+)
+
+	Config[destino].X =
+		-Config[origem].X
+
+	Config[destino].Y =
+		Config[origem].Y
+
+	Config[destino].Z =
+		Config[origem].Z
+
+	if SliderControls[destino].X then
+
+		SliderControls[destino].X:Set(
+			Config[destino].X
+		)
+
+	end
+
+	if SliderControls[destino].Y then
+
+		SliderControls[destino].Y:Set(
+			Config[destino].Y
+		)
+
+	end
+
+	if SliderControls[destino].Z then
+
+		SliderControls[destino].Z:Set(
+			Config[destino].Z
+		)
+
+	end
+
+	aplicarPosicao(
+		destino
+	)
+
+end
+
+--========================================================
+-- BOTÕES SINCRONIZAÇÃO
+--========================================================
+
+local syncTitle =
+	Instance.new("TextLabel")
+
+syncTitle.BackgroundTransparency = 1
+
+syncTitle.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		515
+	)
+
+syncTitle.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		20
+	)
+
+syncTitle.Font =
+	Enum.Font.GothamBold
+
+syncTitle.Text =
+	"SINCRONIZAR"
+
+syncTitle.TextColor3 =
+	COLORS.White
+
+syncTitle.TextSize = 12
+
+syncTitle.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+syncTitle.Parent =
+	configPage
+
+local function criarSyncButton(
+	texto,
+	x,
+	y,
+	callback
+)
+
+	local button =
+		Instance.new("TextButton")
+
+	button.Size =
+		UDim2.new(
+			0.235,
+			0,
+			0,
+			34
+		)
+
+	button.Position =
+		UDim2.new(
+			x,
+			0,
+			0,
+			y
+		)
+
+	button.BackgroundColor3 =
+		COLORS.Panel2
+
+	button.BorderSizePixel = 0
+
+	button.Text =
+		texto
+
+	button.TextColor3 =
+		COLORS.White
+
+	button.TextSize = 8
+
+	button.Font =
+		Enum.Font.GothamBold
+
+	button.Parent =
+		configPage
+
+	local corner =
+		Instance.new("UICorner")
+
+	corner.CornerRadius =
+		UDim.new(
+			0,
+			7
+		)
+
+	corner.Parent =
+		button
+
+	button.MouseButton1Click:Connect(
+		callback
+	)
+
+	return button
+
+end
+
+criarSyncButton(
+	"ESQ → DIR",
+	0,
+	540,
+
+	function()
+
+		sincronizarOrb(
+			"LeftOrb",
+			"RightOrb"
+		)
+
+	end
+)
+
+criarSyncButton(
+	"DIR → ESQ",
+	0.255,
+	540,
+
+	function()
+
+		sincronizarOrb(
+			"RightOrb",
+			"LeftOrb"
+		)
+
+	end
+)
+
+criarSyncButton(
+	"INF. ESQ → DIR",
+	0.51,
+	540,
+
+	function()
+
+		sincronizarOrb(
+			"LowerLeft",
+			"LowerRight"
+		)
+
+	end
+)
+
+criarSyncButton(
+	"INF. DIR → ESQ",
+	0.765,
+	540,
+
+	function()
+
+		sincronizarOrb(
+			"LowerRight",
+			"LowerLeft"
+		)
+
+	end
+)
+
+--========================================================
+-- CORES INDIVIDUAIS
+--========================================================
+
+local colorTitle =
+	Instance.new("TextLabel")
+
+colorTitle.BackgroundTransparency = 1
+
+colorTitle.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		600
+	)
+
+colorTitle.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		20
+	)
+
+colorTitle.Font =
+	Enum.Font.GothamBold
+
+colorTitle.Text =
+	"CORES INDIVIDUAIS DAS ORBS"
+
+colorTitle.TextColor3 =
+	COLORS.White
+
+colorTitle.TextSize = 13
+
+colorTitle.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+colorTitle.Parent =
+	configPage
+
+--========================================================
+-- TOGGLE DE COR INDIVIDUAL
+--========================================================
+
+local function criarToggleCor(
+	texto,
+	y,
+	getState,
+	setState
+)
+
+	local button =
+		Instance.new("TextButton")
+
+	button.Position =
+		UDim2.new(
+			0,
+			0,
+			0,
+			y
+		)
+
+	button.Size =
+		UDim2.new(
+			1,
+			0,
+			0,
+			32
+		)
+
+	button.BorderSizePixel = 0
+	button.Parent = configPage
+
+	local corner =
+		Instance.new("UICorner")
+
+	corner.CornerRadius =
+		UDim.new(
+			0,
+			8
+		)
+
+	corner.Parent =
+		button
+
+	local function atualizar()
+
+		if getState() then
+
+			button.Text =
+				texto
+				.. "  •  ON"
+
+			button.BackgroundColor3 =
+				COLORS.Green
+
+			button.TextColor3 =
+				COLORS.White
+
+		else
+
+			button.Text =
+				texto
+				.. "  •  OFF"
+
+			button.BackgroundColor3 =
+				COLORS.Panel2
+
+			button.TextColor3 =
+				COLORS.Gray
+
+		end
+
+	end
+
+	atualizar()
+
+	button.MouseButton1Click:Connect(
+		function()
+
+			setState(
+				not getState()
+			)
+
+			atualizar()
+
+			aplicarCores()
+
+		end
+	)
+
+	return button
+
+end
+
+--========================================================
+-- QUATRO AUTOMÁTICAS INDIVIDUAIS
+--========================================================
+
+local leftAutoToggle =
+	criarToggleCor(
+		"AUTOMÁTICA • SUPERIOR ESQ.",
+		625,
+
+		function()
+			return ColorConfig.LeftOrbAutomatic
+		end,
+
+		function(valor)
+			ColorConfig.LeftOrbAutomatic =
+				valor
+		end
+	)
+
+local rightAutoToggle =
+	criarToggleCor(
+		"AUTOMÁTICA • SUPERIOR DIR.",
+		661,
+
+		function()
+			return ColorConfig.RightOrbAutomatic
+		end,
+
+		function(valor)
+			ColorConfig.RightOrbAutomatic =
+				valor
+		end
+	)
+
+local lowerLeftAutoToggle =
+	criarToggleCor(
+		"AUTOMÁTICA • INFERIOR ESQ.",
+		697,
+
+		function()
+			return ColorConfig.LowerLeftAutomatic
+		end,
+
+		function(valor)
+			ColorConfig.LowerLeftAutomatic =
+				valor
+		end
+	)
+
+local lowerRightAutoToggle =
+	criarToggleCor(
+		"AUTOMÁTICA • INFERIOR DIR.",
+		733,
+
+		function()
+			return ColorConfig.LowerRightAutomatic
+		end,
+
+		function(valor)
+			ColorConfig.LowerRightAutomatic =
+				valor
+		end
+	)
+
+--========================================================
+-- PALETA
+--========================================================
+
+local paletteTitle =
+	Instance.new("TextLabel")
+
+paletteTitle.BackgroundTransparency = 1
+
+paletteTitle.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		780
+	)
+
+paletteTitle.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		18
+	)
+
+paletteTitle.Font =
+	Enum.Font.GothamBold
+
+paletteTitle.Text =
+	"PALETA • SELECIONE UMA ORB"
+
+paletteTitle.TextColor3 =
+	COLORS.White
+
+paletteTitle.TextSize = 10
+
+paletteTitle.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+paletteTitle.Parent =
+	configPage
+
+--========================================================
+-- PALETA DE CORES
+--========================================================
+
+local paletteColors = {
+
+	{
+		Name = "VERMELHO",
+		Color = Color3.fromRGB(
+			255,
+			50,
+			50
+		)
+	},
+
+	{
+		Name = "LARANJA",
+		Color = Color3.fromRGB(
+			255,
+			130,
+			30
+		)
+	},
+
+	{
+		Name = "AMARELO",
+		Color = Color3.fromRGB(
+			255,
+			220,
+			40
+		)
+	},
+
+	{
+		Name = "VERDE",
+		Color = Color3.fromRGB(
+			50,
+			220,
+			90
+		)
+	},
+
+	{
+		Name = "CIANO",
+		Color = Color3.fromRGB(
+			30,
+			220,
+			220
+		)
+	},
+
+	{
+		Name = "AZUL",
+		Color = Color3.fromRGB(
+			40,
+			100,
+			255
+		)
+	},
+
+	{
+		Name = "ROXO",
+		Color = Color3.fromRGB(
+			160,
+			60,
+			255
+		)
+	},
+
+	{
+		Name = "ROSA",
+		Color = Color3.fromRGB(
+			255,
+			60,
+			170
+		)
+	},
+
+	{
+		Name = "BRANCO",
+		Color = Color3.fromRGB(
+			255,
+			255,
+			255
+		)
+	},
+
+	{
+		Name = "PRETO",
+		Color = Color3.fromRGB(
+			10,
+			10,
+			10
+		)
+	},
+
+	{
+		Name = "CINZA",
+		Color = Color3.fromRGB(
+			130,
+			130,
+			130
+		)
+	},
+
+	{
+		Name = "DOURADO",
+		Color = Color3.fromRGB(
+			255,
+			180,
+			40
+		)
+	}
+}
+
+local selectedPaletteGroup =
+	"LeftOrb"
+
+--========================================================
+-- PALETA VISUAL
+--========================================================
+
+local paletteFrame =
+	Instance.new("Frame")
+
+paletteFrame.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		800
+	)
+
+paletteFrame.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		76
+	)
+
+paletteFrame.BackgroundTransparency = 1
+paletteFrame.Parent = configPage
+
+local function criarCorPaleta(
+	item,
+	index
+)
+
+	local button =
+		Instance.new("TextButton")
+
+	local coluna =
+		(index - 1) % 6
+
+	local linha =
+		math.floor(
+			(index - 1) / 6
+		)
+
+	button.Size =
+		UDim2.new(
+			0,
+			58,
+			0,
+			30
+		)
+
+	button.Position =
+		UDim2.new(
+			0,
+			coluna * 72,
+			0,
+			linha * 38
+		)
+
+	button.BackgroundColor3 =
+		item.Color
+
+	button.BorderSizePixel = 0
+
+	button.Text =
+		""
+
+	button.Parent =
+		paletteFrame
+
+	local corner =
+		Instance.new("UICorner")
+
+	corner.CornerRadius =
+		UDim.new(
+			0,
+			7
+		)
+
+	corner.Parent =
+		button
+
+	button.MouseButton1Click:Connect(
+		function()
+
+			if selectedPaletteGroup ==
+				"LeftOrb" then
+
+				ColorConfig.LeftOrbColor =
+					item.Color
+
+			elseif selectedPaletteGroup ==
+				"RightOrb" then
+
+				ColorConfig.RightOrbColor =
+					item.Color
+
+			elseif selectedPaletteGroup ==
+				"LowerLeft" then
+
+				ColorConfig.LowerLeftColor =
+					item.Color
+
+			elseif selectedPaletteGroup ==
+				"LowerRight" then
+
+				ColorConfig.LowerRightColor =
+					item.Color
+
+			end
+
+			aplicarCores()
+
+		end
+	)
+
+end
+
+for index, item in ipairs(
+	paletteColors
+) do
+
+	criarCorPaleta(
+		item,
+		index
+	)
+
+end
+
+--========================================================
+-- SELEÇÃO DA ORB DA PALETA
+--========================================================
+
+local function criarOrbColorButton(
+	texto,
+	grupo,
+	x,
+	y
+)
+
+	local button =
+		Instance.new("TextButton")
+
+	button.Position =
+		UDim2.new(
+			x,
+			0,
+			0,
+			y
+		)
+
+	button.Size =
+		UDim2.new(
+			0.235,
+			0,
+			0,
+			30
+		)
+
+	button.BackgroundColor3 =
+		COLORS.Panel2
+
+	button.BorderSizePixel = 0
+
+	button.Text =
+		texto
+
+	button.TextColor3 =
+		COLORS.Gray
+
+	button.TextSize = 8
+
+	button.Font =
+		Enum.Font.GothamBold
+
+	button.Parent =
+		configPage
+
+	local corner =
+		Instance.new("UICorner")
+
+	corner.CornerRadius =
+		UDim.new(
+			0,
+			7
+		)
+
+	corner.Parent =
+		button
+
+	button.MouseButton1Click:Connect(
+		function()
+
+			selectedPaletteGroup =
+				grupo
+
+			for _, objeto in ipairs(
+				configPage:GetChildren()
+			) do
+
+				if objeto:IsA(
+					"TextButton"
+				)
+				and objeto:GetAttribute(
+					"ColorOrbButton"
+				) then
+
+					objeto.BackgroundColor3 =
+						COLORS.Panel2
+
+					objeto.TextColor3 =
+						COLORS.Gray
+
+				end
+
+			end
+
+			button.BackgroundColor3 =
+				COLORS.Red
+
+			button.TextColor3 =
+				COLORS.White
+
+		end
+	)
+
+	button:SetAttribute(
+		"ColorOrbButton",
+		true
+	)
+
+	return button
+
+end
+
+local leftColorButton =
+	criarOrbColorButton(
+		"SUP. ESQ.",
+		"LeftOrb",
+		0,
+		880
+	)
+
+local rightColorButton =
+	criarOrbColorButton(
+		"SUP. DIR.",
+		"RightOrb",
+		0.255,
+		880
+	)
+
+local lowerLeftColorButton =
+	criarOrbColorButton(
+		"INF. ESQ.",
+		"LowerLeft",
+		0.51,
+		880
+	)
+
+local lowerRightColorButton =
+	criarOrbColorButton(
+		"INF. DIR.",
+		"LowerRight",
+		0.765,
+		880
+	)
+
+--========================================================
+-- POSIÇÃO DO BOTÃO INFERIOR DIREITO
+--========================================================
+
+lowerRightColorButton.Position =
+	UDim2.new(
+		0.765,
+		0,
+		0,
+		880
+	)
+
+leftColorButton.BackgroundColor3 =
+	COLORS.Red
+
+leftColorButton.TextColor3 =
+	COLORS.White
+
+--========================================================
+-- RGB
+--========================================================
+
+local rgbTitle =
+	Instance.new("TextLabel")
+
+rgbTitle.BackgroundTransparency = 1
+
+rgbTitle.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		920
+	)
+
+rgbTitle.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		18
+	)
+
+rgbTitle.Font =
+	Enum.Font.GothamBold
+
+rgbTitle.Text =
+	"RGB • 0 - 255"
+
+rgbTitle.TextColor3 =
+	COLORS.White
+
+rgbTitle.TextSize = 10
+
+rgbTitle.TextXAlignment =
+	Enum.TextXAlignment.Left
+
+rgbTitle.Parent =
+	configPage
+
+local function criarRGBBox(
+	nome,
+	x
+)
+
+	local box =
+		Instance.new("TextBox")
+
+	box.Position =
+		UDim2.new(
+			x,
+			0,
+			0,
+			940
+		)
+
+	box.Size =
+		UDim2.new(
+			0,
+			55,
+			0,
+			30
+		)
+
+	box.BackgroundColor3 =
+		COLORS.Panel2
+
+	box.BorderSizePixel = 0
+
+	box.Text =
+		"255"
+
+	box.TextColor3 =
+		COLORS.White
+
+	box.TextSize = 10
+
+	box.Font =
+		Enum.Font.GothamBold
+
+	box.PlaceholderText =
+		nome
+
+	box.ClearTextOnFocus = false
+
+	box.Parent =
+		configPage
+
+	local corner =
+		Instance.new("UICorner")
+
+	corner.CornerRadius =
+		UDim.new(
+			0,
+			6
+		)
+
+	corner.Parent =
+		box
+
+	return box
+
+end
+
+local rBox =
+	criarRGBBox(
+		"R",
+		0
+	)
+
+local gBox =
+	criarRGBBox(
+		"G",
+		0.17
+	)
+
+local bBox =
+	criarRGBBox(
+		"B",
+		0.34
+	)
+
+local rgbApply =
+	Instance.new("TextButton")
+
+rgbApply.Position =
+	UDim2.new(
+		0.52,
+		0,
+		0,
+		940
+	)
+
+rgbApply.Size =
+	UDim2.new(
+		0.48,
+		0,
+		0,
+		30
+	)
+
+rgbApply.BackgroundColor3 =
+	COLORS.RedDark
+
+rgbApply.BorderSizePixel = 0
+
+rgbApply.Text =
+	"APLICAR RGB NA ORB"
+
+rgbApply.TextColor3 =
+	COLORS.White
+
+rgbApply.TextSize = 9
+
+rgbApply.Font =
+	Enum.Font.GothamBold
+
+rgbApply.Parent =
+	configPage
+
+local rgbApplyCorner =
+	Instance.new("UICorner")
+
+rgbApplyCorner.CornerRadius =
+	UDim.new(
+		0,
+		7
+	)
+
+rgbApplyCorner.Parent =
+	rgbApply
+
+local function obterRGB(
+	box
+)
+
+	local numero =
+		tonumber(
+			box.Text
+		)
+
+	if not numero then
+		return 0
+	end
+
+	return math.clamp(
+		math.floor(
+			numero + 0.5
+		),
+		0,
+		255
+	)
+
+end
+
+rgbApply.MouseButton1Click:Connect(
+	function()
+
+		local r =
+			obterRGB(
+				rBox
+			)
+
+		local g =
+			obterRGB(
+				gBox
+			)
+
+		local b =
+			obterRGB(
+				bBox
+			)
+
+		local novaCor =
+			Color3.fromRGB(
+				r,
+				g,
+				b
+			)
+
+		if selectedPaletteGroup ==
+			"LeftOrb" then
+
+			ColorConfig.LeftOrbColor =
+				novaCor
+
+		elseif selectedPaletteGroup ==
+			"RightOrb" then
+
+			ColorConfig.RightOrbColor =
+				novaCor
+
+		elseif selectedPaletteGroup ==
+			"LowerLeft" then
+
+			ColorConfig.LowerLeftColor =
+				novaCor
+
+		elseif selectedPaletteGroup ==
+			"LowerRight" then
+
+			ColorConfig.LowerRightColor =
+				novaCor
+
+		end
+
+		aplicarCores()
+
+	end
+)
+
+--========================================================
+-- RESET
+--========================================================
+
+local reset =
+	Instance.new("TextButton")
+
+reset.Size =
+	UDim2.new(
+		1,
+		0,
+		0,
+		36
+	)
+
+reset.Position =
+	UDim2.new(
+		0,
+		0,
+		0,
+		985
+	)
+
+reset.BackgroundColor3 =
+	COLORS.RedDark
+
+reset.BorderSizePixel = 0
+
+reset.Text =
+	"RESTAURAR PADRÃO"
+
+reset.TextColor3 =
+	COLORS.White
+
+reset.TextSize = 10
+
+reset.Font =
+	Enum.Font.GothamBold
+
+reset.Parent =
+	configPage
+
+local resetCorner =
+	Instance.new("UICorner")
+
+resetCorner.CornerRadius =
+	UDim.new(
+		0,
+		8
+	)
+
+resetCorner.Parent =
+	reset
+
+reset.MouseButton1Click:Connect(
+	function()
+
+		Config.Size =
+			DEFAULT.Size
+
+		Config.Movement =
+			DEFAULT.Movement
+
+		for eixo, valor in pairs(
+			DEFAULT.LeftOrb
+		) do
+
+			Config.LeftOrb[eixo] =
+				valor
+
+		end
+
+		for eixo, valor in pairs(
+			DEFAULT.RightOrb
+		) do
+
+			Config.RightOrb[eixo] =
+				valor
+
+		end
+
+		for eixo, valor in pairs(
+			DEFAULT.LowerLeft
+		) do
+
+			Config.LowerLeft[eixo] =
+				valor
+
+		end
+
+		for eixo, valor in pairs(
+			DEFAULT.LowerRight
+		) do
+
+			Config.LowerRight[eixo] =
+				valor
+
+		end
+
+		--============================================
+		-- RESTAURAR CORES INDIVIDUAIS
+		--============================================
+
+		ColorConfig.LeftOrbAutomatic =
+			true
+
+		ColorConfig.RightOrbAutomatic =
+			true
+
+		ColorConfig.LowerLeftAutomatic =
+			true
+
+		ColorConfig.LowerRightAutomatic =
+			true
+
+		ColorConfig.LeftOrbColor =
+			Color3.fromRGB(
+				255,
+				50,
+				50
+			)
+
+		ColorConfig.RightOrbColor =
+			Color3.fromRGB(
+				255,
+				50,
+				50
+			)
+
+		ColorConfig.LowerLeftColor =
+			Color3.fromRGB(
+				50,
+				100,
+				255
+			)
+
+		ColorConfig.LowerRightColor =
+			Color3.fromRGB(
+				50,
+				100,
+				255
+			)
+
+		-- Atualiza visual dos toggles
+		if leftAutoToggle then
+			leftAutoToggle.Text =
+				"AUTOMÁTICA • SUPERIOR ESQ.  •  ON"
+
+			leftAutoToggle.BackgroundColor3 =
+				COLORS.Green
+
+			leftAutoToggle.TextColor3 =
+				COLORS.White
+		end
+
+		if rightAutoToggle then
+			rightAutoToggle.Text =
+				"AUTOMÁTICA • SUPERIOR DIR.  •  ON"
+
+			rightAutoToggle.BackgroundColor3 =
+				COLORS.Green
+
+			rightAutoToggle.TextColor3 =
+				COLORS.White
+		end
+
+		if lowerLeftAutoToggle then
+			lowerLeftAutoToggle.Text =
+				"AUTOMÁTICA • INFERIOR ESQ.  •  ON"
+
+			lowerLeftAutoToggle.BackgroundColor3 =
+				COLORS.Green
+
+			lowerLeftAutoToggle.TextColor3 =
+				COLORS.White
+		end
+
+		if lowerRightAutoToggle then
+			lowerRightAutoToggle.Text =
+				"AUTOMÁTICA • INFERIOR DIR.  •  ON"
+
+			lowerRightAutoToggle.BackgroundColor3 =
+				COLORS.Green
+
+			lowerRightAutoToggle.TextColor3 =
+				COLORS.White
+		end
+
+		if ATIVO
+			and player.Character then
+
+			criarOrbsR6(
+				player.Character
+			)
+
+		end
+
+	end
+)
+
+configPage.CanvasSize =
+	UDim2.new(
+		0,
+		0,
+		0,
+		1040
+	)
+
+--========================================================
+-- ABAS
+--========================================================
+
+orbTab.MouseButton1Click:Connect(
+	function()
+
+		orbPage.Visible =
+			true
+
+		configPage.Visible =
+			false
+
+		orbTab.BackgroundColor3 =
+			COLORS.Red
+
+		orbTab.TextColor3 =
+			COLORS.White
+
+		configTab.BackgroundColor3 =
+			COLORS.Panel2
+
+		configTab.TextColor3 =
+			COLORS.Gray
+
+	end
+)
+
+configTab.MouseButton1Click:Connect(
+	function()
+
+		orbPage.Visible =
+			false
+
+		configPage.Visible =
+			true
+
+		configTab.BackgroundColor3 =
+			COLORS.Red
+
+		configTab.TextColor3 =
+			COLORS.White
+
+		orbTab.BackgroundColor3 =
+			COLORS.Panel2
+
+		orbTab.TextColor3 =
+			COLORS.Gray
+
+	end
+)
+
+--========================================================
+-- ARRASTAR GUI
+--========================================================
+
+local dragging = false
+local dragStart
+local startPosition
+
+top.InputBegan:Connect(
+	function(input)
+
+		if input.UserInputType ==
+			Enum.UserInputType.MouseButton1
+			or input.UserInputType ==
+			Enum.UserInputType.Touch then
+
+			dragging = true
+
+			dragStart =
+				input.Position
+
+			startPosition =
+				main.Position
+
+		end
+
+	end
+)
+
+UserInputService.InputChanged:Connect(
+	function(input)
+
+		if not dragging then
+			return
+		end
+
+		if input.UserInputType ==
+			Enum.UserInputType.MouseMovement
+			or input.UserInputType ==
+			Enum.UserInputType.Touch then
+
+			local delta =
+				input.Position
+				- dragStart
+
+			main.Position =
+				UDim2.new(
+					startPosition.X.Scale,
+					startPosition.X.Offset
+						+ delta.X,
+
+					startPosition.Y.Scale,
+					startPosition.Y.Offset
+						+ delta.Y
+				)
+
+		end
+
+	end
+)
+
+UserInputService.InputEnded:Connect(
+	function(input)
+
+		if input.UserInputType ==
+			Enum.UserInputType.MouseButton1
+			or input.UserInputType ==
+			Enum.UserInputType.Touch then
+
+			dragging = false
+
+		end
+
+	end
+)
+
+--========================================================
+-- MINIMIZAR
+--========================================================
+
+local minimizado = false
+
+minimize.MouseButton1Click:Connect(
+	function()
+
+		minimizado =
+			not minimizado
+
+		if minimizado then
+
+			main.Size =
+				UDim2.new(
+					0,
+					460,
+					0,
+					48
+				)
+
+			tabs.Visible = false
+			orbPage.Visible = false
+			configPage.Visible = false
+
+			minimize.Text =
+				"+"
+
+		else
+
+			main.Size =
+				UDim2.new(
+					0,
+					460,
+					0,
+					390
+				)
+
+			tabs.Visible = true
+
+			if configPage.Visible then
+
+				configPage.Visible =
+					true
+
+			else
+
+				orbPage.Visible =
+					true
+
+			end
+
+			minimize.Text =
+				"—"
+
+		end
+
+	end
+)
+
+--========================================================
+-- TOGGLE ORBS
+--========================================================
+
+toggle.MouseButton1Click:Connect(
+	function()
+
+		ATIVO =
+			not ATIVO
+
+		if ATIVO then
+
+			if player.Character then
+
+				criarOrbsR6(
+					player.Character
+				)
+
+			end
+
+			toggle.Text =
+				"DESATIVAR ORBS"
+
+			toggle.BackgroundColor3 =
+				COLORS.Red
+
+		else
+
+			if conexaoOrb then
+
+				conexaoOrb:Disconnect()
+				conexaoOrb = nil
+
+			end
+
+			if player.Character then
+
+				local folder =
+					player.Character:FindFirstChild(
+						"VisualOrbs"
+					)
+
+				if folder then
+					folder:Destroy()
+				end
+
+			end
+
+			toggle.Text =
+				"ATIVAR ORBS"
+
+			toggle.BackgroundColor3 =
+				COLORS.RedDark
+
+		end
+
+		atualizarStatus()
+
+	end
+)
+
+--========================================================
+-- RECRIAR
+--========================================================
+
+recreate.MouseButton1Click:Connect(
+	function()
+
+		if ATIVO
+			and player.Character then
+
+			criarOrbsR6(
+				player.Character
+			)
+
+		end
+
+	end
+)
+
+--========================================================
+-- CRIAR PARTE DA ORB
+--========================================================
+
+local function criarOrbPart(
+	folder,
+	torso,
+	nome,
+	configName,
+	tamanho,
+	cor,
+	weldName
+)
+
+	local parte =
+		Instance.new("Part")
+
+	parte.Name =
+		nome
+
+	parte.Shape =
+		Enum.PartType.Ball
+
+	parte.Size =
+		Vector3.new(
+			tamanho.X
+				* Config.Size,
+
+			tamanho.Y
+				* Config.Size,
+
+			tamanho.Z
+				* Config.Size
+		)
+
+	parte.Color =
+		cor
+
+	parte.Material =
+		Enum.Material.SmoothPlastic
+
+	parte.CanCollide = false
+	parte.CanTouch = false
+	parte.CanQuery = false
+	parte.Massless = true
+	parte.CastShadow = false
+
+	parte.Parent =
+		folder
+
+	local weld =
+		Instance.new("Weld")
+
+	weld.Name =
+		weldName
+
+	weld.Part0 =
+		torso
+
+	weld.Part1 =
+		parte
+
+	weld.C0 =
+		CFrame.new(
+			Config[configName].X,
+			Config[configName].Y,
+			Config[configName].Z
+		)
+
+	weld.Parent =
+		parte
+
+	return {
+		weld = weld,
+		baseC0 = weld.C0,
+		side = 0
+	}
+
+end
+
+--========================================================
+-- CRIAR ORBS R6
+--========================================================
+
+-- FIX: assign the forward-declared function instead of
+-- creating a separate global function
+criarOrbsR6 = function(
+	character
+)
+
+	if conexaoOrb then
+
+		conexaoOrb:Disconnect()
+		conexaoOrb = nil
+
+	end
+
+	local torso =
+		character:FindFirstChild(
+			"Torso"
+		)
+
+	local humanoid =
+		character:FindFirstChild(
+			"Humanoid"
+		)
+
+	local leftLeg =
+		character:FindFirstChild(
+			"Left Leg"
+		)
+
+	local rightLeg =
+		character:FindFirstChild(
+			"Right Leg"
+		)
+
+	if not torso
+		or not humanoid
+		or not leftLeg
+		or not rightLeg then
+
+		return
+
+	end
+
+	local antigo =
+		character:FindFirstChild(
+			"VisualOrbs"
+		)
+
+	if antigo then
+		antigo:Destroy()
+	end
+
+	local folder =
+		Instance.new("Folder")
+
+	folder.Name =
+		"VisualOrbs"
+
+	folder.Parent =
+		character
+
+	local orbs = {}
+	local lowerOrbs = {}
+
+	--====================================================
+	-- CORES INICIAIS INDIVIDUAIS
+	--====================================================
+
+	local upperLeftInitialColor
+
+	if ColorConfig.LeftOrbAutomatic then
+
+		upperLeftInitialColor =
+			torso.Color
+
+	else
+
+		upperLeftInitialColor =
+			ColorConfig.LeftOrbColor
+
+	end
+
+	local upperRightInitialColor
+
+	if ColorConfig.RightOrbAutomatic then
+
+		upperRightInitialColor =
+			torso.Color
+
+	else
+
+		upperRightInitialColor =
+			ColorConfig.RightOrbColor
+
+	end
+
+	local lowerLeftInitialColor
+
+	if ColorConfig.LowerLeftAutomatic then
+
+		lowerLeftInitialColor =
+			leftLeg.Color
+
+	else
+
+		lowerLeftInitialColor =
+			ColorConfig.LowerLeftColor
+
+	end
+
+	local lowerRightInitialColor
+
+	if ColorConfig.LowerRightAutomatic then
+
+		lowerRightInitialColor =
+			rightLeg.Color
+
+	else
+
+		lowerRightInitialColor =
+			ColorConfig.LowerRightColor
+
+	end
+
+	--====================================================
+	-- SUPERIOR ESQUERDA
+	--====================================================
+
+	local left =
+		criarOrbPart(
+			folder,
+			torso,
+			"LeftOrb",
+			"LeftOrb",
+			Vector3.new(
+				1.36,
+				1.28,
+				1.35
+			),
+			upperLeftInitialColor,
+			"OrbWeld"
+		)
+
+	left.side = -1
+
+	table.insert(
+		orbs,
+		left
+	)
+
+	--====================================================
+	-- SUPERIOR DIREITA
+	--====================================================
+
+	local right =
+		criarOrbPart(
+			folder,
+			torso,
+			"RightOrb",
+			"RightOrb",
+			Vector3.new(
+				1.36,
+				1.28,
+				1.35
+			),
+			upperRightInitialColor,
+			"OrbWeld"
+		)
+
+	right.side = 1
+
+	table.insert(
+		orbs,
+		right
+	)
+
+	--====================================================
+	-- INFERIOR ESQUERDA
+	--====================================================
+
+	local lowerLeft =
+		criarOrbPart(
+			folder,
+			torso,
+			"LowerOrbLeft",
+			"LowerLeft",
+			Vector3.new(
+				1.35,
+				1.30,
+				1.35
+			),
+			lowerLeftInitialColor,
+			"LowerOrbWeld"
+		)
+
+	lowerLeft.side = -1
+
+	table.insert(
+		lowerOrbs,
+		lowerLeft
+	)
+
+	--====================================================
+	-- INFERIOR DIREITA
+	--====================================================
+
+	local lowerRight =
+		criarOrbPart(
+			folder,
+			torso,
+			"LowerOrbRight",
+			"LowerRight",
+			Vector3.new(
+				1.35,
+				1.30,
+				1.35
+			),
+			lowerRightInitialColor,
+			"LowerOrbWeld"
+		)
+
+	lowerRight.side = 1
+
+	table.insert(
+		lowerOrbs,
+		lowerRight
+	)
+
+	-- Aplica imediatamente as cores individuais
+	aplicarCores()
+
+	--====================================================
+	-- MOVIMENTO
+	--====================================================
+
+	local tempo = 0
+
+	local MAX_X = 0.60
+	local MAX_Y = 0.40
+	local MAX_Z = 0.35
+
+	local LOWER_MAX_X = 0.25
+	local LOWER_MAX_Y = 0.20
+	local LOWER_MAX_Z = 0.20
+
+	local SUAVIDADE = 3
+	local LOWER_SUAVIDADE = 6
+
+	local ultimaDirecao =
+		torso.CFrame.LookVector
+
+	conexaoOrb =
+		RunService.RenderStepped:Connect(
+			function(dt)
+
+				if not ATIVO then
+					return
+				end
+
+				if not character.Parent
+					or humanoid.Health <= 0 then
+
+					if conexaoOrb then
+
+						conexaoOrb:Disconnect()
+						conexaoOrb = nil
+
+					end
+
+					return
+
+				end
+
+				tempo += dt
+
+				--================================================
+				-- ATUALIZA CORES AUTOMÁTICAS
+				--================================================
+
+				if ColorConfig.LeftOrbAutomatic
+					or ColorConfig.RightOrbAutomatic
+					or ColorConfig.LowerLeftAutomatic
+					or ColorConfig.LowerRightAutomatic then
+
+					aplicarCores()
+
+				end
+
+				local estado =
+					humanoid:GetState()
+
+				local velocidade =
+					torso.AssemblyLinearVelocity
+
+				local velocidadeHorizontal =
+					Vector3.new(
+						velocidade.X,
+						0,
+						velocidade.Z
+					).Magnitude
+
+				local intensidade =
+					math.clamp(
+						velocidadeHorizontal
+							/ 16,
+						0,
+						1
+					)
+
+				local direcaoAtual =
+					torso.CFrame.LookVector
+
+				local produto =
+					math.clamp(
+						ultimaDirecao:Dot(
+							direcaoAtual
+						),
+						-1,
+						1
+					)
+
+				local angulo =
+					math.acos(
+						produto
+					)
+
+				local curva =
+					math.clamp(
+						angulo
+							/ math.rad(20),
+						0,
+						1
+					)
+
+				ultimaDirecao =
+					direcaoAtual
+
+				local frequencia = 3
+
+				local amplitudeX = 0
+				local amplitudeY = 0
+				local amplitudeZ = 0
+
+				local rotacaoX = 0
+				local rotacaoZ = 0
+
+				--================================================
+				-- ANDANDO / CORRENDO
+				--================================================
+
+				if velocidadeHorizontal > 1 then
+
+					frequencia =
+						4
+						+ intensidade * 2
+
+					amplitudeY =
+						0.12
+						* intensidade
+
+					amplitudeX =
+						0.08
+						* intensidade
+
+					amplitudeZ =
+						0.08
+						* intensidade
+
+					rotacaoX =
+						math.rad(5)
+						* intensidade
+
+					amplitudeX +=
+						0.50
+						* curva
+
+					amplitudeZ +=
+						0.22
+						* curva
+
+					rotacaoZ =
+						math.rad(25)
+						* curva
+
+				--================================================
+				-- PULANDO
+				--================================================
+
+				elseif estado ==
+					Enum.HumanoidStateType.Jumping then
+
+					frequencia = 2.2
+
+					amplitudeX = 0.12
+					amplitudeY = 0.40
+					amplitudeZ = 0.20
+
+					rotacaoX =
+						math.rad(18)
+
+					rotacaoZ =
+						math.rad(7)
+
+				--================================================
+				-- FREEFALL
+				--================================================
+
+				elseif estado ==
+					Enum.HumanoidStateType.Freefall then
+
+					frequencia = 1.8
+
+					amplitudeX = 0.14
+					amplitudeY = 0.50
+					amplitudeZ = 0.24
+
+					rotacaoX =
+						math.rad(22)
+
+					rotacaoZ =
+						math.rad(9)
+
+				--================================================
+				-- SWIMMING
+				--================================================
+
+				elseif estado ==
+					Enum.HumanoidStateType.Swimming then
+
+					frequencia = 2.5
+
+					amplitudeX = 0.25
+					amplitudeY = 0.35
+					amplitudeZ = 0.25
+
+					rotacaoX =
+						math.rad(20)
+
+					rotacaoZ =
+						math.rad(15)
+
+				--================================================
+				-- CLIMBING
+				--================================================
+
+				elseif estado ==
+					Enum.HumanoidStateType.Climbing then
+
+					frequencia = 3
+
+					amplitudeX = 0.18
+					amplitudeY = 0.38
+					amplitudeZ = 0.18
+
+					rotacaoX =
+						math.rad(16)
+
+					rotacaoZ =
+						math.rad(10)
+
+				end
+
+				amplitudeX *=
+					Config.Movement
+
+				amplitudeY *=
+					Config.Movement
+
+				amplitudeZ *=
+					Config.Movement
+
+				rotacaoX *=
+					Config.Movement
+
+				rotacaoZ *=
+					Config.Movement
+
+				--================================================
+				-- ORBS SUPERIORES
+				--================================================
+
+				for _, orb in ipairs(
+					orbs
+				) do
+
+					local lado =
+						orb.side
+
+					local onda =
+						math.sin(
+							tempo
+								* frequencia
+						)
+
+					local ondaLenta =
+						math.sin(
+							tempo
+								* frequencia
+								* 0.55
+								+ 0.8
+						)
+
+					local x =
+						onda
+						* amplitudeX
+						* lado
+
+					local y =
+						ondaLenta
+						* amplitudeY
+
+					local z =
+						math.abs(
+							onda
+						)
+						* amplitudeZ
+
+					local rx =
+						ondaLenta
+						* rotacaoX
+
+					local rz =
+						onda
+						* rotacaoZ
+						* lado
+
+					x =
+						math.clamp(
+							x,
+							-MAX_X,
+							MAX_X
+						)
+
+					y =
+						math.clamp(
+							y,
+							-MAX_Y,
+							MAX_Y
+						)
+
+					z =
+						math.clamp(
+							z,
+							-MAX_Z,
+							MAX_Z
+						)
+
+					local alvo =
+						orb.baseC0
+						* CFrame.new(
+							x,
+							y,
+							z
+						)
+						* CFrame.Angles(
+							rx,
+							0,
+							rz
+						)
+
+					local alpha =
+						math.clamp(
+							dt
+								* SUAVIDADE,
+							0,
+							1
+						)
+
+					orb.weld.C0 =
+						orb.weld.C0:Lerp(
+							alvo,
+							alpha
+						)
+
+				end
+
+				--================================================
+				-- LOWER ORBS
+				--================================================
+
+				for _, orb in ipairs(
+					lowerOrbs
+				) do
+
+					local lado =
+						orb.side
+
+					local onda =
+						math.sin(
+							tempo
+								* frequencia
+								* 0.85
+								+ lado
+								* 0.5
+						)
+
+					local ondaLenta =
+						math.sin(
+							tempo
+								* frequencia
+								* 0.50
+								+ lado
+						)
+
+					local x =
+						onda
+						* 0.07
+						* lado
+
+					local y =
+						ondaLenta
+						* 0.05
+
+					local z =
+						math.abs(
+							onda
+						)
+						* 0.07
+
+					x +=
+						curva
+						* 0.08
+						* lado
+
+					x *=
+						Config.Movement
+
+					y *=
+						Config.Movement
+
+					z *=
+						Config.Movement
+
+					local rx =
+						ondaLenta
+						* math.rad(3)
+						* Config.Movement
+
+					local rz =
+						onda
+						* math.rad(4)
+						* lado
+						* Config.Movement
+
+					x =
+						math.clamp(
+							x,
+							-LOWER_MAX_X,
+							LOWER_MAX_X
+						)
+
+					y =
+						math.clamp(
+							y,
+							-LOWER_MAX_Y,
+							LOWER_MAX_Y
+						)
+
+					z =
+						math.clamp(
+							z,
+							-LOWER_MAX_Z,
+							LOWER_MAX_Z
+						)
+
+					local alvo =
+						orb.baseC0
+						* CFrame.new(
+							x,
+							y,
+							z
+						)
+						* CFrame.Angles(
+							rx,
+							0,
+							rz
+						)
+
+					local alpha =
+						math.clamp(
+							dt
+								* LOWER_SUAVIDADE,
+							0,
+							1
+						)
+
+					orb.weld.C0 =
+						orb.weld.C0:Lerp(
+							alvo,
+							alpha
+						)
+
+				end
+
+			end
+		)
+
+end
+
+--========================================================
+-- CONFIGURAÇÃO DO PERSONAGEM
+--========================================================
+
+local function configurar(
+	character
+)
+
+	task.wait(1)
+
+	if ATIVO then
+
+		criarOrbsR6(
+			character
+		)
+
+	end
+
+end
+
+if player.Character then
+
+	task.spawn(
+		function()
+
+			configurar(
+				player.Character
+			)
+
+		end
+	)
+
+end
+
+player.CharacterAdded:Connect(
+	function(character)
+
+		if conexaoOrb then
+
+			conexaoOrb:Disconnect()
+			conexaoOrb = nil
+
+		end
+
+		task.spawn(
+			function()
+
+				configurar(
+					character
+				)
+
+			end
+		)
+
+	end
+)
