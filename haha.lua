@@ -9,19 +9,9 @@ local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
 local ORB_COLOR = Color3.fromRGB(204, 160, 115)
 local ORB_SIZE = 1.67
 
--- Avatar items
-local HAIR_ID = "88443547532669"
-
--- Put the actual FACE asset ID here
-local FACE_ID = 0
-
-
 local function setupCharacter(character)
 
-	-- Get humanoid
-	local humanoid = character:WaitForChild("Humanoid")
-
-	-- Get torso (R6 or R15)
+	-- Get torso
 	local torso = character:FindFirstChild("UpperTorso")
 		or character:FindFirstChild("Torso")
 
@@ -42,20 +32,7 @@ local function setupCharacter(character)
 		end
 	end
 
-	-- =========================
-	-- REMOVE OLD ORBS
-	-- =========================
-
-	for _, object in ipairs(character:GetChildren()) do
-		if object.Name == "ChestOrb" then
-			object:Destroy()
-		end
-	end
-
-	-- =========================
-	-- REMOVE OLD ACCESSORIES
-	-- =========================
-
+	-- Remove layered clothing/accessories that can cover the chest
 	for _, object in ipairs(character:GetChildren()) do
 		if object:IsA("Accessory") then
 			object:Destroy()
@@ -73,42 +50,22 @@ local function setupCharacter(character)
 	end
 
 	-- =========================
-	-- EQUIP HAIR + FACE
+	-- REMOVE OLD ORBS
 	-- =========================
 
-	local description = humanoid:GetAppliedDescription()
-
-	-- Black hair
-	description.HairAccessory = HAIR_ID
-
-	-- Face
-	if FACE_ID ~= 0 then
-		description.Face = FACE_ID
+	for _, object in ipairs(character:GetChildren()) do
+		if object.Name == "ChestOrb" then
+			object:Destroy()
+		end
 	end
-
-	-- Keep the tan colors
-	description.HeadColor = SKIN_COLOR
-	description.TorsoColor = SKIN_COLOR
-	description.LeftArmColor = SKIN_COLOR
-	description.RightArmColor = SKIN_COLOR
-	description.LeftLegColor = SKIN_COLOR
-	description.RightLegColor = SKIN_COLOR
-
-	-- Apply appearance
-	pcall(function()
-		humanoid:ApplyDescriptionAsync(description)
-	end)
-
-	-- Wait for appearance to finish
-	task.wait(0.5)
 
 	-- =========================
 	-- CREATE 2 CHEST ORBS
 	-- =========================
 
 	local positions = {
-		-0.62, -- Left orb moved slightly right
-		0.62   -- Right orb moved slightly left
+		-0.62, -- Left
+		0.62   -- Right
 	}
 
 	for _, x in ipairs(positions) do
@@ -133,12 +90,13 @@ local function setupCharacter(character)
 		orb.Massless = true
 
 		-- =========================
-		-- HALF INSIDE THE TORSO
+		-- MOVE ORB FURTHER INTO CHEST
 		-- =========================
 
+		-- Front of torso is negative Z.
+		-- The +0.45 pushes the orb deeper inside,
+		-- reducing the visible bump.
 		local frontSurface = -(torso.Size.Z / 2)
-
-		-- Push the orb into the torso
 		local depth = frontSurface + 0.45
 
 		orb.CFrame = torso.CFrame * CFrame.new(
@@ -160,7 +118,6 @@ local function setupCharacter(character)
 	end
 end
 
-
 -- =========================
 -- APPLY ONLY TO YOU
 -- =========================
@@ -171,9 +128,10 @@ if character then
 	setupCharacter(character)
 end
 
--- Reapply after respawning
+-- Reapply after respawn
 LocalPlayer.CharacterAdded:Connect(function(character)
 
+	character:WaitForChild("Humanoid")
 	task.wait(0.5)
 
 	setupCharacter(character)
