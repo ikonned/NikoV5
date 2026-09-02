@@ -7,7 +7,7 @@ local LocalPlayer = Players.LocalPlayer
 
 local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
 local ORB_COLOR = Color3.fromRGB(204, 160, 115)
-local ORB_SIZE = 2
+local ORB_SIZE = 1
 
 local function setupCharacter(character)
 
