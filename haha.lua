@@ -1,5 +1,6 @@
 local Players = game:GetService("Players")
-local player = Players.LocalPlayer
+
+local Player = Players.LocalPlayer
 
 --==================================================
 -- SETTINGS
@@ -7,176 +8,250 @@ local player = Players.LocalPlayer
 
 local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
 
--- Same colour as skin
-local ORB_COLOR = Color3.fromRGB(204, 160, 115)
+-- Melons are the SAME colour as the skin
+local MELON_COLOR = SKIN_COLOR
 
--- Smaller than before
-local ORB_SIZE = 1.25
+-- Smaller than the old version
+local MELON_SIZE = 1.15
 
--- Closer together
-local LEFT_X = -0.28
-local RIGHT_X = 0.28
+-- Very close together
+local MELON_X = 0.30
 
--- Slightly lower
-local ORB_Y = 0.10
+-- Slightly below the middle of the chest
+local MELON_Y = 0.15
 
--- Your black hair
-local HAIR_ID = 88443547532669
+-- White anime cat-ear hair
+local HAIR_ID = 130180863705500
+
+-- Shy Blush face accessory
+local FACE_ID = 89320600334787
 
 
 --==================================================
 -- GET CHARACTER
 --==================================================
 
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
+local Character = Player.Character or Player.CharacterAdded:Wait()
+local Humanoid = Character:WaitForChild("Humanoid")
 
 
 --==================================================
--- REMOVE CLOTHES
+-- BODY COLOUR
 --==================================================
 
-for _, v in ipairs(character:GetChildren()) do
-	if v:IsA("Shirt") or v:IsA("Pants") or v:IsA("ShirtGraphic") then
-		v:Destroy()
+local BodyColors = Character:FindFirstChildOfClass("BodyColors")
+
+if BodyColors then
+	BodyColors.HeadColor3 = SKIN_COLOR
+	BodyColors.TorsoColor3 = SKIN_COLOR
+	BodyColors.LeftArmColor3 = SKIN_COLOR
+	BodyColors.RightArmColor3 = SKIN_COLOR
+	BodyColors.LeftLegColor3 = SKIN_COLOR
+	BodyColors.RightLegColor3 = SKIN_COLOR
+end
+
+for _, Object in ipairs(Character:GetChildren()) do
+	if Object:IsA("BasePart") then
+		Object.Color = SKIN_COLOR
 	end
 end
 
 
 --==================================================
--- REMOVE ACCESSORIES
+-- REMOVE SHIRT / PANTS / SHIRT GRAPHIC
 --==================================================
 
-for _, v in ipairs(character:GetChildren()) do
-	if v:IsA("Accessory") then
-		v:Destroy()
+for _, Object in ipairs(Character:GetChildren()) do
+	if Object:IsA("Shirt")
+		or Object:IsA("Pants")
+		or Object:IsA("ShirtGraphic") then
+
+		Object:Destroy()
 	end
 end
 
 
 --==================================================
--- TAN BODY
+-- APPLY HAIR + FACE
 --==================================================
 
-local bodyColors = character:FindFirstChildOfClass("BodyColors")
+local Description = Humanoid:GetAppliedDescription()
 
-if bodyColors then
-	bodyColors.HeadColor3 = SKIN_COLOR
-	bodyColors.TorsoColor3 = SKIN_COLOR
-	bodyColors.LeftArmColor3 = SKIN_COLOR
-	bodyColors.RightArmColor3 = SKIN_COLOR
-	bodyColors.LeftLegColor3 = SKIN_COLOR
-	bodyColors.RightLegColor3 = SKIN_COLOR
-end
+-- White cat-ear hair
+Description.HairAccessory = tostring(HAIR_ID)
 
-for _, v in ipairs(character:GetChildren()) do
-	if v:IsA("BasePart") then
-		v.Color = SKIN_COLOR
-	end
-end
+-- Shy Blush face accessory
+Description.FaceAccessory = tostring(FACE_ID)
 
-
---==================================================
--- EQUIP HAIR USING HUMANOID DESCRIPTION
---==================================================
-
-local description = humanoid:GetAppliedDescription()
-
-description.HairAccessory = tostring(HAIR_ID)
+-- Keep skin tan
+Description.HeadColor = SKIN_COLOR
+Description.TorsoColor = SKIN_COLOR
+Description.LeftArmColor = SKIN_COLOR
+Description.RightArmColor = SKIN_COLOR
+Description.LeftLegColor = SKIN_COLOR
+Description.RightLegColor = SKIN_COLOR
 
 pcall(function()
-	humanoid:ApplyDescriptionAsync(description)
+	Humanoid:ApplyDescriptionAsync(Description)
 end)
 
+-- Give Roblox time to apply appearance
 task.wait(1)
 
 
 --==================================================
--- GET TORSO AGAIN
+-- FIND TORSO
 --==================================================
 
-local torso =
-	character:FindFirstChild("UpperTorso")
-	or character:FindFirstChild("Torso")
+local Torso =
+	Character:FindFirstChild("UpperTorso")
+	or Character:FindFirstChild("Torso")
 
-if not torso then
-	warn("No torso found.")
+if not Torso then
+	warn("Torso not found")
 	return
 end
 
 
 --==================================================
--- REMOVE OLD ORBS
+-- REMOVE OLD MELONS
 --==================================================
 
-for _, v in ipairs(character:GetChildren()) do
-	if v.Name == "ChestOrb" then
-		v:Destroy()
+for _, Object in ipairs(Character:GetChildren()) do
+	if Object.Name == "Melon" then
+		Object:Destroy()
 	end
 end
 
 
 --==================================================
--- CREATE ORB
+-- CREATE MELON
 --==================================================
 
-local function makeOrb(x)
+local function CreateMelon(X)
 
-	local orb = Instance.new("Part")
+	local Melon = Instance.new("Part")
 
-	orb.Name = "ChestOrb"
-	orb.Shape = Enum.PartType.Ball
+	Melon.Name = "Melon"
+	Melon.Shape = Enum.PartType.Ball
 
-	orb.Size = Vector3.new(
-		ORB_SIZE,
-		ORB_SIZE,
-		ORB_SIZE
+	Melon.Size = Vector3.new(
+		MELON_SIZE,
+		MELON_SIZE,
+		MELON_SIZE
 	)
 
-	orb.Color = SKIN_COLOR
-	orb.Material = Enum.Material.SmoothPlastic
+	Melon.Color = MELON_COLOR
+	Melon.Material = Enum.Material.SmoothPlastic
 
-	orb.Anchored = false
-	orb.CanCollide = false
-	orb.CanTouch = false
-	orb.CanQuery = false
-	orb.Massless = true
+	Melon.Anchored = false
+	Melon.CanCollide = false
+	Melon.CanTouch = false
+	Melon.CanQuery = false
+	Melon.Massless = true
 
 	--================================================
-	-- CHEST POSITION
+	-- EMBED INTO FRONT OF TORSO
 	--================================================
 
-	local radius = ORB_SIZE / 2
+	local Radius = MELON_SIZE / 2
 
-	-- Front of torso
-	local front = -(torso.Size.Z / 2)
+	-- Front surface of torso
+	local Front = -(Torso.Size.Z / 2)
 
-	-- Put most of the sphere INSIDE the torso.
-	local z = front + radius - 0.35
+	-- Push the melon INTO the torso.
+	-- Only part of it should show.
+	local Z = Front + Radius - 0.22
 
-	orb.CFrame = torso.CFrame * CFrame.new(
-		x,
-		ORB_Y,
-		z
-	)
+	Melon.CFrame =
+		Torso.CFrame *
+		CFrame.new(
+			X,
+			MELON_Y,
+			Z
+		)
 
-	orb.Parent = character
+	Melon.Parent = Character
 
 	--================================================
 	-- WELD
 	--================================================
 
-	local weld = Instance.new("WeldConstraint")
-	weld.Part0 = torso
-	weld.Part1 = orb
-	weld.Parent = orb
+	local Weld = Instance.new("WeldConstraint")
 
+	Weld.Part0 = Torso
+	Weld.Part1 = Melon
+
+	Weld.Parent = Melon
 end
 
 
 --==================================================
--- TWO ORBS
+-- TWO MELONS
 --==================================================
 
-makeOrb(LEFT_X)
-makeOrb(RIGHT_X)
+CreateMelon(-MELON_X)
+CreateMelon(MELON_X)
+
+
+--==================================================
+-- SMALL DARK HEART DETAILS
+--==================================================
+
+local function CreateHeartDetail(Leg, Offset)
+
+	local Detail = Instance.new("Part")
+
+	Detail.Name = "HeartDetail"
+	Detail.Shape = Enum.PartType.Ball
+
+	Detail.Size = Vector3.new(
+		0.28,
+		0.28,
+		0.18
+	)
+
+	Detail.Color = Color3.fromRGB(35, 30, 28)
+	Detail.Material = Enum.Material.SmoothPlastic
+
+	Detail.Anchored = false
+	Detail.CanCollide = false
+	Detail.CanTouch = false
+	Detail.CanQuery = false
+	Detail.Massless = true
+
+	-- Put details slightly inside the leg
+	Detail.CFrame =
+		Leg.CFrame *
+		CFrame.new(
+			0,
+			Offset,
+			-(Leg.Size.Z / 2) + 0.05
+		)
+
+	Detail.Parent = Character
+
+	local Weld = Instance.new("WeldConstraint")
+
+	Weld.Part0 = Leg
+	Weld.Part1 = Detail
+
+	Weld.Parent = Detail
+end
+
+
+--==================================================
+-- ADD THE LITTLE DETAILS TO RIGHT LEG
+--==================================================
+
+local RightLeg =
+	Character:FindFirstChild("RightUpperLeg")
+	or Character:FindFirstChild("Right Leg")
+
+if RightLeg then
+
+	CreateHeartDetail(RightLeg, 0.55)
+	CreateHeartDetail(RightLeg, 0.05)
+	CreateHeartDetail(RightLeg, -0.45)
+
+end
