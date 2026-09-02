@@ -7,25 +7,28 @@ local LocalPlayer = Players.LocalPlayer
 -- =====================================================
 
 local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
-local ORB_COLOR = Color3.fromRGB(204, 160, 115)
+
+-- Dark chest orbs
+local ORB_COLOR = Color3.fromRGB(35, 30, 28)
 
 local ORB_SIZE = 1.67
 
--- Black hair
-local HAIR_ID = 88443547532669
+-- White anime/cat-ear hair
+local HAIR_ID = 126188913203914
 
--- Shy Blush Face replacement
-local FACE_ID = 80812899534997
+-- Shy anime face
+local FACE_ID = 91788965319375
 
--- Closer together
+-- ORB POSITION
+-- Smaller X = closer together
 local ORB_X = 0.35
 
--- Slightly lower
-local ORB_Y = 0.25
+-- Slightly lower than before
+local ORB_Y = 0.20
 
 
 -- =====================================================
--- LOAD AN ACCESSORY
+-- LOAD ACCESSORY
 -- =====================================================
 
 local function loadAccessory(assetId)
@@ -35,17 +38,18 @@ local function loadAccessory(assetId)
 	end)
 
 	if not success or not objects then
-		warn("FAILED TO LOAD ACCESSORY:", assetId)
+		warn("Could not load asset:", assetId)
 		return nil
 	end
 
 	for _, object in ipairs(objects) do
+
 		if object:IsA("Accessory") then
 			return object
 		end
+
 	end
 
-	warn("NO ACCESSORY FOUND:", assetId)
 	return nil
 end
 
@@ -58,11 +62,13 @@ local function setupCharacter(character)
 
 	local humanoid = character:WaitForChild("Humanoid")
 
-	local torso = character:FindFirstChild("UpperTorso")
+	-- Wait for torso
+	local torso =
+		character:FindFirstChild("UpperTorso")
 		or character:FindFirstChild("Torso")
 
 	if not torso then
-		warn("TORso not found")
+		warn("No torso found")
 		return
 	end
 
@@ -85,7 +91,7 @@ local function setupCharacter(character)
 
 
 	-- =================================================
-	-- REMOVE OLD ACCESSORIES
+	-- REMOVE ACCESSORIES
 	-- =================================================
 
 	for _, object in ipairs(character:GetChildren()) do
@@ -101,7 +107,8 @@ local function setupCharacter(character)
 	-- TAN SKIN
 	-- =================================================
 
-	local bodyColors = character:FindFirstChildOfClass("BodyColors")
+	local bodyColors =
+		character:FindFirstChildOfClass("BodyColors")
 
 	if bodyColors then
 
@@ -125,7 +132,7 @@ local function setupCharacter(character)
 
 
 	-- =================================================
-	-- EQUIP BLACK HAIR
+	-- EQUIP WHITE HAIR
 	-- =================================================
 
 	local hair = loadAccessory(HAIR_ID)
@@ -134,19 +141,15 @@ local function setupCharacter(character)
 
 		hair.Parent = character
 
-		local success, errorMessage = pcall(function()
+		pcall(function()
 			humanoid:AddAccessory(hair)
 		end)
-
-		if not success then
-			warn("HAIR ERROR:", errorMessage)
-		end
 
 	end
 
 
 	-- =================================================
-	-- EQUIP SHY BLUSH FACE
+	-- EQUIP SHY FACE
 	-- =================================================
 
 	local face = loadAccessory(FACE_ID)
@@ -155,13 +158,9 @@ local function setupCharacter(character)
 
 		face.Parent = character
 
-		local success, errorMessage = pcall(function()
+		pcall(function()
 			humanoid:AddAccessory(face)
 		end)
-
-		if not success then
-			warn("FACE ERROR:", errorMessage)
-		end
 
 	end
 
@@ -180,16 +179,16 @@ local function setupCharacter(character)
 
 
 	-- =================================================
-	-- CREATE 2 CHEST ORBS
+	-- CREATE EXACTLY 2 ORBS
 	-- =================================================
 
-	local positions = {
-		-ORB_X, -- left
-		 ORB_X  -- right
+	local orbPositions = {
+		-ORB_X,
+		 ORB_X
 	}
 
 
-	for _, x in ipairs(positions) do
+	for _, x in ipairs(orbPositions) do
 
 		local orb = Instance.new("Part")
 
@@ -202,8 +201,8 @@ local function setupCharacter(character)
 			ORB_SIZE
 		)
 
-		orb.Color = ORB_COLOR
 		orb.Material = Enum.Material.SmoothPlastic
+		orb.Color = ORB_COLOR
 
 		orb.Anchored = false
 		orb.CanCollide = false
@@ -213,23 +212,27 @@ local function setupCharacter(character)
 
 
 		-- =================================================
-		-- CHEST POSITION
+		-- PUT ORBS ON FRONT OF CHEST
 		-- =================================================
 
-		local frontSurface = -(torso.Size.Z / 2)
-
-		-- Orb radius
 		local radius = ORB_SIZE / 2
 
-		-- Half inside the torso,
-		-- slightly toward the front
-		local depth = frontSurface + radius - 0.10
+		local frontSurface =
+			-(torso.Size.Z / 2)
 
-		orb.CFrame = torso.CFrame * CFrame.new(
-			x,
-			ORB_Y,
-			depth
-		)
+		-- Push them toward the front.
+		-- Keeps roughly half embedded.
+		local depth =
+			frontSurface - radius + 0.15
+
+
+		orb.CFrame =
+			torso.CFrame *
+			CFrame.new(
+				x,
+				ORB_Y,
+				depth
+			)
 
 
 		orb.Parent = character
@@ -239,7 +242,8 @@ local function setupCharacter(character)
 		-- WELD ORB TO TORSO
 		-- =================================================
 
-		local weld = Instance.new("WeldConstraint")
+		local weld =
+			Instance.new("WeldConstraint")
 
 		weld.Part0 = torso
 		weld.Part1 = orb
@@ -252,27 +256,16 @@ end
 
 
 -- =====================================================
--- ONLY APPLY TO LOCAL PLAYER
+-- RUN ONLY FOR YOU
 -- =====================================================
 
-local function run()
-
-	local character = LocalPlayer.Character
-
-	if not character then
-		character = LocalPlayer.CharacterAdded:Wait()
-	end
-
-	setupCharacter(character)
-
+if LocalPlayer.Character then
+	setupCharacter(LocalPlayer.Character)
 end
 
 
-run()
-
-
 -- =====================================================
--- REAPPLY AFTER RESPAWN
+-- RUN AGAIN AFTER RESPAWN
 -- =====================================================
 
 LocalPlayer.CharacterAdded:Connect(function(character)
