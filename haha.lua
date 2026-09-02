@@ -7,7 +7,7 @@ local LocalPlayer = Players.LocalPlayer
 
 local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
 local ORB_COLOR = Color3.fromRGB(204, 160, 115)
-local ORB_SIZE = 1.67
+local ORB_SIZE = 1.2
 
 -- Black hair
 local HAIR_ID = "88443547532669"
