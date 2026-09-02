@@ -8,119 +8,94 @@ local Player = Players.LocalPlayer
 
 local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
 
--- Melons are the SAME colour as the skin
-local MELON_COLOR = SKIN_COLOR
+-- Bigger melons
+local MELON_SIZE = 1.55
 
--- Smaller than the old version
-local MELON_SIZE = 1.15
+-- Closer together
+local MELON_X = 0.34
 
--- Very close together
-local MELON_X = 0.30
+-- A little lower on chest
+local MELON_Y = 0.10
 
--- Slightly below the middle of the chest
-local MELON_Y = 0.15
+-- Main melon detail
+local DETAIL_COLOR = Color3.fromRGB(150, 105, 75)
 
--- White anime cat-ear hair
-local HAIR_ID = 130180863705500
-
--- Shy Blush face accessory
-local FACE_ID = 89320600334787
+-- Hair
+local HAIR_COLOR = Color3.fromRGB(235, 235, 235)
 
 
 --==================================================
--- GET CHARACTER
+-- REMOVE OLD CUSTOM OBJECTS
 --==================================================
 
-local Character = Player.Character or Player.CharacterAdded:Wait()
-local Humanoid = Character:WaitForChild("Humanoid")
+local function clearOld(character)
 
+	for _, obj in ipairs(character:GetDescendants()) do
 
---==================================================
--- BODY COLOUR
---==================================================
+		if obj.Name == "CustomMelon"
+			or obj.Name == "MelonCenter"
+			or obj.Name == "CustomHair"
+			or obj.Name == "CustomEar"
+			or obj.Name == "CustomFace" then
 
-local BodyColors = Character:FindFirstChildOfClass("BodyColors")
+			obj:Destroy()
 
-if BodyColors then
-	BodyColors.HeadColor3 = SKIN_COLOR
-	BodyColors.TorsoColor3 = SKIN_COLOR
-	BodyColors.LeftArmColor3 = SKIN_COLOR
-	BodyColors.RightArmColor3 = SKIN_COLOR
-	BodyColors.LeftLegColor3 = SKIN_COLOR
-	BodyColors.RightLegColor3 = SKIN_COLOR
-end
+		end
 
-for _, Object in ipairs(Character:GetChildren()) do
-	if Object:IsA("BasePart") then
-		Object.Color = SKIN_COLOR
 	end
+
 end
 
 
 --==================================================
--- REMOVE SHIRT / PANTS / SHIRT GRAPHIC
+-- REMOVE CLOTHES
 --==================================================
 
-for _, Object in ipairs(Character:GetChildren()) do
-	if Object:IsA("Shirt")
-		or Object:IsA("Pants")
-		or Object:IsA("ShirtGraphic") then
+local function removeClothes(character)
 
-		Object:Destroy()
+	for _, obj in ipairs(character:GetChildren()) do
+
+		if obj:IsA("Shirt")
+			or obj:IsA("Pants")
+			or obj:IsA("ShirtGraphic") then
+
+			obj:Destroy()
+
+		end
+
 	end
+
 end
 
 
 --==================================================
--- APPLY HAIR + FACE
+-- TAN BODY
 --==================================================
 
-local Description = Humanoid:GetAppliedDescription()
+local function tanBody(character)
 
--- White cat-ear hair
-Description.HairAccessory = tostring(HAIR_ID)
+	local bodyColors =
+		character:FindFirstChildOfClass("BodyColors")
 
--- Shy Blush face accessory
-Description.FaceAccessory = tostring(FACE_ID)
+	if bodyColors then
 
--- Keep skin tan
-Description.HeadColor = SKIN_COLOR
-Description.TorsoColor = SKIN_COLOR
-Description.LeftArmColor = SKIN_COLOR
-Description.RightArmColor = SKIN_COLOR
-Description.LeftLegColor = SKIN_COLOR
-Description.RightLegColor = SKIN_COLOR
+		bodyColors.HeadColor3 = SKIN_COLOR
+		bodyColors.TorsoColor3 = SKIN_COLOR
+		bodyColors.LeftArmColor3 = SKIN_COLOR
+		bodyColors.RightArmColor3 = SKIN_COLOR
+		bodyColors.LeftLegColor3 = SKIN_COLOR
+		bodyColors.RightLegColor3 = SKIN_COLOR
 
-pcall(function()
-	Humanoid:ApplyDescriptionAsync(Description)
-end)
-
--- Give Roblox time to apply appearance
-task.wait(1)
-
-
---==================================================
--- FIND TORSO
---==================================================
-
-local Torso =
-	Character:FindFirstChild("UpperTorso")
-	or Character:FindFirstChild("Torso")
-
-if not Torso then
-	warn("Torso not found")
-	return
-end
-
-
---==================================================
--- REMOVE OLD MELONS
---==================================================
-
-for _, Object in ipairs(Character:GetChildren()) do
-	if Object.Name == "Melon" then
-		Object:Destroy()
 	end
+
+	for _, obj in ipairs(character:GetChildren()) do
+
+		if obj:IsA("BasePart") then
+			obj.Color = SKIN_COLOR
+		end
+
+	end
+
 end
 
 
@@ -128,130 +103,450 @@ end
 -- CREATE MELON
 --==================================================
 
-local function CreateMelon(X)
+local function createMelon(character, torso, x)
 
-	local Melon = Instance.new("Part")
+	local melon = Instance.new("Part")
 
-	Melon.Name = "Melon"
-	Melon.Shape = Enum.PartType.Ball
+	melon.Name = "CustomMelon"
+	melon.Shape = Enum.PartType.Ball
 
-	Melon.Size = Vector3.new(
+	melon.Size = Vector3.new(
 		MELON_SIZE,
 		MELON_SIZE,
 		MELON_SIZE
 	)
 
-	Melon.Color = MELON_COLOR
-	Melon.Material = Enum.Material.SmoothPlastic
+	melon.Color = SKIN_COLOR
+	melon.Material = Enum.Material.SmoothPlastic
 
-	Melon.Anchored = false
-	Melon.CanCollide = false
-	Melon.CanTouch = false
-	Melon.CanQuery = false
-	Melon.Massless = true
+	melon.Anchored = false
+	melon.CanCollide = false
+	melon.CanTouch = false
+	melon.CanQuery = false
+	melon.Massless = true
+
 
 	--================================================
-	-- EMBED INTO FRONT OF TORSO
+	-- PUT MELON INSIDE FRONT OF TORSO
 	--================================================
 
-	local Radius = MELON_SIZE / 2
+	local radius = MELON_SIZE / 2
 
-	-- Front surface of torso
-	local Front = -(Torso.Size.Z / 2)
+	local front = -(torso.Size.Z / 2)
 
-	-- Push the melon INTO the torso.
-	-- Only part of it should show.
-	local Z = Front + Radius - 0.22
+	-- More of the melon inside the torso
+	local z = front + radius - 0.38
 
-	Melon.CFrame =
-		Torso.CFrame *
+	melon.CFrame =
+		torso.CFrame *
 		CFrame.new(
-			X,
+			x,
 			MELON_Y,
-			Z
+			z
 		)
 
-	Melon.Parent = Character
+	melon.Parent = character
+
 
 	--================================================
-	-- WELD
+	-- MELON CENTER DETAIL
 	--================================================
 
-	local Weld = Instance.new("WeldConstraint")
+	local detail = Instance.new("Part")
 
-	Weld.Part0 = Torso
-	Weld.Part1 = Melon
+	detail.Name = "MelonCenter"
+	detail.Shape = Enum.PartType.Ball
 
-	Weld.Parent = Melon
-end
-
-
---==================================================
--- TWO MELONS
---==================================================
-
-CreateMelon(-MELON_X)
-CreateMelon(MELON_X)
-
-
---==================================================
--- SMALL DARK HEART DETAILS
---==================================================
-
-local function CreateHeartDetail(Leg, Offset)
-
-	local Detail = Instance.new("Part")
-
-	Detail.Name = "HeartDetail"
-	Detail.Shape = Enum.PartType.Ball
-
-	Detail.Size = Vector3.new(
-		0.28,
-		0.28,
-		0.18
+	detail.Size = Vector3.new(
+		0.25,
+		0.25,
+		0.16
 	)
 
-	Detail.Color = Color3.fromRGB(35, 30, 28)
-	Detail.Material = Enum.Material.SmoothPlastic
+	detail.Color = DETAIL_COLOR
+	detail.Material = Enum.Material.SmoothPlastic
 
-	Detail.Anchored = false
-	Detail.CanCollide = false
-	Detail.CanTouch = false
-	Detail.CanQuery = false
-	Detail.Massless = true
+	detail.Anchored = false
+	detail.CanCollide = false
+	detail.CanTouch = false
+	detail.CanQuery = false
+	detail.Massless = true
 
-	-- Put details slightly inside the leg
-	Detail.CFrame =
-		Leg.CFrame *
+
+	-- Small detail on visible center
+	detail.CFrame =
+		melon.CFrame *
 		CFrame.new(
 			0,
-			Offset,
-			-(Leg.Size.Z / 2) + 0.05
+			0,
+			-radius + 0.03
 		)
 
-	Detail.Parent = Character
+	detail.Parent = character
 
-	local Weld = Instance.new("WeldConstraint")
 
-	Weld.Part0 = Leg
-	Weld.Part1 = Detail
+	--================================================
+	-- WELD MELON
+	--================================================
 
-	Weld.Parent = Detail
+	local melonWeld = Instance.new("WeldConstraint")
+
+	melonWeld.Part0 = torso
+	melonWeld.Part1 = melon
+
+	melonWeld.Parent = melon
+
+
+	--================================================
+	-- WELD CENTER
+	--================================================
+
+	local detailWeld = Instance.new("WeldConstraint")
+
+	detailWeld.Part0 = melon
+	detailWeld.Part1 = detail
+
+	detailWeld.Parent = detail
+
 end
 
 
 --==================================================
--- ADD THE LITTLE DETAILS TO RIGHT LEG
+-- FAKE WHITE HAIR
 --==================================================
 
-local RightLeg =
-	Character:FindFirstChild("RightUpperLeg")
-	or Character:FindFirstChild("Right Leg")
+local function createHair(character, head)
 
-if RightLeg then
+	-- Main fluffy hair pieces
+	for i = 1, 9 do
 
-	CreateHeartDetail(RightLeg, 0.55)
-	CreateHeartDetail(RightLeg, 0.05)
-	CreateHeartDetail(RightLeg, -0.45)
+		local hair = Instance.new("Part")
+
+		hair.Name = "CustomHair"
+
+		hair.Shape = Enum.PartType.Ball
+
+		local sizeX = math.random(55, 80) / 100
+		local sizeY = math.random(55, 85) / 100
+		local sizeZ = math.random(55, 80) / 100
+
+		hair.Size = Vector3.new(
+			sizeX,
+			sizeY,
+			sizeZ
+		)
+
+		hair.Color = HAIR_COLOR
+		hair.Material = Enum.Material.SmoothPlastic
+
+		hair.Anchored = false
+		hair.CanCollide = false
+		hair.CanTouch = false
+		hair.CanQuery = false
+		hair.Massless = true
+
+
+		local angle = (i / 9) * math.pi * 2
+
+		local x = math.cos(angle) * 0.38
+		local y = 0.45 + math.sin(angle) * 0.25
+		local z = -0.05 + math.cos(angle * 2) * 0.15
+
+
+		hair.CFrame =
+			head.CFrame *
+			CFrame.new(
+				x,
+				y,
+				z
+			)
+
+		hair.Parent = character
+
+
+		local weld = Instance.new("WeldConstraint")
+
+		weld.Part0 = head
+		weld.Part1 = hair
+
+		weld.Parent = hair
+
+	end
+
+
+	--================================================
+	-- CAT EAR 1
+	--================================================
+
+	local ear1 = Instance.new("WedgePart")
+
+	ear1.Name = "CustomEar"
+
+	ear1.Size = Vector3.new(
+		0.65,
+		0.85,
+		0.35
+	)
+
+	ear1.Color = HAIR_COLOR
+	ear1.Material = Enum.Material.SmoothPlastic
+
+	ear1.Anchored = false
+	ear1.CanCollide = false
+	ear1.CanTouch = false
+	ear1.CanQuery = false
+	ear1.Massless = true
+
+	ear1.CFrame =
+		head.CFrame *
+		CFrame.new(
+			-0.45,
+			0.80,
+			0
+		)
+
+	ear1.Parent = character
+
+	local weld1 = Instance.new("WeldConstraint")
+
+	weld1.Part0 = head
+	weld1.Part1 = ear1
+
+	weld1.Parent = ear1
+
+
+	--================================================
+	-- CAT EAR 2
+	--================================================
+
+	local ear2 = Instance.new("WedgePart")
+
+	ear2.Name = "CustomEar"
+
+	ear2.Size = Vector3.new(
+		0.65,
+		0.85,
+		0.35
+	)
+
+	ear2.Color = HAIR_COLOR
+	ear2.Material = Enum.Material.SmoothPlastic
+
+	ear2.Anchored = false
+	ear2.CanCollide = false
+	ear2.CanTouch = false
+	ear2.CanQuery = false
+	ear2.Massless = true
+
+	ear2.CFrame =
+		head.CFrame *
+		CFrame.new(
+			0.45,
+			0.80,
+			0
+		)
+
+	ear2.Parent = character
+
+	local weld2 = Instance.new("WeldConstraint")
+
+	weld2.Part0 = head
+	weld2.Part1 = ear2
+
+	weld2.Parent = ear2
 
 end
+
+
+--==================================================
+-- CREATE CUTE FACE
+--==================================================
+
+local function createFace(character, head)
+
+	-- BillboardGui lets us make the face without needing
+	-- a Roblox catalog face asset.
+
+	local gui = Instance.new("BillboardGui")
+
+	gui.Name = "CustomFace"
+
+	gui.Size = UDim2.fromOffset(100, 100)
+
+	gui.StudsOffset = Vector3.new(
+		0,
+		0,
+		-0.5
+	)
+
+	gui.AlwaysOnTop = false
+
+	gui.Parent = head
+
+
+	-- Left eye
+	local leftEye = Instance.new("Frame")
+
+	leftEye.Size = UDim2.fromOffset(9, 17)
+
+	leftEye.Position = UDim2.fromOffset(
+		27,
+		35
+	)
+
+	leftEye.BackgroundColor3 = Color3.fromRGB(
+		35,
+		30,
+		30
+	)
+
+	leftEye.BorderSizePixel = 0
+
+	leftEye.Parent = gui
+
+
+	-- Right eye
+	local rightEye = leftEye:Clone()
+
+	rightEye.Position = UDim2.fromOffset(
+		64,
+		35
+	)
+
+	rightEye.Parent = gui
+
+
+	-- Little mouth
+	local mouth = Instance.new("Frame")
+
+	mouth.Size = UDim2.fromOffset(
+		18,
+		3
+	)
+
+	mouth.Position = UDim2.fromOffset(
+		41,
+		61
+	)
+
+	mouth.BackgroundColor3 =
+		Color3.fromRGB(70, 50, 50)
+
+	mouth.BorderSizePixel = 0
+
+	mouth.Parent = gui
+
+
+	-- Left blush
+	local blush1 = Instance.new("Frame")
+
+	blush1.Size = UDim2.fromOffset(
+		14,
+		5
+	)
+
+	blush1.Position = UDim2.fromOffset(
+		19,
+		57
+	)
+
+	blush1.BackgroundColor3 =
+		Color3.fromRGB(190, 115, 110)
+
+	blush1.BackgroundTransparency = 0.35
+
+	blush1.BorderSizePixel = 0
+
+	blush1.Parent = gui
+
+
+	-- Right blush
+	local blush2 = blush1:Clone()
+
+	blush2.Position = UDim2.fromOffset(
+		67,
+		57
+	)
+
+	blush2.Parent = gui
+
+end
+
+
+--==================================================
+-- MAIN SETUP
+--==================================================
+
+local function setup(character)
+
+	local humanoid =
+		character:WaitForChild("Humanoid")
+
+	local head =
+		character:WaitForChild("Head")
+
+	local torso =
+		character:FindFirstChild("UpperTorso")
+		or character:FindFirstChild("Torso")
+
+	if not torso then
+		return
+	end
+
+
+	-- Clean previous version
+	clearOld(character)
+
+
+	-- Remove clothing
+	removeClothes(character)
+
+
+	-- Tan body
+	tanBody(character)
+
+
+	-- Hair + cat ears
+	createHair(character, head)
+
+
+	-- Cute face
+	createFace(character, head)
+
+
+	-- Two bigger melons
+	createMelon(
+		character,
+		torso,
+		-MELON_X
+	)
+
+	createMelon(
+		character,
+		torso,
+		MELON_X
+	)
+
+end
+
+
+--==================================================
+-- RUN ONLY ON LOCAL PLAYER
+--==================================================
+
+if Player.Character then
+	setup(Player.Character)
+end
+
+
+--==================================================
+-- RESPAWN
+--==================================================
+
+Player.CharacterAdded:Connect(function(character)
+
+	task.wait(1)
+
+	setup(character)
+
+end)
