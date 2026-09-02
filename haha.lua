@@ -1,17 +1,19 @@
 local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
 
 -- =========================
 -- SETTINGS
 -- =========================
 
-local SKIN_COLOR = Color3.fromRGB(204, 160, 115) -- Tan like your example
-local ORB_COLOR = Color3.fromRGB(204, 160, 115) -- 
+local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
+local ORB_COLOR = Color3.fromRGB(204, 160, 115)
 local ORB_SIZE = 4.5
 
 local function setupCharacter(character)
 
-	-- Get torso (works with R6 and R15)
-	local torso = character:FindFirstChild("UpperTorso") or character:FindFirstChild("Torso")
+	-- Get torso (R6 or R15)
+	local torso = character:FindFirstChild("UpperTorso")
+		or character:FindFirstChild("Torso")
 
 	if not torso then
 		return
@@ -54,10 +56,9 @@ local function setupCharacter(character)
 	-- CREATE 2 CHEST ORBS
 	-- =========================
 
-	-- Left and right positions
 	local positions = {
-		-0.5,
-		0.5
+		-0.5, -- Left orb
+		0.5   -- Right orb
 	}
 
 	for _, x in ipairs(positions) do
@@ -66,7 +67,11 @@ local function setupCharacter(character)
 
 		orb.Name = "ChestOrb"
 		orb.Shape = Enum.PartType.Ball
-		orb.Size = Vector3.new(ORB_SIZE, ORB_SIZE, ORB_SIZE)
+		orb.Size = Vector3.new(
+			ORB_SIZE,
+			ORB_SIZE,
+			ORB_SIZE
+		)
 
 		-- Appearance
 		orb.Material = Enum.Material.SmoothPlastic
@@ -83,9 +88,6 @@ local function setupCharacter(character)
 		-- HALF INSIDE THE TORSO
 		-- =========================
 
-		-- Roblox characters face toward -Z.
-		-- Placing the orb's center at the front surface
-		-- makes roughly half of the orb inside the torso.
 		local frontSurface = -(torso.Size.Z / 2)
 
 		orb.CFrame = torso.CFrame * CFrame.new(
@@ -97,7 +99,7 @@ local function setupCharacter(character)
 		orb.Parent = character
 
 		-- =========================
-		-- WELD ORB TO CHEST
+		-- WELD TO TORSO
 		-- =========================
 
 		local weld = Instance.new("WeldConstraint")
@@ -108,19 +110,19 @@ local function setupCharacter(character)
 end
 
 -- =========================
--- PLAYER JOIN
+-- APPLY ONLY TO EXECUTING PLAYER
 -- =========================
 
-Players.PlayerAdded:Connect(function(player)
+local character = LocalPlayer.Character
 
-	player.CharacterAdded:Connect(function(character)
+if character then
+	setupCharacter(character)
+end
 
-		character:WaitForChild("Humanoid")
+-- Reapply after respawning
+LocalPlayer.CharacterAdded:Connect(function(character)
+	character:WaitForChild("Humanoid")
+	task.wait(0.5)
 
-		task.wait(0.5)
-
-		setupCharacter(character)
-
-	end)
-
+	setupCharacter(character)
 end)
