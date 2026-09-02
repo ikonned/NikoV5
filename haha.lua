@@ -6,148 +6,176 @@ local LocalPlayer = Players.LocalPlayer
 -- =========================
 
 local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
-
 local ORB_COLOR = Color3.fromRGB(204, 160, 115)
-local ORB_SIZE = 0.6
-local ORB_HEIGHT = 0.25
+local ORB_SIZE = 1.67
 
-local HAIR_ASSET_ID = 88443547532669
+-- Avatar items
+local HAIR_ID = "88443547532669"
 
--- Put the actual FACE asset ID here once you have it
-local FACE_ASSET_ID = nil
+-- Put the actual FACE asset ID here
+local FACE_ID = 0
 
 
 local function setupCharacter(character)
 
-    local torso = character:FindFirstChild("UpperTorso")
-        or character:FindFirstChild("Torso")
+	-- Get humanoid
+	local humanoid = character:WaitForChild("Humanoid")
 
-    if not torso then
-        return
-    end
+	-- Get torso (R6 or R15)
+	local torso = character:FindFirstChild("UpperTorso")
+		or character:FindFirstChild("Torso")
 
-    -- =========================
-    -- REMOVE CLOTHING
-    -- =========================
+	if not torso then
+		return
+	end
 
-    for _, object in ipairs(character:GetChildren()) do
-        if object:IsA("Shirt")
-            or object:IsA("Pants")
-            or object:IsA("ShirtGraphic") then
+	-- =========================
+	-- REMOVE CLOTHING
+	-- =========================
 
-            object:Destroy()
-        end
-    end
+	for _, object in ipairs(character:GetChildren()) do
+		if object:IsA("Shirt")
+			or object:IsA("Pants")
+			or object:IsA("ShirtGraphic") then
 
-    -- =========================
-    -- REMOVE OLD ACCESSORIES
-    -- =========================
+			object:Destroy()
+		end
+	end
 
-    for _, object in ipairs(character:GetChildren()) do
-        if object:IsA("Accessory") then
-            object:Destroy()
-        end
-    end
+	-- =========================
+	-- REMOVE OLD ORBS
+	-- =========================
 
-    -- =========================
-    -- CHANGE SKIN COLOR
-    -- =========================
+	for _, object in ipairs(character:GetChildren()) do
+		if object.Name == "ChestOrb" then
+			object:Destroy()
+		end
+	end
 
-    for _, object in ipairs(character:GetChildren()) do
-        if object:IsA("BasePart") then
-            object.Color = SKIN_COLOR
-        end
-    end
+	-- =========================
+	-- REMOVE OLD ACCESSORIES
+	-- =========================
 
-    -- =========================
-    -- ADD HAIR
-    -- =========================
+	for _, object in ipairs(character:GetChildren()) do
+		if object:IsA("Accessory") then
+			object:Destroy()
+		end
+	end
 
-    local Humanoid = character:FindFirstChildOfClass("Humanoid")
+	-- =========================
+	-- CHANGE SKIN COLOR
+	-- =========================
 
-    if Humanoid then
-        local Description = Humanoid:GetAppliedDescription()
+	for _, object in ipairs(character:GetChildren()) do
+		if object:IsA("BasePart") then
+			object.Color = SKIN_COLOR
+		end
+	end
 
-        Description.HairAccessory = tostring(HAIR_ASSET_ID)
+	-- =========================
+	-- EQUIP HAIR + FACE
+	-- =========================
 
-        if FACE_ASSET_ID then
-            Description.Face = FACE_ASSET_ID
-        end
+	local description = humanoid:GetAppliedDescription()
 
-        Humanoid:ApplyDescriptionAsync(Description)
-    end
+	-- Black hair
+	description.HairAccessory = HAIR_ID
 
-    -- =========================
-    -- REMOVE OLD ORBS
-    -- =========================
+	-- Face
+	if FACE_ID ~= 0 then
+		description.Face = FACE_ID
+	end
 
-    for _, object in ipairs(character:GetChildren()) do
-        if object.Name == "ChestOrb" then
-            object:Destroy()
-        end
-    end
+	-- Keep the tan colors
+	description.HeadColor = SKIN_COLOR
+	description.TorsoColor = SKIN_COLOR
+	description.LeftArmColor = SKIN_COLOR
+	description.RightArmColor = SKIN_COLOR
+	description.LeftLegColor = SKIN_COLOR
+	description.RightLegColor = SKIN_COLOR
 
-    -- =========================
-    -- CREATE CHEST ORBS
-    -- =========================
+	-- Apply appearance
+	pcall(function()
+		humanoid:ApplyDescriptionAsync(description)
+	end)
 
-    local positions = {
-        -0.62,
-        0.62
-    }
+	-- Wait for appearance to finish
+	task.wait(0.5)
 
-    for _, x in ipairs(positions) do
+	-- =========================
+	-- CREATE 2 CHEST ORBS
+	-- =========================
 
-        local orb = Instance.new("Part")
+	local positions = {
+		-0.62, -- Left orb moved slightly right
+		0.62   -- Right orb moved slightly left
+	}
 
-        orb.Name = "ChestOrb"
-        orb.Shape = Enum.PartType.Ball
+	for _, x in ipairs(positions) do
 
-        orb.Size = Vector3.new(
-            ORB_SIZE,
-            ORB_SIZE,
-            ORB_SIZE
-        )
+		local orb = Instance.new("Part")
 
-        orb.Material = Enum.Material.SmoothPlastic
-        orb.Color = ORB_COLOR
+		orb.Name = "ChestOrb"
+		orb.Shape = Enum.PartType.Ball
+		orb.Size = Vector3.new(
+			ORB_SIZE,
+			ORB_SIZE,
+			ORB_SIZE
+		)
 
-        orb.Anchored = false
-        orb.CanCollide = false
-        orb.CanTouch = false
-        orb.CanQuery = false
-        orb.Massless = true
+		orb.Material = Enum.Material.SmoothPlastic
+		orb.Color = ORB_COLOR
 
-        local frontSurface = -(torso.Size.Z / 2)
-        local depth = frontSurface + 0.45
+		orb.Anchored = false
+		orb.CanCollide = false
+		orb.CanTouch = false
+		orb.CanQuery = false
+		orb.Massless = true
 
-        orb.CFrame = torso.CFrame * CFrame.new(
-            x,
-            ORB_HEIGHT,
-            depth
-        )
+		-- =========================
+		-- HALF INSIDE THE TORSO
+		-- =========================
 
-        orb.Parent = character
+		local frontSurface = -(torso.Size.Z / 2)
 
-        local weld = Instance.new("WeldConstraint")
-        weld.Part0 = torso
-        weld.Part1 = orb
-        weld.Parent = orb
-    end
+		-- Push the orb into the torso
+		local depth = frontSurface + 0.45
+
+		orb.CFrame = torso.CFrame * CFrame.new(
+			x,
+			0,
+			depth
+		)
+
+		orb.Parent = character
+
+		-- =========================
+		-- WELD TO TORSO
+		-- =========================
+
+		local weld = Instance.new("WeldConstraint")
+		weld.Part0 = torso
+		weld.Part1 = orb
+		weld.Parent = orb
+	end
 end
 
 
-local Character = LocalPlayer.Character
+-- =========================
+-- APPLY ONLY TO YOU
+-- =========================
 
-if Character then
-    setupCharacter(Character)
+local character = LocalPlayer.Character
+
+if character then
+	setupCharacter(character)
 end
 
+-- Reapply after respawning
 LocalPlayer.CharacterAdded:Connect(function(character)
 
-    character:WaitForChild("Humanoid")
-    task.wait(0.5)
+	task.wait(0.5)
 
-    setupCharacter(character)
+	setupCharacter(character)
 
 end)
