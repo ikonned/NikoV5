@@ -11,7 +11,7 @@ local ORB_SIZE = 1.67
 
 local function setupCharacter(character)
 
-	-- Get torso (R6 or R15)
+	-- Get torso
 	local torso = character:FindFirstChild("UpperTorso")
 		or character:FindFirstChild("Torso")
 
@@ -28,6 +28,13 @@ local function setupCharacter(character)
 			or object:IsA("Pants")
 			or object:IsA("ShirtGraphic") then
 
+			object:Destroy()
+		end
+	end
+
+	-- Remove layered clothing/accessories that can cover the chest
+	for _, object in ipairs(character:GetChildren()) do
+		if object:IsA("Accessory") then
 			object:Destroy()
 		end
 	end
@@ -57,8 +64,8 @@ local function setupCharacter(character)
 	-- =========================
 
 	local positions = {
-		-0.5, -- Left orb
-		0.5   -- Right orb
+		-0.62, -- Left
+		0.62   -- Right
 	}
 
 	for _, x in ipairs(positions) do
@@ -73,11 +80,9 @@ local function setupCharacter(character)
 			ORB_SIZE
 		)
 
-		-- Appearance
 		orb.Material = Enum.Material.SmoothPlastic
 		orb.Color = ORB_COLOR
 
-		-- Physics
 		orb.Anchored = false
 		orb.CanCollide = false
 		orb.CanTouch = false
@@ -85,15 +90,19 @@ local function setupCharacter(character)
 		orb.Massless = true
 
 		-- =========================
-		-- HALF INSIDE THE TORSO
+		-- MOVE ORB FURTHER INTO CHEST
 		-- =========================
 
+		-- Front of torso is negative Z.
+		-- The +0.45 pushes the orb deeper inside,
+		-- reducing the visible bump.
 		local frontSurface = -(torso.Size.Z / 2)
+		local depth = frontSurface + 0.45
 
 		orb.CFrame = torso.CFrame * CFrame.new(
 			x,
 			0,
-			frontSurface
+			depth
 		)
 
 		orb.Parent = character
@@ -110,7 +119,7 @@ local function setupCharacter(character)
 end
 
 -- =========================
--- APPLY ONLY TO EXECUTING PLAYER
+-- APPLY ONLY TO YOU
 -- =========================
 
 local character = LocalPlayer.Character
@@ -119,10 +128,12 @@ if character then
 	setupCharacter(character)
 end
 
--- Reapply after respawning
+-- Reapply after respawn
 LocalPlayer.CharacterAdded:Connect(function(character)
+
 	character:WaitForChild("Humanoid")
 	task.wait(0.5)
 
 	setupCharacter(character)
+
 end)
