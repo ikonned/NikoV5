@@ -9,7 +9,7 @@ local humanoid = character:WaitForChild("Humanoid")
 --==================================================
 
 local HAIR_ID = 123633915099119
-local FACE_ID = 72680112744477
+local FACE_ACCESSORY_ID = 72680112744477
 local TAIL_ID = 99456016159610
 
 --==================================================
@@ -18,22 +18,23 @@ local TAIL_ID = 99456016159610
 
 local SKIN_COLOR = Color3.fromRGB(204, 160, 115)
 
--- Bigger melons
-local MELON_SIZE = 1.55
+-- A little smaller
+local MELON_SIZE = 1.35
 
 -- Closer together
-local LEFT_MELON_X = -0.36
-local RIGHT_MELON_X = 0.36
+local LEFT_MELON_X = -0.33
+local RIGHT_MELON_X = 0.33
 
--- Slightly lower on chest
+-- Slightly lower
 local MELON_Y = 0.05
 
--- Small middle detail
-local DETAIL_SIZE = 0.22
+-- Small detail in the middle
+local DETAIL_SIZE = 0.20
 local DETAIL_COLOR = Color3.fromRGB(170, 120, 85)
 
+
 --==================================================
--- REMOVE EXISTING ACCESSORIES / CLOTHING / TOOLS
+-- REMOVE OLD ACCESSORIES / CLOTHING / TOOLS
 --==================================================
 
 for _, obj in ipairs(character:GetChildren()) do
@@ -58,45 +59,142 @@ if backpack then
 	end
 end
 
+
 --==================================================
--- REMOVE OLD FACE DECAL
+-- APPLY TAN BODY
 --==================================================
 
-local head = character:FindFirstChild("Head")
+local bodyColors = character:FindFirstChildOfClass("BodyColors")
 
-if head then
-	for _, obj in ipairs(head:GetChildren()) do
-		if obj:IsA("Decal") then
-			obj:Destroy()
-		end
-	end
+if bodyColors then
+	bodyColors.HeadColor3 = SKIN_COLOR
+	bodyColors.TorsoColor3 = SKIN_COLOR
+	bodyColors.LeftArmColor3 = SKIN_COLOR
+	bodyColors.RightArmColor3 = SKIN_COLOR
+	bodyColors.LeftLegColor3 = SKIN_COLOR
+	bodyColors.RightLegColor3 = SKIN_COLOR
 end
 
+
 --==================================================
--- APPLY HAIR / FACE / TAIL
+-- CREATE CORRECT HUMANOID DESCRIPTION
 --==================================================
 
 local description = humanoid:GetAppliedDescription()
 
-description.HairAccessory = HAIR_ID
-description.Face = FACE_ID
-description.BackAccessory = TAIL_ID
+-- Clear ALL accessory slots first
+description.HatAccessory = ""
+description.HairAccessory = ""
+description.FaceAccessory = ""
+description.NeckAccessory = ""
+description.ShouldersAccessory = ""
+description.FrontAccessory = ""
+description.BackAccessory = ""
+description.WaistAccessory = ""
 
+-- Remove clothing
 description.Shirt = 0
 description.Pants = 0
 description.GraphicTShirt = 0
 
--- Apply the appearance
-pcall(function()
-	humanoid:ApplyDescription(description)
+-- Tan skin
+description.HeadColor = SKIN_COLOR
+description.TorsoColor = SKIN_COLOR
+description.LeftArmColor = SKIN_COLOR
+description.RightArmColor = SKIN_COLOR
+description.LeftLegColor = SKIN_COLOR
+description.RightLegColor = SKIN_COLOR
+
+
+--==================================================
+-- SET THE THREE ACCESSORIES USING THEIR REAL TYPES
+--==================================================
+
+description:SetAccessories({
+	{
+		AssetId = HAIR_ID,
+		AccessoryType = Enum.AccessoryType.Hair
+	},
+
+	{
+		AssetId = FACE_ACCESSORY_ID,
+		AccessoryType = Enum.AccessoryType.Face
+	},
+
+	{
+		AssetId = TAIL_ID,
+		AccessoryType = Enum.AccessoryType.Waist
+	}
+}, true)
+
+
+--==================================================
+-- APPLY
+--==================================================
+
+local success, err = pcall(function()
+	humanoid:ApplyDescriptionAsync(description)
 end)
 
--- Give Roblox time to apply everything
-task.wait(0.7)
+if not success then
+	warn("AVATAR APPLY ERROR:", err)
+else
+	print("Hair / face / tail description applied.")
+end
 
--- Get character again
+
+-- Wait for Roblox to finish building accessories
+task.wait(1)
+
+
+--==================================================
+-- REFRESH CHARACTER
+--==================================================
+
 character = player.Character or character
 humanoid = character:WaitForChild("Humanoid")
+
+
+--==================================================
+-- REMOVE CLOTHING AGAIN
+--==================================================
+
+for _, obj in ipairs(character:GetChildren()) do
+	if obj:IsA("Shirt")
+		or obj:IsA("Pants")
+		or obj:IsA("ShirtGraphic") then
+
+		obj:Destroy()
+	end
+end
+
+
+--==================================================
+-- REAPPLY BODY COLORS
+--==================================================
+
+bodyColors = character:FindFirstChildOfClass("BodyColors")
+
+if bodyColors then
+	bodyColors.HeadColor3 = SKIN_COLOR
+	bodyColors.TorsoColor3 = SKIN_COLOR
+	bodyColors.LeftArmColor3 = SKIN_COLOR
+	bodyColors.RightArmColor3 = SKIN_COLOR
+	bodyColors.LeftLegColor3 = SKIN_COLOR
+	bodyColors.RightLegColor3 = SKIN_COLOR
+end
+
+for _, obj in ipairs(character:GetChildren()) do
+	if obj:IsA("BasePart")
+		and obj.Name ~= "HumanoidRootPart" then
+
+		-- Don't recolor accessory handles
+		if not obj.Parent:IsA("Accessory") then
+			obj.Color = SKIN_COLOR
+		end
+	end
+end
+
 
 --==================================================
 -- GET TORSO
@@ -107,42 +205,16 @@ local torso =
 	or character:FindFirstChild("Torso")
 
 if not torso then
-	warn("Could not find torso.")
+	warn("R6/R15 torso not found.")
 	return
 end
 
---==================================================
--- GET SKIN COLOR
---==================================================
-
-local skinColor = SKIN_COLOR
 
 --==================================================
--- APPLY TAN SKIN
+-- REMOVE OLD MELONS
 --==================================================
-
-local bodyColors = character:FindFirstChildOfClass("BodyColors")
-
-if bodyColors then
-	bodyColors.HeadColor3 = skinColor
-	bodyColors.TorsoColor3 = skinColor
-	bodyColors.LeftArmColor3 = skinColor
-	bodyColors.RightArmColor3 = skinColor
-	bodyColors.LeftLegColor3 = skinColor
-	bodyColors.RightLegColor3 = skinColor
-end
 
 for _, obj in ipairs(character:GetChildren()) do
-	if obj:IsA("BasePart") and obj.Name ~= "HumanoidRootPart" then
-		obj.Color = skinColor
-	end
-end
-
---==================================================
--- REMOVE OLD MELONS / DETAILS
---==================================================
-
-for _, obj in ipairs(character:GetDescendants()) do
 	if obj.Name == "Melon"
 		or obj.Name == "MelonDetail" then
 
@@ -150,8 +222,9 @@ for _, obj in ipairs(character:GetDescendants()) do
 	end
 end
 
+
 --==================================================
--- CREATE MELON
+-- CREATE ONE MELON
 --==================================================
 
 local function createMelon(x)
@@ -167,9 +240,7 @@ local function createMelon(x)
 		MELON_SIZE
 	)
 
-	-- SAME COLOR AS SKIN
-	melon.Color = skinColor
-
+	melon.Color = SKIN_COLOR
 	melon.Material = Enum.Material.SmoothPlastic
 
 	melon.Anchored = false
@@ -178,26 +249,35 @@ local function createMelon(x)
 	melon.CanQuery = false
 	melon.Massless = true
 
-	--================================================
-	-- HALF INSIDE FRONT OF CHEST
-	--================================================
 
-	-- Front of the torso is negative Z.
-	-- Putting the center around the front surface
-	-- makes approximately half of the melon embedded.
-	local front = -(torso.Size.Z / 2)
+	--==================================================
+	-- CORRECT FRONT OF TORSO
+	--==================================================
 
-	melon.CFrame = torso.CFrame * CFrame.new(
-		x,
-		MELON_Y,
-		front
-	)
+	local radius = MELON_SIZE / 2
+
+	-- Roblox's LookVector points toward the front
+	-- of the character.
+	local frontPoint =
+		torso.Position
+		+ torso.CFrame.LookVector * (torso.Size.Z / 2)
+
+	local position =
+		frontPoint
+		+ torso.CFrame.RightVector * x
+		+ torso.CFrame.UpVector * MELON_Y
+
+	-- Keep the melon aligned with the torso
+	melon.CFrame =
+		CFrame.new(position)
+		* torso.CFrame.Rotation
 
 	melon.Parent = character
 
-	--================================================
+
+	--==================================================
 	-- SMALL CENTER DETAIL
-	--================================================
+	--==================================================
 
 	local detail = Instance.new("Part")
 
@@ -207,7 +287,7 @@ local function createMelon(x)
 	detail.Size = Vector3.new(
 		DETAIL_SIZE,
 		DETAIL_SIZE,
-		DETAIL_SIZE
+		DETAIL_SIZE * 0.5
 	)
 
 	detail.Color = DETAIL_COLOR
@@ -219,43 +299,52 @@ local function createMelon(x)
 	detail.CanQuery = false
 	detail.Massless = true
 
-	-- Put the little detail on the front-center
-	-- of the visible part of the melon.
-	detail.CFrame = melon.CFrame * CFrame.new(
-		0,
-		0,
-		-(MELON_SIZE / 2) - 0.01
-	)
+	-- Put detail on the front-facing surface
+	detail.CFrame =
+		melon.CFrame
+		* CFrame.new(
+			0,
+			0,
+			-(MELON_SIZE / 2) - 0.01
+		)
 
 	detail.Parent = character
 
-	--================================================
-	-- WELD MELON TO CHEST
-	--================================================
+
+	--==================================================
+	-- WELD MELON
+	--==================================================
 
 	local melonWeld = Instance.new("WeldConstraint")
 
 	melonWeld.Part0 = torso
 	melonWeld.Part1 = melon
-
 	melonWeld.Parent = melon
 
-	--================================================
-	-- WELD CENTER DETAIL TO MELON
-	--================================================
+
+	--==================================================
+	-- WELD DETAIL
+	--==================================================
 
 	local detailWeld = Instance.new("WeldConstraint")
 
 	detailWeld.Part0 = melon
 	detailWeld.Part1 = detail
-
 	detailWeld.Parent = detail
 
 end
 
+
 --==================================================
--- CREATE EXACTLY 2 MELONS
+-- TWO MELONS
 --==================================================
 
 createMelon(LEFT_MELON_X)
 createMelon(RIGHT_MELON_X)
+
+
+--==================================================
+-- DONE
+--==================================================
+
+print("Custom avatar setup complete.")
