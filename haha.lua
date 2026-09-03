@@ -8,9 +8,9 @@ local humanoid = character:WaitForChild("Humanoid")
 -- EXACT ASSETS
 --==================================================
 
-local HAIR_ID = "123633915099119"
-local FACE_ID = "72680112744477"
-local TAIL_ID = "99456016159610"
+local HAIR_ID = 123633915099119
+local FACE_ID = 72680112744477
+local TAIL_ID = 99456016159610
 
 --==================================================
 -- SETTINGS
