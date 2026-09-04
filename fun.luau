@@ -5,11 +5,11 @@ local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
 
 --==================================================
--- EXACT ACCESSORIES
+-- EXACT ASSETS
 --==================================================
 
 local HAIR_ID = 123633915099119
-local FACE_ID = 72680112744477
+local FACE_ID = 120333800416724 -- Shy Worrywart Dynamic Head
 local TAIL_ID = 99456016159610
 
 --==================================================
@@ -120,7 +120,7 @@ end
 
 local description = humanoid:GetAppliedDescription()
 
--- Clear all old accessory slots
+-- Clear accessory slots
 description.HatAccessory = ""
 description.HairAccessory = ""
 description.FaceAccessory = ""
@@ -135,7 +135,10 @@ description.Shirt = 0
 description.Pants = 0
 description.GraphicTShirt = 0
 
--- Keep tan skin
+--==================================================
+-- TAN BODY COLOURS
+--==================================================
+
 description.HeadColor = SKIN_COLOR
 description.TorsoColor = SKIN_COLOR
 description.LeftArmColor = SKIN_COLOR
@@ -145,16 +148,31 @@ description.RightLegColor = SKIN_COLOR
 
 
 --==================================================
--- PUT YOUR ACCESSORIES INTO THE DESCRIPTION
+-- HAIR
 --==================================================
 
 description.HairAccessory = tostring(HAIR_ID)
-description.FaceAccessory = tostring(FACE_ID)
+
+
+--==================================================
+-- SHY WORRYWART DYNAMIC HEAD
+--==================================================
+
+description.Head = FACE_ID
+
+-- Disable facial animation for a more static look
+description.StaticFacialAnimation = true
+
+
+--==================================================
+-- TAIL / WAIST ACCESSORY
+--==================================================
+
 description.WaistAccessory = tostring(TAIL_ID)
 
 
 --==================================================
--- APPLY DESCRIPTION
+-- APPLY EVERYTHING
 --==================================================
 
 local success, err = pcall(function()
@@ -165,7 +183,8 @@ if not success then
 	warn("Appearance error:", err)
 end
 
--- Give Roblox time to create accessories
+
+-- Give Roblox time to apply appearance
 task.wait(1)
 
 
@@ -213,6 +232,31 @@ end
 
 
 --==================================================
+-- REAPPLY TAN BODY COLOUR
+--==================================================
+
+bodyColors = character:FindFirstChildOfClass("BodyColors")
+
+if bodyColors then
+	bodyColors.HeadColor3 = SKIN_COLOR
+	bodyColors.TorsoColor3 = SKIN_COLOR
+	bodyColors.LeftArmColor3 = SKIN_COLOR
+	bodyColors.RightArmColor3 = SKIN_COLOR
+	bodyColors.LeftLegColor3 = SKIN_COLOR
+	bodyColors.RightLegColor3 = SKIN_COLOR
+end
+
+for _, obj in ipairs(character:GetChildren()) do
+	if obj:IsA("BasePart")
+		and obj.Name ~= "HumanoidRootPart"
+		and not obj.Parent:IsA("Accessory") then
+
+		obj.Color = SKIN_COLOR
+	end
+end
+
+
+--==================================================
 -- CREATE MELON
 --==================================================
 
@@ -229,7 +273,6 @@ local function createMelon(x)
 		MELON_SIZE
 	)
 
-	-- Same colour as skin
 	melon.Color = SKIN_COLOR
 	melon.Material = Enum.Material.SmoothPlastic
 
@@ -284,11 +327,9 @@ local function createMelon(x)
 	detail.CanQuery = false
 	detail.Massless = true
 
-
-	-- Put the detail on the front of each melon
 	detail.CFrame =
-		melon.CFrame
-		* CFrame.new(
+		melon.CFrame *
+		CFrame.new(
 			0,
 			0,
 			-(MELON_SIZE / 2) - 0.01
@@ -298,24 +339,26 @@ local function createMelon(x)
 
 
 	--================================================
-	-- WELD MELON TO TORSO
+	-- WELD MELON
 	--================================================
 
 	local melonWeld = Instance.new("WeldConstraint")
 
 	melonWeld.Part0 = torso
 	melonWeld.Part1 = melon
+
 	melonWeld.Parent = melon
 
 
 	--================================================
-	-- WELD DETAIL TO MELON
+	-- WELD DETAIL
 	--================================================
 
 	local detailWeld = Instance.new("WeldConstraint")
 
 	detailWeld.Part0 = melon
 	detailWeld.Part1 = detail
+
 	detailWeld.Parent = detail
 
 end
@@ -329,8 +372,10 @@ createMelon(LEFT_MELON_X)
 createMelon(RIGHT_MELON_X)
 
 
-print("DONE")
-print("Hair ID:", HAIR_ID)
-print("Face Accessory ID:", FACE_ID)
-print("Tail ID:", TAIL_ID)
+print("====================================")
+print("CUSTOM AVATAR COMPLETE")
+print("Hair:", HAIR_ID)
+print("Dynamic Head:", FACE_ID)
+print("Tail:", TAIL_ID)
 print("Rig:", torso.Name)
+print("====================================")
